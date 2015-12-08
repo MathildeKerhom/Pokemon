@@ -1,4 +1,4 @@
-Nom : Jordan Plantu
+﻿Nom : Jordan Plantu
 Milieu social : famille de cadres, reçoit les derniers cadeaux à la mode
 Âge : 9 ans
 Expertise informatique : novice, amateur de gameboy
@@ -32,6 +32,6 @@ Milieu social : mère sans emploi, père ouvrier. S’est acheté un ordinateur 
 Âge : 16 ans
 Expertise informatique : utilisatrice de réseaux sociaux et de jeux en ligne
 Expertise sur le sujet traité : découvre le monde Pokémon
-Utilisation principale de l’application : joue pour s’amuser
-Utilisation secondaire de l’application :
+Utilisation principale de l’application : faire des combats de pokémon
+Utilisation secondaire de l’application : gagner le plus d'argent possible
 Pourquoi cette application et pas une autre : car le concept de jeu est nouveau (jardinage de Pokémon)
