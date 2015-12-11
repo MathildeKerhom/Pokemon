@@ -23,12 +23,11 @@ namespace PokemonGarden
 	/// </summary>
 	public sealed partial class MainPage:Page
 	{
-		public MainPage()
-		{
-			this.InitializeComponent();
+        public MainPage()
+        {
+            this.InitializeComponent();
+        }
 
-			this.topBar.GoldActual += 10;
-			this.topBar.GoldActual += 100;
         private void monBouton_Click(object sender, RoutedEventArgs e)
         {
             (Window.Current.Content as Frame).Navigate(typeof(Garden));

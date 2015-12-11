@@ -8,6 +8,14 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+<<<<<<< HEAD
         <Button x:Name="monBouton" Content="Navigation" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="monBouton_Click"/>
+=======
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <local:TopBar x:Name="topBar" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Row="0"/>
+>>>>>>> view/topBar
     </Grid>
 </Page>

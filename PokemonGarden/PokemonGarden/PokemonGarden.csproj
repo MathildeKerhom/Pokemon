@@ -106,6 +106,9 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Classes\GameContent.cs" />
+    <Compile Include="View\Garden.xaml.cs">
+      <DependentUpon>Garden.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\SellSeedDisplay.xaml.cs">
       <DependentUpon>SellSeedDisplay.xaml</DependentUpon>
     </Compile>
@@ -120,9 +123,14 @@
     <None Include="PokemonGarden_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\exclamation.png" />
+    <Content Include="Assets\garden_grid.PNG" />
+    <Content Include="Assets\Graine_DM.png" />
     <Content Include="Assets\pokeball.jpg" />
     <Content Include="Assets\rewards.jpg" />
     <Content Include="Assets\seeds.PNG" />
+    <Content Include="Assets\Type_miniat_insecte.png" />
+    <Content Include="Assets\Type_miniat_plante.png" />
     <Content Include="Assets\usagoldcoins.jpg" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
@@ -139,6 +147,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Page Include="MainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Garden.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
