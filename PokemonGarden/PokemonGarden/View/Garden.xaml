@@ -22,7 +22,7 @@
                     </Grid.ColumnDefinitions>
                     <Grid Name="garden_center" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
                         <Grid.Background>
-                            <ImageBrush ImageSource="ws_appx:///Assets/garden_grid.PNG" />
+                            <ImageBrush ImageSource="ms-appx:///Assets/garden_grid.png" />
                         </Grid.Background>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*" />
@@ -39,17 +39,17 @@
                         <Image Grid.Row="2" Grid.Column="1" Source="ms-appx:///Assets/exclamation.png" />
                     </Grid>
 
-                    <ListView Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <ListView Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center">
                         <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch" BorderThickness="1" BorderBrush="Black">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
                             <Image Grid.Column="0" Source="ms-appx:///Assets/Graine_DM.png" Margin="0, 0, 10, 0"/>
                             <Image Grid.Column="1" Source="ms-appx:///Assets/Type_miniat_insecte.png" Margin="0, 0, 10, 0"/>
-                            <TextBlock Grid.Column="2" Text="Qté : " Margin="0, 0, 10, 0"/>
+                            <TextBlock Grid.Column="2" Text="Qté : " Margin="0, 0, 10, 0" HorizontalAlignment="Stretch"/>
                             <TextBlock Grid.Column="3" Text="3" />
                         </Grid>
                     </ListView>

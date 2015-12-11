@@ -117,7 +117,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\exclamation.png" />
-    <Content Include="Assets\garden_grid.PNG" />
+    <Content Include="Assets\garden_grid.png" />
     <Content Include="Assets\Graine_DM.png" />
     <Content Include="Assets\Type_miniat_insecte.png" />
     <Content Include="Assets\Type_miniat_plante.png" />
