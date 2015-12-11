@@ -8,7 +8,7 @@ using Windows.UI.Xaml.Media;
 
 namespace PokemonGarden
 {
-	public class TopBarContent
+	public class GameContent
 	{
 		private int pokemonTotal;
 		private int pokemonActual;
@@ -17,7 +17,7 @@ namespace PokemonGarden
 		private int rewardTotal;
 		private int rewardActual;
 
-		public TopBarContent()
+		public GameContent()
 		{
 			this.pokemonTotal = 0;
 			this.pokemonActual = 0;

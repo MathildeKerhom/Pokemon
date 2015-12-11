@@ -19,7 +19,7 @@ namespace PokemonGarden
 {
 	public sealed partial class TopBar:UserControl
 	{
-		private static TopBarContent topBarContent = null;
+		private static GameContent topBarContent = null;
 
 		public TopBar()
 		{
@@ -27,7 +27,7 @@ namespace PokemonGarden
 			
 			if (topBarContent == null)
 			{
-				topBarContent = new TopBarContent();
+				topBarContent = new GameContent();
 			}
 
 			actualizePokemonCounter();
