@@ -15,13 +15,129 @@ using Windows.UI.Xaml.Navigation;
 
 // The User Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234236
 
-namespace PokemonGarden.View
+namespace PokemonGarden
 {
 	public sealed partial class TopBar:UserControl
 	{
+		private static TopBarContent topBarContent = null;
+
 		public TopBar()
 		{
 			this.InitializeComponent();
+			
+			if (topBarContent == null)
+			{
+				topBarContent = new TopBarContent();
+			}
+
+			actualizePokemonCounter();
+			actualizeSeed();
+			actualizeGold();
+			actualizeRewardCounter();
+		}
+
+		public int PokemonActual
+		{
+			get
+			{
+				return topBarContent.PokemonActual;
+			}
+
+			set
+			{
+				topBarContent.PokemonActual = value;
+				actualizePokemonCounter();
+			}
+		}
+
+		public int PokemonTotal
+		{
+			get
+			{
+				return topBarContent.PokemonTotal;
+			}
+
+			set
+			{
+				topBarContent.PokemonTotal = value;
+				actualizePokemonCounter();
+			}
+		}
+
+		public int SeedActual
+		{
+			get
+			{
+				return topBarContent.SeedActual;
+			}
+
+			set
+			{
+				topBarContent.SeedActual = value;
+				actualizeSeed();
+			}
+		}
+
+		public int GoldActual
+		{
+			get
+			{
+				return topBarContent.GoldActual;
+			}
+
+			set
+			{
+				topBarContent.GoldActual = value;
+				actualizeGold();
+			}
+		}
+
+		public int RewardTotal
+		{
+			get
+			{
+				return topBarContent.RewardTotal;
+			}
+
+			set
+			{
+				topBarContent.RewardTotal = value;
+				actualizeRewardCounter();
+			}
+		}
+
+		public int RewardActual
+		{
+			get
+			{
+				return topBarContent.RewardActual;
+			}
+
+			set
+			{
+				topBarContent.RewardActual = value;
+				actualizeRewardCounter();
+			}
+		}
+
+		private void actualizePokemonCounter()
+		{
+			this.pokemonInventoryCounterText.Text = $"{ PokemonActual } / { PokemonTotal }";
+		}
+
+		private void actualizeRewardCounter()
+		{
+			this.rewardsCounterText.Text = $"{ RewardActual } / { RewardTotal }";
+		}
+
+		private void actualizeSeed()
+		{
+			this.seedsCounterText.Text = SeedActual.ToString();
+		}
+
+		private void actualizeGold()
+		{
+			this.coinsCounterText.Text = GoldActual.ToString();
 		}
 	}
 }
