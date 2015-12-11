@@ -26,11 +26,63 @@ namespace PokemonGarden
         public MainPage()
         {
             this.InitializeComponent();
+            Window.Current.Content.KeyDown += Content_KeyDown;
         }
 
-        private void monBouton_Click(object sender, RoutedEventArgs e)
+        private void Content_KeyDown(object sender, KeyRoutedEventArgs e)
         {
-            (Window.Current.Content as Frame).Navigate(typeof(Garden));
-		}
-	}
+            switch (e.Key)
+            {
+                case Windows.System.VirtualKey.Left:
+                case Windows.System.VirtualKey.Q:
+                    Grid.SetColumn(this.me, Grid.GetColumn(this.me) - 1);
+                    break;
+                case Windows.System.VirtualKey.Right:
+                case Windows.System.VirtualKey.D:
+                    Grid.SetColumn(this.me, Grid.GetColumn(this.me) + 1);
+                    break;
+                case Windows.System.VirtualKey.Up:
+                case Windows.System.VirtualKey.Z:
+                    Grid.SetRow(this.me, Grid.GetRow(this.me) - 1);
+                    break;
+                case Windows.System.VirtualKey.Down:
+                case Windows.System.VirtualKey.S:
+                    Grid.SetRow(this.me, Grid.GetRow(this.me) + 1);
+                    break;
+            }
+        }
+
+        private void me_KeyDown(object sender, KeyRoutedEventArgs e)
+        {
+            switch (e.Key)
+            {
+                case Windows.System.VirtualKey.Left:
+                case Windows.System.VirtualKey.Q:
+                    Grid.SetRow(this.me, Grid.GetRow(this.me) - 1);
+                    break;
+                case Windows.System.VirtualKey.Right:
+                case Windows.System.VirtualKey.D:
+                    Grid.SetRow(this.me, Grid.GetRow(this.me) + 1);
+                    break;
+                case Windows.System.VirtualKey.Up:
+                case Windows.System.VirtualKey.Z:
+                    Grid.SetColumn(this.me, Grid.GetColumn(this.me) + 1);
+                    break;
+                case Windows.System.VirtualKey.Down:
+                case Windows.System.VirtualKey.S:
+                    Grid.SetColumn(this.me, Grid.GetColumn(this.me) - 1);
+                    break;
+            }
+        }
+
+        private void market_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void market_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+
+        }
+    }
 }
