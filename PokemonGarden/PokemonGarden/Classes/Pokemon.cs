@@ -8,7 +8,8 @@ namespace PokemonGarden
 	internal class Pokemon
 	{
 		private Uri img;
-		private string name;
+		private string name, description;
+
 		/// <summary>
 		/// spec fight
 		/// </summary>

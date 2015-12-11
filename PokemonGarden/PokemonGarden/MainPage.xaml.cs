@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PokemonGarden.View;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -25,8 +26,12 @@ namespace PokemonGarden
 		public MainPage()
 		{
 			this.InitializeComponent();
+
 			this.topBar.GoldActual += 10;
 			this.topBar.GoldActual += 100;
+        private void monBouton_Click(object sender, RoutedEventArgs e)
+        {
+            (Window.Current.Content as Frame).Navigate(typeof(Garden));
 		}
 	}
 }

@@ -1,0 +1,63 @@
+﻿<Page
+    x:Class="PokemonGarden.View.Garden"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:PokemonGarden.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Image Name="exclamation_point" Grid.Row="0" Source="ms-appx:///Assets/exclamation.png" Height="200" HorizontalAlignment="Center"/>
+        <Pivot Name="garden" Grid.Row="1">
+            <PivotItem Header="Jardin">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="80*" />
+                        <ColumnDefinition Width="20*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid Name="garden_center" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Grid.Background>
+                            <ImageBrush ImageSource="ms-appx:///Assets/garden_grid.png" />
+                        </Grid.Background>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Row="0" Grid.Column="0" Source="ms-appx:///Assets/exclamation.png" />
+                        <Image Grid.Row="1" Grid.Column="2" Source="ms-appx:///Assets/exclamation.png" />
+                        <Image Grid.Row="2" Grid.Column="1" Source="ms-appx:///Assets/exclamation.png" />
+                    </Grid>
+
+                    <ListView Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center">
+                        <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch" BorderThickness="1" BorderBrush="Black">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Column="0" Source="ms-appx:///Assets/Graine_DM.png" Margin="0, 0, 10, 0"/>
+                            <Image Grid.Column="1" Source="ms-appx:///Assets/Type_miniat_insecte.png" Margin="0, 0, 10, 0"/>
+                            <TextBlock Grid.Column="2" Text="Qté : " Margin="0, 0, 10, 0" HorizontalAlignment="Stretch"/>
+                            <TextBlock Grid.Column="3" Text="3" />
+                        </Grid>
+                    </ListView>
+                </Grid>
+            </PivotItem>
+            <PivotItem Header="Graines">
+                <TextBox Text="Graines" />
+            </PivotItem>
+        </Pivot>
+    </Grid>
+</Page>

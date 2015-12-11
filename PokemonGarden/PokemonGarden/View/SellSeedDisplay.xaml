@@ -10,6 +10,16 @@
     d:DesignWidth="400">
 
     <Grid>
-
+            <StackPanel>
+        <ListView x:Name="seedListView">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+        </ListView>
+            </StackPanel>
     </Grid>
 </UserControl>
