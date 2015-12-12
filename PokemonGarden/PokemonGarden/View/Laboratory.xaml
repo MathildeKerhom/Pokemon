@@ -1,0 +1,83 @@
+﻿<Page
+    x:Class="PokemonGarden.View.Laboratory"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:PokemonGarden.View"
+    xmlns:topBar="using:PokemonGarden"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <topBar:TopBar Grid.Row="0"/>
+        <Pivot Margin="10,10,10,10" Padding="20,0,20,0" Grid.Row="1">
+            <PivotItem Header="Créer">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="0">
+                        <Rectangle Height="100" Width="170" Margin="10,10,10,10" Stroke="Black">
+
+                        </Rectangle>
+                        <Rectangle Height="110" Width="1" Margin="10,10,10,10" Stroke="Black" StrokeThickness="0.5" Visibility="Visible">
+
+                        </Rectangle>
+                        <Rectangle Height="100" Width="170" Margin="10,10,10,10" Stroke="Black">
+
+                        </Rectangle>
+                        <Button Content="Fusionner" Margin="20,0,0,0"/>
+                    </StackPanel>
+                    <Grid Margin="0,20,0,0" Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <local:SellSeedDisplay Grid.Column="1"/>
+                    </Grid>
+                </Grid>
+            </PivotItem>
+            <PivotItem Header="Améliorer">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="0">
+                        <Rectangle Height="140" Width="170" Margin="10,10,10,10" Stroke="Black">
+
+                        </Rectangle>
+                        <Rectangle Height="110" Width="1" Margin="10,10,10,10" Stroke="Black" StrokeThickness="0.5" Visibility="Visible">
+
+                        </Rectangle>
+                        <Rectangle Height="100" Width="170" Margin="10,10,10,10" Stroke="Black">
+
+                        </Rectangle>
+                        <Button Content="Améliroer" Margin="20,0,0,0"/>
+                    </StackPanel>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Pivot Grid.Column="1">
+                            <PivotItem Header="Pokémons">
+
+                            </PivotItem>
+                            <PivotItem Header="Graines">
+                                <local:SellSeedDisplay/>
+                            </PivotItem>
+                        </Pivot>
+                    </Grid>
+                </Grid>
+            </PivotItem>
+        </Pivot>
+    </Grid>
+</Page>
