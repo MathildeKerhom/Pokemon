@@ -28,6 +28,8 @@ namespace PokemonGarden.View
 			Seed seed2 = new Seed("testSeed2", new List<Types.Element> { Types.Element.Electrique }, "blabla2 descritpion", 12);
 			seeds.Add(seed);
 			seeds.Add(seed2);
+			seeds.Add(seed);
+			seeds.Add(seed2);
 
 			this.InitializeComponent();
 			this.seedListView.ItemsSource = seeds;

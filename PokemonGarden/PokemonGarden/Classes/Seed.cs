@@ -63,7 +63,14 @@ namespace PokemonGarden
 		{
 			get
 			{
-				return $"Qté : { Quantity * this.price }";
+				if(Quantity == 0)
+				{
+					return $"-- Pc";
+				}
+				else
+				{
+					return $"{ Quantity * this.price } Pc";
+				}
 			}
 		}
 
