@@ -1,0 +1,56 @@
+﻿<Page
+    x:Class="PokemonGarden.View.MarketPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:topBar="using:PokemonGarden"
+    xmlns:local="using:PokemonGarden.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <topBar:TopBar Grid.Row="0"/>
+        <Pivot Margin="10,10,10,10" Padding="20,0,20,0" Grid.Row="1">
+            <PivotItem Header="Acheter">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <local:SellSeedDisplay Grid.Row="0"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="1" Padding="30,10,30,20">
+                        <Grid VerticalAlignment="Center">
+                            <TextBlock Text="Price :"/>
+                        </Grid>
+                        <Grid VerticalAlignment="Center" Margin="10,0,10,0">
+                            <TextBlock Text="{Binding Price}"/>
+                        </Grid>
+                        <Button Content="Acheter"/>
+                    </StackPanel>
+                </Grid>
+            </PivotItem>
+            <PivotItem Header="Vendre">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <local:SellSeedDisplay Grid.Row="0"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="1" Padding="30,30,30,30">
+                        <Grid VerticalAlignment="Center">
+                            <TextBlock Text="Price :"/>
+                        </Grid>
+                        <Grid VerticalAlignment="Center" Margin="10,0,10,0">
+                            <TextBlock Text="{Binding Price}"/>
+                        </Grid>
+                        <Button Content="Vendre"/>
+                    </StackPanel>
+                </Grid>
+            </PivotItem>
+        </Pivot>
+    </Grid>
+</Page>

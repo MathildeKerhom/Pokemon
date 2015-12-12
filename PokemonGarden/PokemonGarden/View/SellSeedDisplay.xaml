@@ -13,7 +13,7 @@
         <GridView.ItemTemplate>
             <DataTemplate>
                 <!--seed element panel-->
-                <Grid Margin="10,10,10,10">
+                <Grid Padding="10,10,10,10" Background="LightGray">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="120"/>
@@ -23,7 +23,7 @@
                         <Image Source="ms-appx:///Assets/Graine_DM.png" Height="40"/>
                     </Grid>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1">
-                        <GridView ItemsSource="{Binding GetUriTypeList}">
+                        <GridView ItemsSource="{Binding GetUriTypeList}" IsHitTestVisible="False">
                             <GridView.ItemTemplate>
                                 <DataTemplate>
                                     <Image Source="{Binding GetUri}" Width="40"/>
