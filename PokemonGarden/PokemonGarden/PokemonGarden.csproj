@@ -100,7 +100,7 @@
     </Compile>
     <Compile Include="Classes\Pokemon.cs" />
     <Compile Include="Classes\Seed.cs" />
-    <Compile Include="Classes\Type.cs" />
+    <Compile Include="Classes\Types.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -123,6 +123,22 @@
     <Content Include="Assets\pokeball.jpg" />
     <Content Include="Assets\rewards.jpg" />
     <Content Include="Assets\seeds.PNG" />
+    <Content Include="Assets\Type_miniat_acier.png" />
+    <Content Include="Assets\Type_miniat_combat.png" />
+    <Content Include="Assets\Type_miniat_dragon.png" />
+    <Content Include="Assets\Type_miniat_eau.png" />
+    <Content Include="Assets\Type_miniat_electrique.png" />
+    <Content Include="Assets\Type_miniat_fee.png" />
+    <Content Include="Assets\Type_miniat_feu.png" />
+    <Content Include="Assets\Type_miniat_glace.png" />
+    <Content Include="Assets\Type_miniat_normal.png" />
+    <Content Include="Assets\Type_miniat_poison.png" />
+    <Content Include="Assets\Type_miniat_psy.png" />
+    <Content Include="Assets\Type_miniat_roche.png" />
+    <Content Include="Assets\Type_miniat_sol.png" />
+    <Content Include="Assets\Type_miniat_spectre.png" />
+    <Content Include="Assets\Type_miniat_tenebres.png" />
+    <Content Include="Assets\Type_miniat_vol.png" />
     <Content Include="Assets\usagoldcoins.jpg" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
