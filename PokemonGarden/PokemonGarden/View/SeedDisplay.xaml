@@ -1,0 +1,38 @@
+﻿<UserControl
+    x:Class="PokemonGarden.View.SeedDisplay"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:PokemonGarden.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+
+    <GridView x:Name="seedListView" Margin="10,10,10,10" Padding="10,10,10,10"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" IsDoubleTapEnabled="False" SelectionMode="None" IsItemClickEnabled="False" IsHoldingEnabled="False" CanDragItems="True">
+        <GridView.ItemTemplate>
+            <DataTemplate>
+                <!--seed element panel-->
+                <Grid Padding="10,10,10,10" Background="LightGray">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="120"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="0">
+                        <Image Source="ms-appx:///Assets/Graine_DM.png" Height="40"/>
+                    </Grid>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1">
+                        <GridView ItemsSource="{Binding GetUriTypeList}" IsHitTestVisible="False">
+                            <GridView.ItemTemplate>
+                                <DataTemplate>
+                                    <Image Source="{Binding GetUri}" Width="40"/>
+                                </DataTemplate>
+                            </GridView.ItemTemplate>
+                        </GridView>
+                    </StackPanel>
+                </Grid>
+                <!-- end seed element panel-->
+            </DataTemplate>
+        </GridView.ItemTemplate>
+    </GridView>
+</UserControl>

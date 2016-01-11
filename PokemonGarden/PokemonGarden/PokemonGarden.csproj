@@ -115,6 +115,9 @@
     <Compile Include="View\MarketPage.xaml.cs">
       <DependentUpon>MarketPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\SeedDisplay.xaml.cs">
+      <DependentUpon>SeedDisplay.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\SellSeedDisplay.xaml.cs">
       <DependentUpon>SellSeedDisplay.xaml</DependentUpon>
     </Compile>
@@ -183,6 +186,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\MarketPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SeedDisplay.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

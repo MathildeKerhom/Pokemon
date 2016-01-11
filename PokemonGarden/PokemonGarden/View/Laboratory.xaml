@@ -39,7 +39,7 @@
                             <ColumnDefinition Width="3*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <local:SellSeedDisplay Grid.Column="1"/>
+                        <local:SeedDisplay Grid.Column="1"/>
                     </Grid>
                 </Grid>
             </PivotItem>
@@ -72,7 +72,7 @@
 
                             </PivotItem>
                             <PivotItem Header="Graines">
-                                <local:SellSeedDisplay/>
+                                <local:SeedDisplay/>
                             </PivotItem>
                         </Pivot>
                     </Grid>
