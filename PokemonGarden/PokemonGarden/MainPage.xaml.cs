@@ -27,8 +27,6 @@ namespace PokemonGarden
 		{
 			this.InitializeComponent();
 
-			//this.topBar.GoldActual += 10;
-			//this.topBar.GoldActual += 100;
 		}
 
 		private void monBouton_Click(object sender, RoutedEventArgs e)
