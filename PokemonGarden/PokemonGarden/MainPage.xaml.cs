@@ -50,28 +50,24 @@ namespace PokemonGarden
                     Grid.SetRow(this.me, Grid.GetRow(this.me) + 1);
                     break;
             }
-        }
 
-        private void me_KeyDown(object sender, KeyRoutedEventArgs e)
-        {
-            switch (e.Key)
+            if ((Grid.GetColumn(this.me) == 0 || Grid.GetColumn(this.me) == 1)
+                && (Grid.GetRow(this.me) == 0 || Grid.GetRow(this.me) == 1))
             {
-                case Windows.System.VirtualKey.Left:
-                case Windows.System.VirtualKey.Q:
-                    Grid.SetRow(this.me, Grid.GetRow(this.me) - 1);
-                    break;
-                case Windows.System.VirtualKey.Right:
-                case Windows.System.VirtualKey.D:
-                    Grid.SetRow(this.me, Grid.GetRow(this.me) + 1);
-                    break;
-                case Windows.System.VirtualKey.Up:
-                case Windows.System.VirtualKey.Z:
-                    Grid.SetColumn(this.me, Grid.GetColumn(this.me) + 1);
-                    break;
-                case Windows.System.VirtualKey.Down:
-                case Windows.System.VirtualKey.S:
-                    Grid.SetColumn(this.me, Grid.GetColumn(this.me) - 1);
-                    break;
+                //TODO set when Market is defined
+                //(Window.Current.Content as Frame).Navigate(typeof(Market));
+            }
+
+            if ((Grid.GetColumn(this.me) == 3 || Grid.GetColumn(this.me) == 4)
+                && (Grid.GetRow(this.me) == 2 || Grid.GetRow(this.me) == 3 || Grid.GetRow(this.me) == 4))
+            {
+                (Window.Current.Content as Frame).Navigate(typeof(Garden));
+            }
+
+            if (Grid.GetColumn(this.me) == 8 && (Grid.GetRow(this.me) == 4 || Grid.GetRow(this.me) == 5))
+            {
+                //TODO set when Arena is defined
+                //(Window.Current.Content as Frame).Navigate(typeof(Arena));
             }
         }
 
@@ -82,7 +78,7 @@ namespace PokemonGarden
 
         private void market_Tapped(object sender, TappedRoutedEventArgs e)
         {
-
+            (Window.Current.Content as Frame).Navigate(typeof(Garden));
         }
     }
 }

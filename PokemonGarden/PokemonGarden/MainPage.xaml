@@ -35,8 +35,6 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <Image Name="me" Source="ms-appx:///Assets/exclamation.png" Grid.Row="6" Grid.Column="5" KeyDown="me_KeyDown" />
-        <StackPanel Name="market" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="2" Tapped="market_Tapped" />
-        
+        <Image Name="me" Source="ms-appx:///Assets/exclamation.png" Grid.Row="6" Grid.Column="5" />
     </Grid>
 </Page>
