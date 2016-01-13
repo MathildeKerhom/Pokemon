@@ -40,10 +40,7 @@ namespace PokemonGarden.View
 			e.Data.Properties.TryGetValue("seedSource", out seed);
 			if (seed != null)
 			{
-				//if (!seed2.DataContext.Equals(seed))
-				{
-					seed1Upgrade.DataContext = (Seed) seed; 
-				}
+				seed1Fusion.DataContext = (Seed) seed;
 			}
 		}
 
@@ -53,10 +50,17 @@ namespace PokemonGarden.View
 			e.Data.Properties.TryGetValue("seedSource", out seed);
 			if (seed != null)
 			{
-				//if (!seed1.DataContext.Equals(seed))
-				{
-					seed2Upgrade.DataContext = (Seed) seed; 
-				}
+				seed2Fusion.DataContext = (Seed) seed;
+			}
+		}
+
+		private void seedFusion_Drop(object sender, DragEventArgs e)
+		{
+			object seed;
+			e.Data.Properties.TryGetValue("seedSource", out seed);
+			if (seed != null)
+			{
+				seedUpgrade.DataContext = (Seed) seed;
 			}
 		}
 

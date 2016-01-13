@@ -39,20 +39,9 @@
                         <Image Grid.Row="2" Grid.Column="1" Source="ms-appx:///Assets/exclamation.png" />
                     </Grid>
 
-                    <ListView Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center">
-                        <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch" BorderThickness="1" BorderBrush="Black">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="Auto" />
-                            </Grid.ColumnDefinitions>
-                            <Image Grid.Column="0" Source="ms-appx:///Assets/Graine_DM.png" Margin="0, 0, 10, 0"/>
-                            <Image Grid.Column="1" Source="ms-appx:///Assets/Type_miniat_insecte.png" Margin="0, 0, 10, 0"/>
-                            <TextBlock Grid.Column="2" Text="Qté : " Margin="0, 0, 10, 0" HorizontalAlignment="Stretch"/>
-                            <TextBlock Grid.Column="3" Text="3" />
-                        </Grid>
-                    </ListView>
+                    <StackPanel Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center">
+                        <local:SeedListDisplay/>
+                    </StackPanel>
                 </Grid>
             </PivotItem>
             <PivotItem Header="Graines">

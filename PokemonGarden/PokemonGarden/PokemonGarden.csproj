@@ -121,6 +121,9 @@
     <Compile Include="View\SeedListDisplay.xaml.cs">
       <DependentUpon>SeedListDisplay.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\SeedWithCountDisplay.xaml.cs">
+      <DependentUpon>SeedWithCountDisplay.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\SellSeedDisplay.xaml.cs">
       <DependentUpon>SellSeedDisplay.xaml</DependentUpon>
     </Compile>
@@ -197,6 +200,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\SeedListDisplay.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SeedWithCountDisplay.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -23,12 +23,12 @@
                     </Grid.RowDefinitions>
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="0">
                         <Grid Height="100" Width="170" Margin="10,10,10,10" DragLeave="seed_DragLeave" DragEnter="seed_DragEnter" Drop="seed1_Drop" AllowDrop="True">
-                            <local:SeedDisplay x:Name="seed1Upgrade"/>
+                            <local:SeedDisplay x:Name="seed1Fusion"/>
                             <Rectangle Stroke="Black"/>
                         </Grid>
                         <Rectangle Height="110" Width="1" Margin="10,10,10,10" Stroke="Black" StrokeThickness="0.5" Visibility="Visible"/>
                         <Grid Height="100" Width="170" Margin="10,10,10,10" DragLeave="seed_DragLeave" DragEnter="seed_DragEnter" Drop="seed2_Drop" AllowDrop="True">
-                            <local:SeedDisplay x:Name="seed2Upgrade"/>
+                            <local:SeedDisplay x:Name="seed2Fusion"/>
                             <Rectangle Stroke="Black"/>
                         </Grid>
                         <Button Content="Fusionner" Margin="20,0,0,0"/>
@@ -56,8 +56,8 @@
                         <Rectangle Height="110" Width="1" Margin="10,10,10,10" Stroke="Black" StrokeThickness="0.5" Visibility="Visible">
 
                         </Rectangle>
-                        <Grid Height="100" Width="170" Margin="10,10,10,10" DragLeave="seed_DragLeave" DragEnter="seed_DragEnter" Drop="seed2_Drop" AllowDrop="True">
-                            <local:SeedDisplay x:Name="seedFusion"/>
+                        <Grid Height="100" Width="170" Margin="10,10,10,10" DragLeave="seed_DragLeave" DragEnter="seed_DragEnter" Drop="seedFusion_Drop" AllowDrop="True">
+                            <local:SeedDisplay x:Name="seedUpgrade"/>
                             <Rectangle Stroke="Black"/>
                         </Grid>
                         <Button Content="Améliroer" Margin="20,0,0,0"/>
