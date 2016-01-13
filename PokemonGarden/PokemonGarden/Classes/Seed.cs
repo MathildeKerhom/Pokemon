@@ -10,6 +10,8 @@ namespace PokemonGarden
 		private List<Types> imgTypes;
 		private string name, description;
 		private int price;
+		private Uri seedImg = new Uri("ms-appx:///Assets/Graine_DM.png");
+		private string backgroundColor = "LightGray";
 
 		public Seed(string name, List<Types.Element> types, string description, int price)
 		{
@@ -34,6 +36,22 @@ namespace PokemonGarden
 			get
 			{
 				return this.imgTypes;
+			}
+		}
+
+		public Uri GetSeedImg
+		{
+			get
+			{
+				return this.seedImg;
+			}
+		}
+
+		public string GetBackgroundColor
+		{
+			get
+			{
+				return this.backgroundColor;
 			}
 		}
 

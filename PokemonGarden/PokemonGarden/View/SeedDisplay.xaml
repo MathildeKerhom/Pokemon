@@ -9,30 +9,25 @@
     d:DesignHeight="300"
     d:DesignWidth="400">
 
-    <GridView x:Name="seedListView" Margin="10,10,10,10" Padding="10,10,10,10"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" IsDoubleTapEnabled="False" SelectionMode="None" IsItemClickEnabled="False" IsHoldingEnabled="False" CanDragItems="True">
-        <GridView.ItemTemplate>
-            <DataTemplate>
-                <!--seed element panel-->
-                <Grid Padding="10,10,10,10" Background="LightGray">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="120"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="0">
-                        <Image Source="ms-appx:///Assets/Graine_DM.png" Height="40"/>
-                    </Grid>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1">
-                        <GridView ItemsSource="{Binding GetUriTypeList}" IsHitTestVisible="False">
-                            <GridView.ItemTemplate>
-                                <DataTemplate>
-                                    <Image Source="{Binding GetUri}" Width="40"/>
-                                </DataTemplate>
-                            </GridView.ItemTemplate>
-                        </GridView>
-                    </StackPanel>
-                </Grid>
-                <!-- end seed element panel-->
-            </DataTemplate>
-        </GridView.ItemTemplate>
-    </GridView>
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid Padding="10,10,10,10" Background="{Binding GetBackgroundColor}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="120"/>
+            </Grid.ColumnDefinitions>
+            <Grid VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="0">
+                <Image Source="{Binding GetSeedImg}" Height="40"/>
+            </Grid>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1">
+                <GridView ItemsSource="{Binding GetUriTypeList}" IsHitTestVisible="False">
+                    <GridView.ItemTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding GetUri}" Width="40"/>
+                        </DataTemplate>
+                    </GridView.ItemTemplate>
+                </GridView>
+            </StackPanel>
+        </Grid>
+    </Grid>
 </UserControl>

@@ -22,15 +22,15 @@
                         <RowDefinition/>
                     </Grid.RowDefinitions>
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="0">
-                        <Rectangle Height="100" Width="170" Margin="10,10,10,10" Stroke="Black">
-
-                        </Rectangle>
-                        <Rectangle Height="110" Width="1" Margin="10,10,10,10" Stroke="Black" StrokeThickness="0.5" Visibility="Visible">
-
-                        </Rectangle>
-                        <Rectangle Height="100" Width="170" Margin="10,10,10,10" Stroke="Black">
-
-                        </Rectangle>
+                        <Grid Height="100" Width="170" Margin="10,10,10,10" DragLeave="seed_DragLeave" DragEnter="seed_DragEnter" Drop="seed1_Drop" AllowDrop="True">
+                            <local:SeedDisplay x:Name="seed1Upgrade"/>
+                            <Rectangle Stroke="Black"/>
+                        </Grid>
+                        <Rectangle Height="110" Width="1" Margin="10,10,10,10" Stroke="Black" StrokeThickness="0.5" Visibility="Visible"/>
+                        <Grid Height="100" Width="170" Margin="10,10,10,10" DragLeave="seed_DragLeave" DragEnter="seed_DragEnter" Drop="seed2_Drop" AllowDrop="True">
+                            <local:SeedDisplay x:Name="seed2Upgrade"/>
+                            <Rectangle Stroke="Black"/>
+                        </Grid>
                         <Button Content="Fusionner" Margin="20,0,0,0"/>
                     </StackPanel>
                     <Grid Margin="0,20,0,0" Grid.Row="1">
@@ -39,7 +39,7 @@
                             <ColumnDefinition Width="3*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <local:SeedDisplay Grid.Column="1"/>
+                        <local:SeedListDisplay Grid.Column="1"/>
                     </Grid>
                 </Grid>
             </PivotItem>
@@ -50,15 +50,16 @@
                         <RowDefinition/>
                     </Grid.RowDefinitions>
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="0">
-                        <Rectangle Height="140" Width="170" Margin="10,10,10,10" Stroke="Black">
-
-                        </Rectangle>
+                        <Grid Height="140" Width="170" Margin="10,10,10,10">
+                            <Rectangle Stroke="Black"/>
+                        </Grid>
                         <Rectangle Height="110" Width="1" Margin="10,10,10,10" Stroke="Black" StrokeThickness="0.5" Visibility="Visible">
 
                         </Rectangle>
-                        <Rectangle Height="100" Width="170" Margin="10,10,10,10" Stroke="Black">
-
-                        </Rectangle>
+                        <Grid Height="100" Width="170" Margin="10,10,10,10" DragLeave="seed_DragLeave" DragEnter="seed_DragEnter" Drop="seed2_Drop" AllowDrop="True">
+                            <local:SeedDisplay x:Name="seedFusion"/>
+                            <Rectangle Stroke="Black"/>
+                        </Grid>
                         <Button Content="Améliroer" Margin="20,0,0,0"/>
                     </StackPanel>
                     <Grid Grid.Row="1">
@@ -72,7 +73,7 @@
 
                             </PivotItem>
                             <PivotItem Header="Graines">
-                                <local:SeedDisplay/>
+                                <local:SeedListDisplay/>
                             </PivotItem>
                         </Pivot>
                     </Grid>

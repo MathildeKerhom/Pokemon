@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using PokemonGarden.Classes;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -25,6 +27,42 @@ namespace PokemonGarden.View
 		public Laboratory()
 		{
 			this.InitializeComponent();
+		}
+
+		private void seed_DragEnter(object sender, DragEventArgs e)
+		{
+			e.AcceptedOperation = Windows.ApplicationModel.DataTransfer.DataPackageOperation.Move;
+		}
+
+		private void seed1_Drop(object sender, DragEventArgs e)
+		{
+			object seed;
+			e.Data.Properties.TryGetValue("seedSource", out seed);
+			if (seed != null)
+			{
+				//if (!seed2.DataContext.Equals(seed))
+				{
+					seed1Upgrade.DataContext = (Seed) seed; 
+				}
+			}
+		}
+
+		private void seed2_Drop(object sender, DragEventArgs e)
+		{
+			object seed;
+			e.Data.Properties.TryGetValue("seedSource", out seed);
+			if (seed != null)
+			{
+				//if (!seed1.DataContext.Equals(seed))
+				{
+					seed2Upgrade.DataContext = (Seed) seed; 
+				}
+			}
+		}
+
+		private void seed_DragLeave(object sender, DragEventArgs e)
+		{
+			e.AcceptedOperation = Windows.ApplicationModel.DataTransfer.DataPackageOperation.None;
 		}
 	}
 }

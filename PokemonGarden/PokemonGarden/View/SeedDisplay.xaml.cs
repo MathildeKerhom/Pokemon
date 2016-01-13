@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -20,20 +21,10 @@ namespace PokemonGarden.View
 {
 	public sealed partial class SeedDisplay:UserControl
 	{
-		private List<Seed> seeds;
+		//private Seed seed;
 		public SeedDisplay()
 		{
-			seeds = new List<Seed>();
-			Seed seed = new Seed("testSeed", new List<Types.Element> { Types.Element.Acier, Types.Element.Dragon }, "blabla descritpion", 20);
-			Seed seed2 = new Seed("testSeed2", new List<Types.Element> { Types.Element.Electrique }, "blabla2 descritpion", 12);
-			seeds.Add(seed);
-			seeds.Add(seed2);
-			seeds.Add(seed);
-			seeds.Add(seed2);
-
 			this.InitializeComponent();
-			this.seedListView.ItemsSource = seeds;
-			this.seedListView.CanDrag = true;
 		}
 	}
 }
