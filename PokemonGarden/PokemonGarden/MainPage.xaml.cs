@@ -21,9 +21,9 @@ namespace PokemonGarden
 	/// <summary>
 	/// Une page vide peut être utilisée seule ou constituer une page de destination au sein d'un frame.
 	/// </summary>
-	public sealed partial class MainPage:Page
+	public sealed partial class Village:Page
 	{
-        public MainPage()
+        public Village()
         {
             this.InitializeComponent();
             Window.Current.Content.KeyDown += Content_KeyDown;
@@ -35,38 +35,65 @@ namespace PokemonGarden
             {
                 case Windows.System.VirtualKey.Left:
                 case Windows.System.VirtualKey.Q:
-                    Grid.SetColumn(this.me, Grid.GetColumn(this.me) - 1);
+                    if (Grid.GetColumn(this.me) != 0)
+                    {
+                        Grid.SetColumn(this.me, Grid.GetColumn(this.me) - 1);
+                    }
                     break;
                 case Windows.System.VirtualKey.Right:
                 case Windows.System.VirtualKey.D:
-                    Grid.SetColumn(this.me, Grid.GetColumn(this.me) + 1);
+                    if (Grid.GetColumn(this.me) != 9)
+                    {
+                        Grid.SetColumn(this.me, Grid.GetColumn(this.me) + 1);
+                    }
                     break;
                 case Windows.System.VirtualKey.Up:
                 case Windows.System.VirtualKey.Z:
-                    Grid.SetRow(this.me, Grid.GetRow(this.me) - 1);
+                    if (Grid.GetRow(this.me) != 0)
+                    {
+                        Grid.SetRow(this.me, Grid.GetRow(this.me) - 1);
+                    }
                     break;
                 case Windows.System.VirtualKey.Down:
                 case Windows.System.VirtualKey.S:
-                    Grid.SetRow(this.me, Grid.GetRow(this.me) + 1);
+                    if (Grid.GetRow(this.me) != 9)
+                    {
+                        Grid.SetRow(this.me, Grid.GetRow(this.me) + 1);
+                    }
                     break;
             }
 
             if ((Grid.GetColumn(this.me) == 0 || Grid.GetColumn(this.me) == 1)
                 && (Grid.GetRow(this.me) == 0 || Grid.GetRow(this.me) == 1))
             {
-                //TODO set when Market is defined
-                //(Window.Current.Content as Frame).Navigate(typeof(Market));
+                (Window.Current.Content as Frame).Navigate(typeof(Market));
             }
 
-            if ((Grid.GetColumn(this.me) == 3 || Grid.GetColumn(this.me) == 4)
-                && (Grid.GetRow(this.me) == 2 || Grid.GetRow(this.me) == 3 || Grid.GetRow(this.me) == 4))
+            if (((Grid.GetColumn(this.me) == 3 || Grid.GetColumn(this.me) == 5)
+                    && (Grid.GetRow(this.me) == 2 ||
+                        Grid.GetRow(this.me) == 3 ||
+                        Grid.GetRow(this.me) == 4))
+                || (Grid.GetColumn(this.me) == 4
+                    && (Grid.GetRow(this.me) == 1 ||
+                        Grid.GetRow(this.me) == 2 ||
+                        Grid.GetRow(this.me) == 3 ||
+                        Grid.GetRow(this.me) == 4)))
             {
                 (Window.Current.Content as Frame).Navigate(typeof(Garden));
             }
 
-            if (Grid.GetColumn(this.me) == 8 && (Grid.GetRow(this.me) == 4 || Grid.GetRow(this.me) == 5))
+            if ((Grid.GetColumn(this.me) == 8
+                    && (Grid.GetRow(this.me) == 4 ||
+                        Grid.GetRow(this.me) == 5))
+                 || (Grid.GetColumn(this.me) == 9
+                    && Grid.GetRow(this.me) == 5))
             {
-                //TODO set when Arena is defined
+                (Window.Current.Content as Frame).Navigate(typeof(Laboratory));
+            }
+
+            if (Grid.GetColumn(this.me) == 2 && Grid.GetRow(this.me) == 8)
+            {
+                //TODO when Arena is defined
                 //(Window.Current.Content as Frame).Navigate(typeof(Arena));
             }
         }

@@ -112,8 +112,8 @@
     <Compile Include="View\Laboratory.xaml.cs">
       <DependentUpon>Laboratory.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\MarketPage.xaml.cs">
-      <DependentUpon>MarketPage.xaml</DependentUpon>
+    <Compile Include="View\Market.xaml.cs">
+      <DependentUpon>Market.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\UserControls\SeedDisplay.xaml.cs">
       <DependentUpon>SeedDisplay.xaml</DependentUpon>
@@ -192,7 +192,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\MarketPage.xaml">
+    <Page Include="View\Market.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
