@@ -94,8 +94,7 @@ namespace PokemonGarden
 
             else if (Grid.GetColumn(this.me) == 2 && Grid.GetRow(this.me) == 8)
             {
-                //TODO when Arena is defined
-                //(Window.Current.Content as Frame).Navigate(typeof(Arena));
+                (Window.Current.Content as Frame).Navigate(typeof(Arena));
             }
 
             else

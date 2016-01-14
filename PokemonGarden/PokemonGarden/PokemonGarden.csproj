@@ -101,20 +101,8 @@
     <Compile Include="Classes\Pokemon.cs" />
     <Compile Include="Classes\Seed.cs" />
     <Compile Include="Classes\Types.cs" />
-    <Compile Include="View\SeedDisplay.xaml.cs">
-      <DependentUpon>SeedDisplay.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\SeedListDisplay.xaml.cs">
-      <DependentUpon>SeedListDisplay.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\SeedWithCountDisplay.xaml.cs">
-      <DependentUpon>SeedWithCountDisplay.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\SellSeedDisplay.xaml.cs">
-      <DependentUpon>SellSeedDisplay.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\TopBar.xaml.cs">
-      <DependentUpon>TopBar.xaml</DependentUpon>
+    <Compile Include="View\Arena.xaml.cs">
+      <DependentUpon>Arena.xaml</DependentUpon>
     </Compile>
     <Compile Include="Village.xaml.cs">
       <DependentUpon>Village.xaml</DependentUpon>
@@ -195,25 +183,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="View\SeedDisplay.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Include="View\Arena.xaml">
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\SeedListDisplay.xaml">
       <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\SeedWithCountDisplay.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\SellSeedDisplay.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\TopBar.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="Village.xaml">
       <Generator>MSBuild:Compile</Generator>
