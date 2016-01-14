@@ -2,7 +2,7 @@
     x:Class="PokemonGarden.View.Market"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:PokemonGarden.View.UserControls"
+    xmlns:UserControls="using:PokemonGarden.View.UserControls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
@@ -12,7 +12,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <local:TopBar Grid.Row="0"/>
+        <UserControls:TopBar Grid.Row="0"/>
         <Pivot Margin="10,10,10,10" Padding="20,0,20,0" Grid.Row="1">
             <PivotItem Header="Acheter">
                 <Grid>
@@ -20,7 +20,7 @@
                         <RowDefinition/>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
-                    <local:SellSeedDisplay Grid.Row="0"/>
+                    <UserControls:SellSeedDisplay Grid.Row="0" CanDrag="False"/>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="1" Padding="30,10,30,20">
                         <Grid VerticalAlignment="Center">
                             <TextBlock Text="Price :"/>
@@ -38,7 +38,7 @@
                         <RowDefinition/>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
-                    <local:SellSeedDisplay Grid.Row="0"/>
+                    <UserControls:SellSeedDisplay Grid.Row="0" CanDrag="False"/>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="1" Padding="30,30,30,30">
                         <Grid VerticalAlignment="Center">
                             <TextBlock Text="Price :"/>
