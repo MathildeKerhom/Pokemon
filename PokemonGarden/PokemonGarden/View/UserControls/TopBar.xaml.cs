@@ -142,8 +142,8 @@ namespace PokemonGarden.View.UserControls
 
 		private void OnClicGoToMap_Tapped(object sender, TappedRoutedEventArgs e)
 		{
-			(Window.Current.Content as Frame).Navigate(typeof(MainPage));
-		}
+			(Window.Current.Content as Frame).Navigate(typeof(Village));
+        }
 
 		private void OnClicGoToInventary_Tapped(object sender, TappedRoutedEventArgs e)
 		{

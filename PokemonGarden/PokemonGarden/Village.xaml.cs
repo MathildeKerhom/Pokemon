@@ -26,6 +26,7 @@ namespace PokemonGarden
         public Village()
         {
             this.InitializeComponent();
+            // set keyDown event to currentWindow
             Window.Current.Content.KeyDown += Content_KeyDown;
         }
 
@@ -69,7 +70,7 @@ namespace PokemonGarden
                 (Window.Current.Content as Frame).Navigate(typeof(Market));
             }
 
-            if (((Grid.GetColumn(this.me) == 3 || Grid.GetColumn(this.me) == 5)
+            else if (((Grid.GetColumn(this.me) == 3 || Grid.GetColumn(this.me) == 5)
                     && (Grid.GetRow(this.me) == 2 ||
                         Grid.GetRow(this.me) == 3 ||
                         Grid.GetRow(this.me) == 4))
@@ -82,7 +83,7 @@ namespace PokemonGarden
                 (Window.Current.Content as Frame).Navigate(typeof(Garden));
             }
 
-            if ((Grid.GetColumn(this.me) == 8
+            else if ((Grid.GetColumn(this.me) == 8
                     && (Grid.GetRow(this.me) == 4 ||
                         Grid.GetRow(this.me) == 5))
                  || (Grid.GetColumn(this.me) == 9
@@ -91,11 +92,20 @@ namespace PokemonGarden
                 (Window.Current.Content as Frame).Navigate(typeof(Laboratory));
             }
 
-            if (Grid.GetColumn(this.me) == 2 && Grid.GetRow(this.me) == 8)
+            else if (Grid.GetColumn(this.me) == 2 && Grid.GetRow(this.me) == 8)
             {
                 //TODO when Arena is defined
                 //(Window.Current.Content as Frame).Navigate(typeof(Arena));
             }
+
+            else
+            {
+                return;
+            }
+
+            // unset keyDown event from currentWindow to avoid allowing
+            //directional click on Window where Navigate arrives into
+            Window.Current.Content.KeyDown -= Content_KeyDown;
         }
 
         private void market_Click(object sender, RoutedEventArgs e)
