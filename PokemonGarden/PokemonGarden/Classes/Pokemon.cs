@@ -16,7 +16,7 @@ namespace PokemonGarden
 		/// <summary>
 		/// spec fight
 		/// </summary>
-		private int pv, att, def, attSpe, defSpe, speed, spe;
+		private int pv, att, def, attSpe, defSpe, speed, spe, level;
 
 
 		internal Pokemon(Uri imgPokemon, string name, List<Types.Element> types, string description)
@@ -43,5 +43,31 @@ namespace PokemonGarden
 				imgTypes.Add(new Types(item));
 			}
 		}
+
+        public List<Types> GetUriTypeList
+        {
+            get
+            {
+                return this.imgTypes;
+            }
+        }
+
+        public Uri Img
+        {
+            get;
+            set;
+        }
+
+        public int Level
+        {
+            get;
+            set;
+        }
+
+        public string Name
+        {
+            get;
+            set;
+        }
 	}
 }

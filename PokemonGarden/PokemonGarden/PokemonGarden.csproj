@@ -104,6 +104,9 @@
     <Compile Include="View\Arena.xaml.cs">
       <DependentUpon>Arena.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\UserControls\PokemonDisplay.xaml.cs">
+      <DependentUpon>PokemonDisplay.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Village.xaml.cs">
       <DependentUpon>Village.xaml</DependentUpon>
     </Compile>
@@ -184,6 +187,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Page Include="View\Arena.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControls\PokemonDisplay.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
