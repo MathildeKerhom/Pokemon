@@ -115,19 +115,19 @@
     <Compile Include="View\MarketPage.xaml.cs">
       <DependentUpon>MarketPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\SeedDisplay.xaml.cs">
+    <Compile Include="View\UserControls\SeedDisplay.xaml.cs">
       <DependentUpon>SeedDisplay.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\SeedListDisplay.xaml.cs">
+    <Compile Include="View\UserControls\SeedListDisplay.xaml.cs">
       <DependentUpon>SeedListDisplay.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\SeedWithCountDisplay.xaml.cs">
+    <Compile Include="View\UserControls\SeedWithCountDisplay.xaml.cs">
       <DependentUpon>SeedWithCountDisplay.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\SellSeedDisplay.xaml.cs">
+    <Compile Include="View\UserControls\SellSeedDisplay.xaml.cs">
       <DependentUpon>SellSeedDisplay.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\TopBar.xaml.cs">
+    <Compile Include="View\UserControls\TopBar.xaml.cs">
       <DependentUpon>TopBar.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -196,23 +196,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\SeedDisplay.xaml">
+    <Page Include="View\UserControls\SeedDisplay.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\SeedListDisplay.xaml">
+    <Page Include="View\UserControls\SeedListDisplay.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\SeedWithCountDisplay.xaml">
+    <Page Include="View\UserControls\SeedWithCountDisplay.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\SellSeedDisplay.xaml">
+    <Page Include="View\UserControls\SellSeedDisplay.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\TopBar.xaml">
+    <Page Include="View\UserControls\TopBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
