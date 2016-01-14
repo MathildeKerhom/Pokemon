@@ -20,7 +20,7 @@
                         <RowDefinition/>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
-                    <UserControls:SellSeedDisplay Grid.Row="0"/>
+                    <UserControls:SellSeedDisplay Grid.Row="0" CanDrag="False"/>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="1" Padding="30,10,30,20">
                         <Grid VerticalAlignment="Center">
                             <TextBlock Text="Price :"/>
@@ -38,7 +38,7 @@
                         <RowDefinition/>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
-                    <UserControls:SellSeedDisplay Grid.Row="0"/>
+                    <UserControls:SellSeedDisplay Grid.Row="0" CanDrag="False"/>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="1" Padding="30,30,30,30">
                         <Grid VerticalAlignment="Center">
                             <TextBlock Text="Price :"/>
