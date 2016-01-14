@@ -20,9 +20,9 @@ namespace PokemonGarden.View
 	/// <summary>
 	/// Une page vide peut être utilisée seule ou constituer une page de destination au sein d'un frame.
 	/// </summary>
-	public sealed partial class MarketPage:Page
+	public sealed partial class Market:Page
 	{
-		public MarketPage()
+		public Market()
 		{
 			this.InitializeComponent();
 		}
