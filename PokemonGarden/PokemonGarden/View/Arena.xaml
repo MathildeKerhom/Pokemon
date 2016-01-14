@@ -13,8 +13,8 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <UserControls:TopBar Grid.Row="0"/>
-        <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="70*" />
                 <ColumnDefinition Width="30*" />
             </Grid.ColumnDefinitions>
