@@ -21,9 +21,9 @@ namespace PokemonGarden
 	/// <summary>
 	/// Une page vide peut être utilisée seule ou constituer une page de destination au sein d'un frame.
 	/// </summary>
-	public sealed partial class MainPage:Page
+	public sealed partial class Village:Page
 	{
-        public MainPage()
+        public Village()
         {
             this.InitializeComponent();
             Window.Current.Content.KeyDown += Content_KeyDown;
@@ -69,13 +69,24 @@ namespace PokemonGarden
                 (Window.Current.Content as Frame).Navigate(typeof(Market));
             }
 
-            if ((Grid.GetColumn(this.me) == 3 || Grid.GetColumn(this.me) == 4)
-                && (Grid.GetRow(this.me) == 2 || Grid.GetRow(this.me) == 3 || Grid.GetRow(this.me) == 4))
+            if (((Grid.GetColumn(this.me) == 3 || Grid.GetColumn(this.me) == 5)
+                    && (Grid.GetRow(this.me) == 2 ||
+                        Grid.GetRow(this.me) == 3 ||
+                        Grid.GetRow(this.me) == 4))
+                || (Grid.GetColumn(this.me) == 4
+                    && (Grid.GetRow(this.me) == 1 ||
+                        Grid.GetRow(this.me) == 2 ||
+                        Grid.GetRow(this.me) == 3 ||
+                        Grid.GetRow(this.me) == 4)))
             {
                 (Window.Current.Content as Frame).Navigate(typeof(Garden));
             }
 
-            if (Grid.GetColumn(this.me) == 8 && (Grid.GetRow(this.me) == 4 || Grid.GetRow(this.me) == 5))
+            if ((Grid.GetColumn(this.me) == 8
+                    && (Grid.GetRow(this.me) == 4 ||
+                        Grid.GetRow(this.me) == 5))
+                 || (Grid.GetColumn(this.me) == 9
+                    && Grid.GetRow(this.me) == 5))
             {
                 (Window.Current.Content as Frame).Navigate(typeof(Laboratory));
             }
