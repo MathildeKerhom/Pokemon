@@ -5,20 +5,18 @@ using Windows.UI.Xaml.Controls;
 
 namespace PokemonGarden
 {
-	class Seed
+	public abstract class Seed
 	{
 		private List<Types> imgTypes;
 		private string name, description;
-		private int price;
 		private Uri seedImg = new Uri("ms-appx:///Assets/Graine_DM.png");
 		private string backgroundColor = "LightGray";
 
-		public Seed(string name, List<Types.Element> types, string description, int price)
+		public Seed(string name, List<Types.Element> types, string description)
 		{
 			this.name = name;
 			setImgType(types);
 			this.description = description;
-			this.price = price;
 		}
 
 		private void setImgType(List<Types.Element> types)
@@ -75,34 +73,6 @@ namespace PokemonGarden
 		{
 			get;
 			set;
-		}
-
-		public string PriceQuantity
-		{
-			get
-			{
-				if(Quantity == 0)
-				{
-					return $"-- Pc";
-				}
-				else
-				{
-					return $"{ Quantity * this.price } Pc";
-				}
-			}
-		}
-
-		public int Price
-		{
-			get
-			{
-				return this.price;
-			}
-
-			set
-			{
-				this.price = value;
-			}
 		}
 	}
 }

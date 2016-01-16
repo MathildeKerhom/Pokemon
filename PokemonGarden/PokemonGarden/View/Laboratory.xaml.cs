@@ -40,7 +40,7 @@ namespace PokemonGarden.View
 			e.Data.Properties.TryGetValue("seedSource", out seed);
 			if (seed != null)
 			{
-				seed1Fusion.DataContext = (Seed) seed;
+				seed1Fusion.DataContext = (MarketSeed) seed;
 			}
 		}
 
@@ -50,7 +50,7 @@ namespace PokemonGarden.View
 			e.Data.Properties.TryGetValue("seedSource", out seed);
 			if (seed != null)
 			{
-				seed2Fusion.DataContext = (Seed) seed;
+				seed2Fusion.DataContext = (MarketSeed) seed;
 			}
 		}
 
@@ -60,7 +60,7 @@ namespace PokemonGarden.View
 			e.Data.Properties.TryGetValue("seedSource", out seed);
 			if (seed != null)
 			{
-				seedUpgrade.DataContext = (Seed) seed;
+				seedUpgrade.DataContext = (MarketSeed) seed;
 			}
 		}
 

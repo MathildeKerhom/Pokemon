@@ -20,12 +20,12 @@ namespace PokemonGarden.View.UserControls
 {
 	public sealed partial class SeedListDisplay:UserControl
 	{
-		private List<Seed> seeds;
+		private List<MarketSeed> seeds;
 		public SeedListDisplay()
 		{
-			seeds = new List<Seed>();
-			Seed seed = new Seed("testSeed", new List<Types.Element> { Types.Element.Acier, Types.Element.Dragon }, "blabla descritpion", 20);
-			Seed seed2 = new Seed("testSeed2", new List<Types.Element> { Types.Element.Electrique }, "blabla2 descritpion", 12);
+			seeds = new List<MarketSeed>();
+			MarketSeed seed = new MarketSeed("testSeed", new List<Types.Element> { Types.Element.Acier, Types.Element.Dragon }, "blabla descritpion", 20);
+			MarketSeed seed2 = new MarketSeed("testSeed2", new List<Types.Element> { Types.Element.Electrique }, "blabla2 descritpion", 12);
 			seeds.Add(seed);
 			seeds.Add(seed2);
 			seeds.Add(seed);

@@ -7,7 +7,7 @@ using Windows.UI.Xaml.Media.Imaging;
 
 namespace PokemonGarden
 {
-	internal class Pokemon
+	public class Pokemon
 	{
 		private Uri imgPokemon;
 		private List<Types> imgTypes;
@@ -18,6 +18,7 @@ namespace PokemonGarden
 		/// </summary>
 		private int pv, att, def, attSpe, defSpe, speed, spe, level;
 
+		private bool isBusy, isDead;
 
 		internal Pokemon(Uri imgPokemon, string name, List<Types.Element> types, string description)
 		{

@@ -27,18 +27,18 @@ namespace PokemonGarden
 			this.rewardActual = 0;
 		}
 
-		public int PokemonTotal
-		{
-			get
-			{
-				return pokemonTotal;
-			}
+		//public int PokemonTotal
+		//{
+		//	get
+		//	{
+		//		return pokemonTotal;
+		//	}
 
-			set
-			{
-				this.pokemonTotal = value;
-			}
-		}
+		//	set
+		//	{
+		//		this.pokemonTotal = value;
+		//	}
+		//}
 
 		public int PokemonActual
 		{

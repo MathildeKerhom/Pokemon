@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using PokemonGarden.Classes;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -17,127 +19,17 @@ using Windows.UI.Xaml.Navigation;
 
 namespace PokemonGarden.View.UserControls
 {
-	public sealed partial class TopBar:UserControl
+	public sealed partial class TopBar: UserControl
 	{
-		private static GameContent topBarContent = null;
-
 		public TopBar()
 		{
 			this.InitializeComponent();
-			
-			if (topBarContent == null)
-			{
-				topBarContent = new GameContent();
-			}
+			//Player.GetPlayer().AddPokemon(new Pokemon(null, "pika", new List<Types.Element> { Types.Element.Acier }, "blabla"));
+			Player player = Player.GetPlayer();
+			this.DataContext = player.GetTopBarData();
+			player.Money += 50;
+			player.AddPokemon(new Pokemon(null, "truc", new List<Types.Element> { Types.Element.Acier }, "blabla"));
 
-			actualizePokemonCounter();
-			actualizeSeed();
-			actualizeGold();
-			actualizeRewardCounter();
-		}
-
-		public int PokemonActual
-		{
-			get
-			{
-				return topBarContent.PokemonActual;
-			}
-
-			set
-			{
-				topBarContent.PokemonActual = value;
-				actualizePokemonCounter();
-			}
-		}
-
-		public int PokemonTotal
-		{
-			get
-			{
-				return topBarContent.PokemonTotal;
-			}
-
-			set
-			{
-				topBarContent.PokemonTotal = value;
-				actualizePokemonCounter();
-			}
-		}
-
-		public int SeedActual
-		{
-			get
-			{
-				return topBarContent.SeedActual;
-			}
-
-			set
-			{
-				topBarContent.SeedActual = value;
-				actualizeSeed();
-			}
-		}
-
-		public int GoldActual
-		{
-			get
-			{
-				return topBarContent.GoldActual;
-			}
-
-			set
-			{
-				topBarContent.GoldActual = value;
-				actualizeGold();
-			}
-		}
-
-		public int RewardTotal
-		{
-			get
-			{
-				return topBarContent.RewardTotal;
-			}
-
-			set
-			{
-				topBarContent.RewardTotal = value;
-				actualizeRewardCounter();
-			}
-		}
-
-		public int RewardActual
-		{
-			get
-			{
-				return topBarContent.RewardActual;
-			}
-
-			set
-			{
-				topBarContent.RewardActual = value;
-				actualizeRewardCounter();
-			}
-		}
-
-		private void actualizePokemonCounter()
-		{
-			this.pokemonInventoryCounterText.Text = $"{ PokemonActual } / { PokemonTotal }";
-		}
-
-		private void actualizeRewardCounter()
-		{
-			this.rewardsCounterText.Text = $"{ RewardActual } / { RewardTotal }";
-		}
-
-		private void actualizeSeed()
-		{
-			this.seedsCounterText.Text = SeedActual.ToString();
-		}
-
-		private void actualizeGold()
-		{
-			this.coinsCounterText.Text = GoldActual.ToString();
 		}
 
 		private void OnClicGoToMap_Tapped(object sender, TappedRoutedEventArgs e)
