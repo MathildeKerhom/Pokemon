@@ -112,7 +112,7 @@
     <Compile Include="View\UserControls\PokemonDisplay.xaml.cs">
       <DependentUpon>PokemonDisplay.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Village.xaml.cs">
+    <Compile Include="View\Village.xaml.cs">
       <DependentUpon>Village.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -199,7 +199,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Village.xaml">
+    <Page Include="View\Village.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
