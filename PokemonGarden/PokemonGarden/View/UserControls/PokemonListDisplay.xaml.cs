@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using PokemonGarden.Classes;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -22,6 +23,7 @@ namespace PokemonGarden.View.UserControls
 		public PokemonListDisplay()
 		{
 			this.InitializeComponent();
+			this.pokemonListView.ItemsSource = Player.GetPlayer().GetPokemonList();
 		}
 
 		private void pokemonListView_DragItemsStarting(object sender, DragItemsStartingEventArgs e)

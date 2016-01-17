@@ -23,12 +23,23 @@ namespace PokemonGarden.Classes
 			this.pokemons = new List<Pokemon>();
 			this.rewards = new Rewards();
 			this.topBarData = new TopBarData(this.money, seeds, pokemons, rewards);
+
+			//fictive data :
 			MarketSeed seed = new MarketSeed("testSeed", new List<Types.Element> { Types.Element.Acier, Types.Element.Dragon }, "blabla descritpion", 20);
 			MarketSeed seed2 = new MarketSeed("testSeed2", new List<Types.Element> { Types.Element.Electrique }, "blabla2 descritpion", 12);
 			seeds.Add(seed);
 			seeds.Add(seed2);
 			seeds.Add(seed);
 			seeds.Add(seed2);
+
+			Pokemon pokemon = new Pokemon(new Uri("ms-appx:///Assets/para.jpg"), "para", new List<Types.Element> { Types.Element.Acier, Types.Element.Dragon }, "pokemon qui ressemble à un crabe");
+			Pokemon pokemon2 = new Pokemon(new Uri("ms-appx:///Assets/pika.PNG"), "pika", new List<Types.Element> { Types.Element.Electrique }, "fidel pokemon qui nous suit partout");
+			pokemons.Add(pokemon);
+			pokemons.Add(pokemon2);
+			pokemons.Add(pokemon);
+			pokemons.Add(pokemon2);
+
+			//end fictive data
 		}
 
 		/// <summary>
@@ -56,6 +67,15 @@ namespace PokemonGarden.Classes
 		public List<MarketSeed> GetMarketSeedList()
 		{
 			return seeds;
+		}
+
+		/// <summary>
+		/// get the pokemon list
+		/// </summary>
+		/// <returns></returns>
+		public List<Pokemon> GetPokemonList()
+		{
+			return pokemons;
 		}
 
 		/// <summary>

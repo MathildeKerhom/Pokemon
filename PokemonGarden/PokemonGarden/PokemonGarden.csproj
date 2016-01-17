@@ -160,6 +160,9 @@
     <Content Include="Assets\ic_expand_more_black_18dp_1x.png" />
     <Content Include="Assets\exclamation.png" />
     <Content Include="Assets\garden_grid.PNG" />
+    <Content Include="Assets\metamorph.jpg" />
+    <Content Include="Assets\para.jpg" />
+    <Content Include="Assets\pika.PNG" />
     <Content Include="Assets\pokeball.jpg" />
     <Content Include="Assets\rewards.jpg" />
     <Content Include="Assets\seeds.PNG" />

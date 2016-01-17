@@ -33,6 +33,7 @@ namespace PokemonGarden
 			defSpe = 0;
 			speed = 0;
 			spe = 0;
+			level = 1;
 		}
 
 		private void setImgType(List<Types.Element> types)
@@ -45,30 +46,36 @@ namespace PokemonGarden
 			}
 		}
 
-        public List<Types> GetUriTypeList
-        {
-            get
-            {
-                return this.imgTypes;
-            }
-        }
+		public List<Types> GetUriTypeList
+		{
+			get
+			{
+				return this.imgTypes;
+			}
+		}
 
-        public Uri Img
-        {
-            get;
-            set;
-        }
+		public Uri Img
+		{
+			get
+			{
+				return this.imgPokemon;
+			}
+		}
 
-        public int Level
-        {
-            get;
-            set;
-        }
+		public int Level
+		{
+			get
+			{
+				return this.level;
+			}
+		}
 
-        public string Name
-        {
-            get;
-            set;
-        }
+		public string Name
+		{
+			get
+			{
+				return this.name;
+			}
+		}
 	}
 }
