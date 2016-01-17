@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
-using PokemonGarden.Classes;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -18,11 +17,16 @@ using Windows.UI.Xaml.Navigation;
 
 namespace PokemonGarden.View.UserControls
 {
-	public sealed partial class SeedWithCountDisplay:UserControl
+	public sealed partial class PokemonListDisplay : UserControl
 	{
-		public SeedWithCountDisplay()
+		public PokemonListDisplay()
 		{
 			this.InitializeComponent();
+		}
+
+		private void pokemonListView_DragItemsStarting(object sender, DragItemsStartingEventArgs e)
+		{
+
 		}
 	}
 }

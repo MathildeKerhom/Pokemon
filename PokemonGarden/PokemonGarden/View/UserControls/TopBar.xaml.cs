@@ -19,7 +19,7 @@ using Windows.UI.Xaml.Navigation;
 
 namespace PokemonGarden.View.UserControls
 {
-	public sealed partial class TopBar: UserControl
+	public sealed partial class TopBar : UserControl
 	{
 		public TopBar()
 		{
@@ -27,19 +27,19 @@ namespace PokemonGarden.View.UserControls
 			//Player.GetPlayer().AddPokemon(new Pokemon(null, "pika", new List<Types.Element> { Types.Element.Acier }, "blabla"));
 			Player player = Player.GetPlayer();
 			this.DataContext = player.GetTopBarData();
-			player.Money += 50;
-			player.AddPokemon(new Pokemon(null, "truc", new List<Types.Element> { Types.Element.Acier }, "blabla"));
+			//player.Money += 50;
+			//player.AddPokemon(new Pokemon(null, "truc", new List<Types.Element> { Types.Element.Acier }, "blabla"));
 
 		}
 
 		private void OnClicGoToMap_Tapped(object sender, TappedRoutedEventArgs e)
 		{
 			(Window.Current.Content as Frame).Navigate(typeof(Village));
-        }
+		}
 
 		private void OnClicGoToInventary_Tapped(object sender, TappedRoutedEventArgs e)
 		{
-			//(Window.Current.Content as Frame).Navigate(typeof());
+			(Window.Current.Content as Frame).Navigate(typeof(Inventory));
 		}
 	}
 }

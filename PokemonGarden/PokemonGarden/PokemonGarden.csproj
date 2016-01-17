@@ -109,8 +109,14 @@
     <Compile Include="View\Arena.xaml.cs">
       <DependentUpon>Arena.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Inventory.xaml.cs">
+      <DependentUpon>Inventory.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\UserControls\PokemonDisplay.xaml.cs">
       <DependentUpon>PokemonDisplay.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControls\PokemonListDisplay.xaml.cs">
+      <DependentUpon>PokemonListDisplay.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Village.xaml.cs">
       <DependentUpon>Village.xaml</DependentUpon>
@@ -195,7 +201,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Inventory.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\UserControls\PokemonDisplay.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControls\PokemonListDisplay.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

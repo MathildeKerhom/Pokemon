@@ -23,6 +23,12 @@ namespace PokemonGarden.Classes
 			this.pokemons = new List<Pokemon>();
 			this.rewards = new Rewards();
 			this.topBarData = new TopBarData(this.money, seeds, pokemons, rewards);
+			MarketSeed seed = new MarketSeed("testSeed", new List<Types.Element> { Types.Element.Acier, Types.Element.Dragon }, "blabla descritpion", 20);
+			MarketSeed seed2 = new MarketSeed("testSeed2", new List<Types.Element> { Types.Element.Electrique }, "blabla2 descritpion", 12);
+			seeds.Add(seed);
+			seeds.Add(seed2);
+			seeds.Add(seed);
+			seeds.Add(seed2);
 		}
 
 		/// <summary>
@@ -41,6 +47,15 @@ namespace PokemonGarden.Classes
 		public void Sell(MarketSeed marketSeed)
 		{
 			topBarData.OnPropertyChanged("SeedActual");
+		}
+
+		/// <summary>
+		/// get the market seed list
+		/// </summary>
+		/// <returns></returns>
+		public List<MarketSeed> GetMarketSeedList()
+		{
+			return seeds;
 		}
 
 		/// <summary>
