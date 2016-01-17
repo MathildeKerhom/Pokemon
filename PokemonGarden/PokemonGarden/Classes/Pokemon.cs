@@ -12,6 +12,7 @@ namespace PokemonGarden
 		private Uri imgPokemon;
 		private List<Types> imgTypes;
 		private string name, description;
+		private string backgroundColor = "LightGray";
 
 		/// <summary>
 		/// spec fight
@@ -75,6 +76,14 @@ namespace PokemonGarden
 			get
 			{
 				return this.name;
+			}
+		}
+
+		public string GetBackgroundColor
+		{
+			get
+			{
+				return this.backgroundColor;
 			}
 		}
 	}
