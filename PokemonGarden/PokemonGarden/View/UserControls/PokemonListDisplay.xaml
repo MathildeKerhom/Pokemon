@@ -9,7 +9,7 @@
     d:DesignHeight="300"
     d:DesignWidth="400">
 
-    <GridView x:Name="pokemonListView" Margin="10,10,10,10" Padding="10,10,10,10"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" IsDoubleTapEnabled="False" SelectionMode="None" IsItemClickEnabled="False" IsHoldingEnabled="False" CanDragItems="True" DragItemsStarting="pokemonListView_DragItemsStarting">
+    <GridView x:Name="pokemonListView" Margin="10,10,10,10" Padding="10,10,10,10"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" IsDoubleTapEnabled="False" SelectionMode="None" IsItemClickEnabled="False" IsHoldingEnabled="False" CanDragItems="True" DragItemsStarting="pokemon_DragItemsStarting">
         <GridView.ItemTemplate>
             <DataTemplate>
                 <UserControls:PokemonDisplay/>

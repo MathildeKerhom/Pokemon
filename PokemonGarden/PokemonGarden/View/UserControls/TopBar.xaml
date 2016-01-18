@@ -15,8 +15,8 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Grid Height="Auto" HorizontalAlignment="Stretch" Grid.Row="0" Padding="10">
-            <Button Name="goToMap" Content="Carte" HorizontalAlignment="Left" VerticalAlignment="Top" Tapped="OnClicGoToMap_Tapped"/>
-            <Button Name="goToInventary" Content="Inventaire" HorizontalAlignment="Right" VerticalAlignment="Top" Tapped="OnClicGoToInventary_Tapped"/>
+            <Button x:Name="goToMap" Content="Carte" HorizontalAlignment="Left" VerticalAlignment="Top" Tapped="OnClicGoToMap_Tapped"/>
+            <Button x:Name="goToInventary" Content="Inventaire" HorizontalAlignment="Right" VerticalAlignment="Top" Tapped="OnClicGoToInventary_Tapped"/>
         </Grid>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>

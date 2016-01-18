@@ -41,5 +41,13 @@ namespace PokemonGarden.View.UserControls
 		{
 			(Window.Current.Content as Frame).Navigate(typeof(Inventory));
 		}
+
+		/// <summary>
+		/// disable navigation to inventory
+		/// </summary>
+		public void DisableInventoryButton()
+		{
+			this.goToInventary.IsEnabled = false;
+		}
 	}
 }

@@ -12,7 +12,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <UserControls:TopBar Grid.Row="0"/>
+        <UserControls:TopBar x:Name="topBar" Grid.Row="0"/>
         <Pivot Name="inventory" Grid.Row="1">
             <PivotItem Header="Pokédex">
                 <Grid>
@@ -24,38 +24,40 @@
                     <UserControls:PokemonListDisplay Grid.Column="0"/>
                     <Rectangle Margin="10,10,10,10" Stroke="Black" Width="1" Grid.Column="1" StrokeThickness="0.5"/>
                     <!-- <UserControls:PokemonDetailDisplay Grid.Column="2"/> -->
-                    <Grid Grid.Column="2" Margin="10,0,0,0">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
-                        <Grid Padding="10,10,10,10" Grid.Row="0">
-                            <UserControls:PokemonDisplay/>
+                    <ScrollViewer Grid.Column="2">
+                        <Grid Margin="10,0,30,0" MinWidth="170">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" MinHeight="100"/>
+                                <RowDefinition Height="Auto" MinHeight="100"/>
+                                <RowDefinition Height="Auto" MinHeight="100"/>
+                                <RowDefinition Height="Auto" MinHeight="100"/>
+                                <RowDefinition Height="Auto" MinHeight="100"/>
+                                <RowDefinition Height="Auto" MinHeight="100"/>
+                                <RowDefinition Height="Auto" MinHeight="100"/>
+                                <RowDefinition Height="Auto" MinHeight="100"/>
+                                <RowDefinition Height="Auto" MinHeight="100"/>
+                            </Grid.RowDefinitions>
+                            <Grid Padding="10,0,10,0" Grid.Row="0" DragLeave="pokemon_DragLeave" DragEnter="pokemon_DragEnter" Drop="pokemon1_Drop" AllowDrop="True">
+                                <UserControls:PokemonDisplay x:Name="pokemon1"/>
+                            </Grid>
+                            <Rectangle Stroke="Black" Grid.Row="1" Height="1" StrokeThickness="0.5"/>
+                            <Grid Padding="10,0,10,0" Grid.Row="2" DragLeave="pokemon_DragLeave" DragEnter="pokemon_DragEnter" Drop="pokemon2_Drop" AllowDrop="True">
+                                <UserControls:PokemonDisplay x:Name="pokemon2"/>
+                            </Grid>
+                            <Rectangle Stroke="Black" Grid.Row="3" Height="1" StrokeThickness="0.5"/>
+                            <Grid Padding="10,0,10,0" Grid.Row="4" DragLeave="pokemon_DragLeave" DragEnter="pokemon_DragEnter" Drop="pokemon3_Drop" AllowDrop="True">
+                                <UserControls:PokemonDisplay x:Name="pokemon3"/>
+                            </Grid>
+                            <Rectangle Stroke="Black" Grid.Row="5" Height="1" StrokeThickness="0.5"/>
+                            <Grid Padding="10,0,10,0" Grid.Row="6" DragLeave="pokemon_DragLeave" DragEnter="pokemon_DragEnter" Drop="pokemon4_Drop" AllowDrop="True">
+                                <UserControls:PokemonDisplay x:Name="pokemon4"/>
+                            </Grid>
+                            <Rectangle Stroke="Black" Grid.Row="7" Height="1" StrokeThickness="0.5"/>
+                            <Grid Padding="10,0,10,0" Grid.Row="8" DragLeave="pokemon_DragLeave" DragEnter="pokemon_DragEnter" Drop="pokemon5_Drop" AllowDrop="True">
+                                <UserControls:PokemonDisplay x:Name="pokemon5"/>
+                            </Grid>
                         </Grid>
-                        <Rectangle Stroke="Black" Grid.Row="1" Height="1" StrokeThickness="0.5"/>
-                        <Grid Padding="10,10,10,10" Grid.Row="2">
-                            <UserControls:PokemonDisplay/>
-                        </Grid>
-                        <Rectangle Stroke="Black" Grid.Row="3" Height="1" StrokeThickness="0.5"/>
-                        <Grid Padding="10,10,10,10" Grid.Row="4">
-                            <UserControls:PokemonDisplay/>
-                        </Grid>
-                        <Rectangle Stroke="Black" Grid.Row="5" Height="1" StrokeThickness="0.5"/>
-                        <Grid Padding="10,10,10,10" Grid.Row="6">
-                            <UserControls:PokemonDisplay/>
-                        </Grid>
-                        <Rectangle Stroke="Black" Grid.Row="7" Height="1" StrokeThickness="0.5"/>
-                        <Grid Padding="10,10,10,10" Grid.Row="8">
-                            <UserControls:PokemonDisplay/>
-                        </Grid>
-                    </Grid>
+                    </ScrollViewer>
                 </Grid>
             </PivotItem>
             <PivotItem Header="Fourniture">

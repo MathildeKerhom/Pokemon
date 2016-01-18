@@ -26,9 +26,13 @@ namespace PokemonGarden.View.UserControls
 			this.pokemonListView.ItemsSource = Player.GetPlayer().GetPokemonList();
 		}
 
-		private void pokemonListView_DragItemsStarting(object sender, DragItemsStartingEventArgs e)
+		private void pokemon_DragItemsStarting(object sender, DragItemsStartingEventArgs e)
 		{
-
+			object item = e.Items.FirstOrDefault();
+			if (item != null)
+			{
+				e.Data.Properties.Add("pokemonSource", item);
+			}
 		}
 	}
 }
