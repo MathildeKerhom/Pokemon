@@ -98,16 +98,27 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Classes\GardenSeed.cs" />
+    <Compile Include="Classes\MarketSeed.cs" />
+    <Compile Include="Classes\Player.cs" />
     <Compile Include="Classes\Pokemon.cs" />
+    <Compile Include="Classes\Rewards.cs" />
     <Compile Include="Classes\Seed.cs" />
+    <Compile Include="Classes\TopBarData.cs" />
     <Compile Include="Classes\Types.cs" />
     <Compile Include="View\Arena.xaml.cs">
       <DependentUpon>Arena.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Inventory.xaml.cs">
+      <DependentUpon>Inventory.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\UserControls\PokemonDisplay.xaml.cs">
       <DependentUpon>PokemonDisplay.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Village.xaml.cs">
+    <Compile Include="View\UserControls\PokemonListDisplay.xaml.cs">
+      <DependentUpon>PokemonListDisplay.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Village.xaml.cs">
       <DependentUpon>Village.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -150,6 +161,9 @@
     <Content Include="Assets\ic_expand_more_black_18dp_1x.png" />
     <Content Include="Assets\exclamation.png" />
     <Content Include="Assets\garden_grid.PNG" />
+    <Content Include="Assets\metamorph.jpg" />
+    <Content Include="Assets\para.jpg" />
+    <Content Include="Assets\pika.PNG" />
     <Content Include="Assets\pokeball.jpg" />
     <Content Include="Assets\rewards.jpg" />
     <Content Include="Assets\seeds.PNG" />
@@ -191,11 +205,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Inventory.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\UserControls\PokemonDisplay.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Village.xaml">
+    <Page Include="View\UserControls\PokemonListDisplay.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Village.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

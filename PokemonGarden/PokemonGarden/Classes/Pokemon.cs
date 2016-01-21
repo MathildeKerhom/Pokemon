@@ -7,17 +7,19 @@ using Windows.UI.Xaml.Media.Imaging;
 
 namespace PokemonGarden
 {
-	internal class Pokemon
+	public class Pokemon
 	{
 		private Uri imgPokemon;
 		private List<Types> imgTypes;
 		private string name, description;
+		private string backgroundColor = "LightGray";
 
 		/// <summary>
 		/// spec fight
 		/// </summary>
 		private int pv, att, def, attSpe, defSpe, speed, spe, level;
 
+		private bool isBusy, isDead;
 
 		internal Pokemon(Uri imgPokemon, string name, List<Types.Element> types, string description)
 		{
@@ -32,6 +34,7 @@ namespace PokemonGarden
 			defSpe = 0;
 			speed = 0;
 			spe = 0;
+			level = 1;
 		}
 
 		private void setImgType(List<Types.Element> types)
@@ -44,30 +47,44 @@ namespace PokemonGarden
 			}
 		}
 
-        public List<Types> GetUriTypeList
-        {
-            get
-            {
-                return this.imgTypes;
-            }
-        }
+		public List<Types> GetUriTypeList
+		{
+			get
+			{
+				return this.imgTypes;
+			}
+		}
 
-        public Uri Img
-        {
-            get;
-            set;
-        }
+		public Uri Img
+		{
+			get
+			{
+				return this.imgPokemon;
+			}
+		}
 
-        public int Level
-        {
-            get;
-            set;
-        }
+		public int Level
+		{
+			get
+			{
+				return this.level;
+			}
+		}
 
-        public string Name
-        {
-            get;
-            set;
-        }
+		public string Name
+		{
+			get
+			{
+				return this.name;
+			}
+		}
+
+		public string GetBackgroundColor
+		{
+			get
+			{
+				return this.backgroundColor;
+			}
+		}
 	}
 }

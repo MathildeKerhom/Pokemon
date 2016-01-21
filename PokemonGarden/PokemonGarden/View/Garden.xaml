@@ -39,7 +39,7 @@
                         <Image Grid.Row="2" Grid.Column="1" Source="ms-appx:///Assets/exclamation.png" />
                     </Grid>
 
-                    <StackPanel Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center">
+                    <StackPanel Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" ScrollViewer.VerticalScrollMode="Auto">
                         <UserControls:SeedListDisplay/>
                     </StackPanel>
                 </Grid>

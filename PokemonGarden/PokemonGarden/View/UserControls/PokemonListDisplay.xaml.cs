@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -17,14 +16,23 @@ using Windows.UI.Xaml.Navigation;
 
 // The User Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234236
 
-namespace PokemonGarden.View
+namespace PokemonGarden.View.UserControls
 {
-	public sealed partial class SeedDisplay:UserControl
+	public sealed partial class PokemonListDisplay : UserControl
 	{
-		//private Seed seed;
-		public SeedDisplay()
+		public PokemonListDisplay()
 		{
 			this.InitializeComponent();
+			this.pokemonListView.ItemsSource = Player.GetPlayer().GetPokemonList();
+		}
+
+		private void pokemon_DragItemsStarting(object sender, DragItemsStartingEventArgs e)
+		{
+			object item = e.Items.FirstOrDefault();
+			if (item != null)
+			{
+				e.Data.Properties.Add("pokemonSource", item);
+			}
 		}
 	}
 }
