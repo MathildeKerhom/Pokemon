@@ -13,11 +13,38 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <UserControls:TopBar Grid.Row="0"/>
-            <Grid Grid.Row="1">
-                <Grid.ColumnDefinitions>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="70*" />
                 <ColumnDefinition Width="30*" />
             </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20*" />
+                    <RowDefinition Height="60*" />
+                    <RowDefinition Height="20*" />
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Column="0" Grid.Row="0" Text="Ordinateur : 12" HorizontalAlignment="Right" VerticalAlignment="Center" />
+                <TextBlock Grid.Column="1" Grid.Row="0" Text="|" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                <TextBlock Grid.Column="2" Grid.Row="0" Text="Moi : 25" HorizontalAlignment="Left" VerticalAlignment="Center" />
+
+                <Grid Grid.Row="1" Grid.ColumnSpan="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                </Grid>
+
+                <Button Grid.Row="2" Grid.ColumnSpan="3" HorizontalAlignment="Center">Recommencer</Button>
+            </Grid>
         </Grid>
     </Grid>
 </Page>
