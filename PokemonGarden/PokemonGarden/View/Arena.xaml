@@ -36,6 +36,9 @@
                 <TextBlock Grid.Column="2" Grid.Row="0" Text="Moi : 25" HorizontalAlignment="Left" VerticalAlignment="Center" />
 
                 <Grid Grid.Row="1" Grid.ColumnSpan="3">
+                    <Grid.Background>
+                        <ImageBrush ImageSource="ms-appx:///Assets/empty_arena.png" />
+                    </Grid.Background>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />

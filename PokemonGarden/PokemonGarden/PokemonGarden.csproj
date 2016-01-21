@@ -144,6 +144,7 @@
     <None Include="PokemonGarden_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\empty_arena.png" />
     <Content Include="Assets\Graine_DM.png" />
     <Content Include="Assets\ic_expand_less_black_18dp_1x.png" />
     <Content Include="Assets\ic_expand_more_black_18dp_1x.png" />
