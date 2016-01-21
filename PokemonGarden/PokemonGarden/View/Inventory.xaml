@@ -25,7 +25,7 @@
                     <Rectangle Margin="10,10,10,10" Stroke="Black" Width="1" Grid.Column="1" StrokeThickness="0.5"/>
                     <!-- <UserControls:PokemonDetailDisplay Grid.Column="2"/> -->
                     <ScrollViewer Grid.Column="2">
-                        <Grid Margin="10,0,30,0" MinWidth="170">
+                        <Grid Margin="10,0,30,0" MinWidth="150" Padding="0,20">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto" MinHeight="100"/>
                                 <RowDefinition Height="Auto" MinHeight="100"/>
@@ -68,7 +68,7 @@
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     <UserControls:SeedListDisplay Grid.Column="0"/>
-                    <Rectangle Stroke="Black" Grid.Column="1"/>
+                    <Rectangle Stroke="Black" Grid.Column="1" StrokeThickness="0.5"/>
                     <Grid Grid.Column="2">
                         <!-- <UserControls:SeedDetailDisplay/> -->
                     </Grid>
