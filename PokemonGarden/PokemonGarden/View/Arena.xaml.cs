@@ -17,14 +17,74 @@ using Windows.UI.Xaml.Navigation;
 
 namespace PokemonGarden.View
 {
-    /// <summary>
-    /// Une page vide peut être utilisée seule ou constituer une page de destination au sein d'un frame.
-    /// </summary>
-    public sealed partial class Arena : Page
-    {
-        public Arena()
-        {
-            this.InitializeComponent();
-        }
-    }
+	/// <summary>
+	/// Une page vide peut être utilisée seule ou constituer une page de destination au sein d'un frame.
+	/// </summary>
+	public sealed partial class Arena : Page
+	{
+		public Arena()
+		{
+			this.InitializeComponent();
+		}
+
+		private void pokemon_DragLeave(object sender, DragEventArgs e)
+		{
+			e.AcceptedOperation = Windows.ApplicationModel.DataTransfer.DataPackageOperation.None;
+		}
+
+		private void pokemon_DragEnter(object sender, DragEventArgs e)
+		{
+			e.AcceptedOperation = Windows.ApplicationModel.DataTransfer.DataPackageOperation.Move;
+		}
+
+		private void pokemon1_Drop(object sender, DragEventArgs e)
+		{
+			object pokemon;
+			e.Data.Properties.TryGetValue("pokemonSource", out pokemon);
+			if (pokemon != null)
+			{
+				this.pokemon1.DataContext = (Pokemon)pokemon;
+			}
+		}
+
+		private void pokemon2_Drop(object sender, DragEventArgs e)
+		{
+			object pokemon;
+			e.Data.Properties.TryGetValue("pokemonSource", out pokemon);
+			if (pokemon != null)
+			{
+				this.pokemon2.DataContext = (Pokemon)pokemon;
+			}
+		}
+
+		private void pokemon3_Drop(object sender, DragEventArgs e)
+		{
+			object pokemon;
+			e.Data.Properties.TryGetValue("pokemonSource", out pokemon);
+			if (pokemon != null)
+			{
+				this.pokemon3.DataContext = (Pokemon)pokemon;
+			}
+		}
+
+		private void pokemon4_Drop(object sender, DragEventArgs e)
+		{
+			object pokemon;
+			e.Data.Properties.TryGetValue("pokemonSource", out pokemon);
+			if (pokemon != null)
+			{
+				this.pokemon4.DataContext = (Pokemon)pokemon;
+			}
+		}
+
+		private void pokemon5_Drop(object sender, DragEventArgs e)
+		{
+			object pokemon;
+			e.Data.Properties.TryGetValue("pokemonSource", out pokemon);
+			if (pokemon != null)
+			{
+				this.pokemon5.DataContext = (Pokemon)pokemon;
+			}
+		}
+	}
 }
