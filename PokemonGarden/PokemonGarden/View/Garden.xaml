@@ -17,29 +17,57 @@
             <PivotItem Header="Jardin">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="80*" />
-                        <ColumnDefinition Width="20*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
-                    <Grid Name="garden_center" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <Grid.Background>
-                            <ImageBrush ImageSource="ms-appx:///Assets/garden_grid.png" />
-                        </Grid.Background>
+                    <Grid Margin="40,40,40,40" Name="garden_center" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
                             <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
-                        <Image Grid.Row="0" Grid.Column="0" Source="ms-appx:///Assets/exclamation.png" />
-                        <Image Grid.Row="1" Grid.Column="2" Source="ms-appx:///Assets/exclamation.png" />
-                        <Image Grid.Row="2" Grid.Column="1" Source="ms-appx:///Assets/exclamation.png" />
+                        <Rectangle Height="1" Grid.Row="1" Grid.ColumnSpan="5" Stroke="Black" StrokeThickness="1"/>
+                        <Rectangle Height="1" Grid.Row="3" Grid.ColumnSpan="5" Stroke="Black" StrokeThickness="1"/>
+                        <Rectangle Width="1" Grid.Column="1" Grid.RowSpan="5" Stroke="Black" StrokeThickness="1"/>
+                        <Rectangle Width="1" Grid.Column="3" Grid.RowSpan="5" Stroke="Black" StrokeThickness="1"/>
+                        <Grid Grid.Column="0" Grid.Row="0" Height="100" Width="170" Margin="10,10,10,10" DragLeave="seed_DragLeave" DragEnter="seed_DragEnter" Drop="seed1_Drop" AllowDrop="True">
+                            <UserControls:SeedDisplay x:Name="seed1"/>
+                        </Grid>
+                        <Grid Grid.Column="2" Grid.Row="0" Height="100" Width="170" Margin="10,10,10,10" DragLeave="seed_DragLeave" DragEnter="seed_DragEnter" Drop="seed2_Drop" AllowDrop="True">
+                            <UserControls:SeedDisplay x:Name="seed2"/>
+                        </Grid>
+                        <Grid Grid.Column="4" Grid.Row="0" Height="100" Width="170" Margin="10,10,10,10" DragLeave="seed_DragLeave" DragEnter="seed_DragEnter" Drop="seed3_Drop" AllowDrop="True">
+                            <UserControls:SeedDisplay x:Name="seed3"/>
+                        </Grid>
+                        <Grid Grid.Column="0" Grid.Row="2" Height="100" Width="170" Margin="10,10,10,10" DragLeave="seed_DragLeave" DragEnter="seed_DragEnter" Drop="seed4_Drop" AllowDrop="True">
+                            <UserControls:SeedDisplay x:Name="seed4"/>
+                        </Grid>
+                        <Grid Grid.Column="2" Grid.Row="2" Height="100" Width="170" Margin="10,10,10,10" DragLeave="seed_DragLeave" DragEnter="seed_DragEnter" Drop="seed5_Drop" AllowDrop="True">
+                            <UserControls:SeedDisplay x:Name="seed5"/>
+                        </Grid>
+                        <Grid Grid.Column="4" Grid.Row="2" Height="100" Width="170" Margin="10,10,10,10" DragLeave="seed_DragLeave" DragEnter="seed_DragEnter" Drop="seed6_Drop" AllowDrop="True">
+                            <UserControls:SeedDisplay x:Name="seed6"/>
+                        </Grid>
+                        <Grid Grid.Column="0" Grid.Row="4" Height="100" Width="170" Margin="10,10,10,10" DragLeave="seed_DragLeave" DragEnter="seed_DragEnter" Drop="seed7_Drop" AllowDrop="True">
+                            <UserControls:SeedDisplay x:Name="seed7"/>
+                        </Grid>
+                        <Grid Grid.Column="2" Grid.Row="4" Height="100" Width="170" Margin="10,10,10,10" DragLeave="seed_DragLeave" DragEnter="seed_DragEnter" Drop="seed8_Drop" AllowDrop="True">
+                            <UserControls:SeedDisplay x:Name="seed8"/>
+                        </Grid>
+                        <Grid Grid.Column="4" Grid.Row="4" Height="100" Width="170" Margin="10,10,10,10" DragLeave="seed_DragLeave" DragEnter="seed_DragEnter" Drop="seed9_Drop" AllowDrop="True">
+                            <UserControls:SeedDisplay x:Name="seed9"/>
+                        </Grid>
                     </Grid>
-
-                    <StackPanel Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" ScrollViewer.VerticalScrollMode="Auto">
+                    <StackPanel Width="300" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" ScrollViewer.VerticalScrollMode="Auto">
                         <UserControls:SeedListDisplay/>
                     </StackPanel>
                 </Grid>

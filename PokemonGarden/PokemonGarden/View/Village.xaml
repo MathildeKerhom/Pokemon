@@ -34,6 +34,6 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <Image Name="me" Source="ms-appx:///Assets/exclamation.png" Grid.Row="6" Grid.Column="5" />
+        <Image Name="me" Source="ms-appx:///Assets/player-picture.png" Grid.Row="6" Grid.Column="5" />
     </Grid>
 </Page>
