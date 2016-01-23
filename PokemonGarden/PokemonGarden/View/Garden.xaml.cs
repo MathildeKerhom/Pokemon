@@ -1,18 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using PokemonGarden.Classes;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
+using PokemonGarden.View.UserControls;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 
 // Pour plus d'informations sur le modèle d'élément Page vierge, voir la page http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -21,16 +15,30 @@ namespace PokemonGarden.View
 	/// <summary>
 	/// Une page vide peut être utilisée seule ou constituer une page de destination au sein d'un frame.
 	/// </summary>
-	public sealed partial class Garden:Page
+	public sealed partial class Garden : Page
 	{
 		public Garden()
 		{
 			this.InitializeComponent();
-			this.DataContext = Player.GetPlayer();
+			//this.DataContext = Player.GetPlayer();
+			Player player = Player.GetPlayer();
+			this.seed1.DataContext = player.GetMarketSeedList().FirstOrDefault();
 		}
 
 		private void seed_DragEnter(object sender, DragEventArgs e)
 		{
+			UIElementCollection childs = (sender as Grid).Children;
+			foreach (UIElement child in childs)
+			{
+				if (child.GetType() == typeof(Image))
+				{
+					if ((child as Image).Visibility == Visibility.Visible)
+					{
+						e.AcceptedOperation = Windows.ApplicationModel.DataTransfer.DataPackageOperation.None;
+						return;
+					}
+				}
+			}
 			e.AcceptedOperation = Windows.ApplicationModel.DataTransfer.DataPackageOperation.Move;
 		}
 
@@ -127,6 +135,51 @@ namespace PokemonGarden.View
 			{
 				seed9.DataContext = (MarketSeed)seed;
 			}
+		}
+
+		private void Transph_Tapped(object sender, TappedRoutedEventArgs e)
+		{
+			Pokemon pokemon = null;
+			Image imgSource = e.OriginalSource as Image;
+			Grid parent = imgSource.Parent as Grid;
+			UIElementCollection childs = (parent as Grid).Children;
+			foreach (UIElement child in childs)
+			{
+				if (child.GetType() == typeof(SeedDisplay))
+				{
+					SeedDisplay seedDisplay = child as SeedDisplay;
+					pokemon = GetRandomPokemon(seedDisplay.DataContext as MarketSeed);
+					seedDisplay.DataContext = null;
+				}
+			}
+
+			PokemonRecived pokemonPopup = new PokemonRecived(pokemon);
+			Task<ContentDialogResult> getAsyncShow = pokemonPopup.ShowAsync().AsTask();
+
+			imgSource.Visibility = Visibility.Collapsed;
+			Player player = Player.GetPlayer();
+			player.AddPokemon(pokemon);
+		}
+
+		/// <summary>
+		/// create a random pokemon with seed attributs
+		/// </summary>
+		/// <param name="source">original source</param>
+		/// <returns></returns>
+		private Pokemon GetRandomPokemon(MarketSeed seedSource)
+		{
+			Pokemon pokemon = null;
+
+			if (seedSource != null)
+			{
+				pokemon = new Pokemon(new Uri("ms-appx:///Assets/para.jpg"), "para", seedSource.GetUriTypeList, "pokemon qui ressemble à un crabe");
+			}
+			else
+			{
+				pokemon = new Pokemon(new Uri("ms-appx:///Assets/para.jpg"), "para", new List<Types.Element> { Types.Element.Plante, Types.Element.Poison }, "pokemon qui ressemble à un crabe");
+			}
+
+			return pokemon;
 		}
 	}
 }

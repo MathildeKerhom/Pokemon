@@ -106,6 +106,12 @@
     <Compile Include="Classes\Seed.cs" />
     <Compile Include="Classes\TopBarData.cs" />
     <Compile Include="Classes\Types.cs" />
+    <Compile Include="View\SeedRecived.xaml.cs">
+      <DependentUpon>SeedRecived.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PokemonRecived.xaml.cs">
+      <DependentUpon>PokemonRecived.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Arena.xaml.cs">
       <DependentUpon>Arena.xaml</DependentUpon>
     </Compile>
@@ -201,6 +207,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="View\SeedRecived.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PokemonRecived.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Arena.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

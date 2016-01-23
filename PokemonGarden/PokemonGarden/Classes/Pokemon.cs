@@ -37,6 +37,22 @@ namespace PokemonGarden
 			level = 1;
 		}
 
+		internal Pokemon(Uri imgPokemon, string name, List<Types> types, string description)
+		{
+			this.name = name;
+			this.imgPokemon = imgPokemon;
+			this.imgTypes = types;
+			this.description = description;
+			pv = 0;
+			att = 0;
+			def = 0;
+			attSpe = 0;
+			defSpe = 0;
+			speed = 0;
+			spe = 0;
+			level = 1;
+		}
+
 		private void setImgType(List<Types.Element> types)
 		{
 			imgTypes = new List<Types>();
