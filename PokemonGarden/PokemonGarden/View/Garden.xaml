@@ -84,7 +84,7 @@
                 </Grid>
             </PivotItem>
             <PivotItem Header="Graines">
-                <UserControls:SeedListDisplay/>
+                <UserControls:PokemonListDisplay/>
             </PivotItem>
         </Pivot>
     </Grid>
