@@ -22,7 +22,7 @@ namespace PokemonGarden.View
 	/// <summary>
 	/// Une page vide peut être utilisée seule ou constituer une page de destination au sein d'un frame.
 	/// </summary>
-	public sealed partial class Laboratory:Page
+	public sealed partial class Laboratory : Page
 	{
 		public Laboratory()
 		{
@@ -31,7 +31,12 @@ namespace PokemonGarden.View
 
 		private void seed_DragEnter(object sender, DragEventArgs e)
 		{
-			e.AcceptedOperation = Windows.ApplicationModel.DataTransfer.DataPackageOperation.Move;
+			object seed;
+			e.Data.Properties.TryGetValue("seedSource", out seed);
+			if (seed != null)
+			{
+				e.AcceptedOperation = Windows.ApplicationModel.DataTransfer.DataPackageOperation.Move;
+			}
 		}
 
 		private void seed1_Drop(object sender, DragEventArgs e)
@@ -40,7 +45,7 @@ namespace PokemonGarden.View
 			e.Data.Properties.TryGetValue("seedSource", out seed);
 			if (seed != null)
 			{
-				seed1Fusion.DataContext = (MarketSeed) seed;
+				seed1Fusion.DataContext = (MarketSeed)seed;
 			}
 		}
 
@@ -50,7 +55,7 @@ namespace PokemonGarden.View
 			e.Data.Properties.TryGetValue("seedSource", out seed);
 			if (seed != null)
 			{
-				seed2Fusion.DataContext = (MarketSeed) seed;
+				seed2Fusion.DataContext = (MarketSeed)seed;
 			}
 		}
 
@@ -60,11 +65,36 @@ namespace PokemonGarden.View
 			e.Data.Properties.TryGetValue("seedSource", out seed);
 			if (seed != null)
 			{
-				seedUpgrade.DataContext = (MarketSeed) seed;
+				seedUpgrade.DataContext = (MarketSeed)seed;
 			}
 		}
 
 		private void seed_DragLeave(object sender, DragEventArgs e)
+		{
+			e.AcceptedOperation = Windows.ApplicationModel.DataTransfer.DataPackageOperation.None;
+		}
+
+		private void pokemonFusion_Drop(object sender, DragEventArgs e)
+		{
+			object pokemon;
+			e.Data.Properties.TryGetValue("pokemonSource", out pokemon);
+			if (pokemon != null)
+			{
+				pokemonUpgrade.DataContext = (Pokemon)pokemon;
+			}
+		}
+
+		private void pokemon_DragEnter(object sender, DragEventArgs e)
+		{
+			object pokemon;
+			e.Data.Properties.TryGetValue("pokemonSource", out pokemon);
+			if (pokemon != null)
+			{
+				e.AcceptedOperation = Windows.ApplicationModel.DataTransfer.DataPackageOperation.Move;
+			}
+		}
+
+		private void pokemon_DragLeave(object sender, DragEventArgs e)
 		{
 			e.AcceptedOperation = Windows.ApplicationModel.DataTransfer.DataPackageOperation.None;
 		}
