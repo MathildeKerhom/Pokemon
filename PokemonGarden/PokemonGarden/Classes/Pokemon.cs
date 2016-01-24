@@ -104,5 +104,10 @@ namespace PokemonGarden
 				return this.backgroundColor;
 			}
 		}
+
+		public void SetBackgroundToTransparent()
+		{
+			this.backgroundColor = "Transparent";
+		}
 	}
 }

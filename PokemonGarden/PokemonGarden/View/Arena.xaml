@@ -56,7 +56,7 @@
                     <Grid Grid.Column="0" Grid.Row="1" Height="80" Width="80" Margin="0,0,15,8">
                         <UserControls:PokemonDisplay x:Name="pokemonAI" Background="Transparent"/>
                     </Grid>
-                    <Grid Grid.Column="4" Grid.Row="1" Height="80" Width="80" Margin="15,0,0,8" AllowDrop="True" >
+                    <Grid Grid.Column="4" Grid.Row="1" Height="80" Width="80" Margin="15,0,0,8" AllowDrop="True" Drop="pokemon_Drop" DragEnter="pokemon_DragEnter" DragLeave="pokemon_DragLeave">
                         <UserControls:PokemonDisplay x:Name="pokemonPlayer" Background="Transparent"/>
                     </Grid>
                 </Grid>
@@ -78,24 +78,24 @@
                         <RowDefinition Height="Auto" MinHeight="100"/>
                         <RowDefinition Height="Auto" MinHeight="100"/>
                     </Grid.RowDefinitions>
-                    <Grid Padding="10,0,10,0" Grid.Row="0" DragLeave="pokemon_DragLeave" DragEnter="pokemon_DragEnter" Drop="pokemon1_Drop" AllowDrop="True">
-                        <UserControls:PokemonDisplay x:Name="pokemon1"/>
+                    <Grid Padding="10,0,10,0" Grid.Row="0">
+                        <UserControls:PokemonDisplay x:Name="pokemon1" CanDrag="True" DragStarting="pokemon_DragItemsStarting"/>
                     </Grid>
                     <Rectangle Stroke="Black" Grid.Row="1" Height="1" StrokeThickness="0.5"/>
-                    <Grid Padding="10,0,10,0" Grid.Row="2" DragLeave="pokemon_DragLeave" DragEnter="pokemon_DragEnter" Drop="pokemon2_Drop" AllowDrop="True">
-                        <UserControls:PokemonDisplay x:Name="pokemon2"/>
+                    <Grid Padding="10,0,10,0" Grid.Row="2">
+                        <UserControls:PokemonDisplay x:Name="pokemon2" CanDrag="True" DragStarting="pokemon_DragItemsStarting"/>
                     </Grid>
                     <Rectangle Stroke="Black" Grid.Row="3" Height="1" StrokeThickness="0.5"/>
-                    <Grid Padding="10,0,10,0" Grid.Row="4" DragLeave="pokemon_DragLeave" DragEnter="pokemon_DragEnter" Drop="pokemon3_Drop" AllowDrop="True">
-                        <UserControls:PokemonDisplay x:Name="pokemon3"/>
+                    <Grid Padding="10,0,10,0" Grid.Row="4">
+                        <UserControls:PokemonDisplay x:Name="pokemon3" CanDrag="True" DragStarting="pokemon_DragItemsStarting"/>
                     </Grid>
                     <Rectangle Stroke="Black" Grid.Row="5" Height="1" StrokeThickness="0.5"/>
-                    <Grid Padding="10,0,10,0" Grid.Row="6" DragLeave="pokemon_DragLeave" DragEnter="pokemon_DragEnter" Drop="pokemon4_Drop" AllowDrop="True">
-                        <UserControls:PokemonDisplay x:Name="pokemon4"/>
+                    <Grid Padding="10,0,10,0" Grid.Row="6">
+                        <UserControls:PokemonDisplay x:Name="pokemon4" CanDrag="True" DragStarting="pokemon_DragItemsStarting"/>
                     </Grid>
                     <Rectangle Stroke="Black" Grid.Row="7" Height="1" StrokeThickness="0.5"/>
-                    <Grid Padding="10,0,10,0" Grid.Row="8" DragLeave="pokemon_DragLeave" DragEnter="pokemon_DragEnter" Drop="pokemon5_Drop" AllowDrop="True">
-                        <UserControls:PokemonDisplay x:Name="pokemon5"/>
+                    <Grid Padding="10,0,10,0" Grid.Row="8">
+                        <UserControls:PokemonDisplay x:Name="pokemon5" CanDrag="True" DragStarting="pokemon_DragItemsStarting"/>
                     </Grid>
                 </Grid>
             </ScrollViewer>
