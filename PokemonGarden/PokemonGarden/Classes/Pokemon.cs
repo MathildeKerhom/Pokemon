@@ -21,12 +21,13 @@ namespace PokemonGarden
 
 		private bool isBusy, isDead;
 
-		internal Pokemon(Uri imgPokemon, string name, List<Types.Element> types, string description)
+		internal Pokemon(Uri imgPokemon, string name, List<Types.Element> types, string description, string backgroundColor = "LightGray")
 		{
 			this.name = name;
 			this.imgPokemon = imgPokemon;
 			setImgType(types);
 			this.description = description;
+			this.backgroundColor = backgroundColor;
 			pv = 0;
 			att = 0;
 			def = 0;
@@ -37,12 +38,13 @@ namespace PokemonGarden
 			level = 1;
 		}
 
-		internal Pokemon(Uri imgPokemon, string name, List<Types> types, string description)
+		internal Pokemon(Uri imgPokemon, string name, List<Types> types, string description, string backgroundColor = "LightGray")
 		{
 			this.name = name;
 			this.imgPokemon = imgPokemon;
 			this.imgTypes = types;
 			this.description = description;
+			this.backgroundColor = backgroundColor;
 			pv = 0;
 			att = 0;
 			def = 0;

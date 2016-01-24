@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using PokemonGarden.Classes;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -25,6 +26,7 @@ namespace PokemonGarden.View
 		public Arena()
 		{
 			this.InitializeComponent();
+			this.pokemonAI.DataContext = new Pokemon(new Uri("ms-appx:///Assets/pika.PNG"), "pika", new List<Types.Element> { Types.Element.Electrique }, "fidel pokemon qui nous suit partout", "Transparent");
 		}
 
 		private void pokemon_DragLeave(object sender, DragEventArgs e)
