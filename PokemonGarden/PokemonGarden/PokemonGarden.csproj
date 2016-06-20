@@ -106,6 +106,7 @@
     <Compile Include="Classes\Seed.cs" />
     <Compile Include="Classes\TopBarData.cs" />
     <Compile Include="Classes\Types.cs" />
+    <Compile Include="ViewModel\VillageViewModel.cs" />
     <Compile Include="View\SeedRecived.xaml.cs">
       <DependentUpon>SeedRecived.xaml</DependentUpon>
     </Compile>
@@ -268,6 +269,7 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
