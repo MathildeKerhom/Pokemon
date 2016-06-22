@@ -37,23 +37,23 @@
                                 <RowDefinition Height="Auto" MinHeight="100"/>
                                 <RowDefinition Height="Auto" MinHeight="100"/>
                             </Grid.RowDefinitions>
-                            <Grid Padding="10,0,10,0" Grid.Row="0" DragLeave="pokemon_DragLeave" DragEnter="pokemon_DragEnter" Drop="pokemon1_Drop" AllowDrop="True">
+                            <Grid x:Name="containerPokemon1" Padding="10,0,10,0" Grid.Row="0">
                                 <UserControls:PokemonDisplay x:Name="pokemon1"/>
                             </Grid>
                             <Rectangle Stroke="Black" Grid.Row="1" Height="1" StrokeThickness="0.5"/>
-                            <Grid Padding="10,0,10,0" Grid.Row="2" DragLeave="pokemon_DragLeave" DragEnter="pokemon_DragEnter" Drop="pokemon2_Drop" AllowDrop="True">
+                            <Grid x:Name="containerPokemon2" Padding="10,0,10,0" Grid.Row="2">
                                 <UserControls:PokemonDisplay x:Name="pokemon2"/>
                             </Grid>
                             <Rectangle Stroke="Black" Grid.Row="3" Height="1" StrokeThickness="0.5"/>
-                            <Grid Padding="10,0,10,0" Grid.Row="4" DragLeave="pokemon_DragLeave" DragEnter="pokemon_DragEnter" Drop="pokemon3_Drop" AllowDrop="True">
+                            <Grid x:Name="containerPokemon3" Padding="10,0,10,0" Grid.Row="4">
                                 <UserControls:PokemonDisplay x:Name="pokemon3"/>
                             </Grid>
                             <Rectangle Stroke="Black" Grid.Row="5" Height="1" StrokeThickness="0.5"/>
-                            <Grid Padding="10,0,10,0" Grid.Row="6" DragLeave="pokemon_DragLeave" DragEnter="pokemon_DragEnter" Drop="pokemon4_Drop" AllowDrop="True">
+                            <Grid x:Name="containerPokemon4" Padding="10,0,10,0" Grid.Row="6">
                                 <UserControls:PokemonDisplay x:Name="pokemon4"/>
                             </Grid>
                             <Rectangle Stroke="Black" Grid.Row="7" Height="1" StrokeThickness="0.5"/>
-                            <Grid Padding="10,0,10,0" Grid.Row="8" DragLeave="pokemon_DragLeave" DragEnter="pokemon_DragEnter" Drop="pokemon5_Drop" AllowDrop="True">
+                            <Grid x:Name="containerPokemon5" Padding="10,0,10,0" Grid.Row="8">
                                 <UserControls:PokemonDisplay x:Name="pokemon5"/>
                             </Grid>
                         </Grid>
