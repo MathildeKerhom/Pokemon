@@ -108,6 +108,7 @@
     <Compile Include="Classes\Types.cs" />
     <Compile Include="ViewModel\VillageViewModel.cs" />
     <Compile Include="ViewModel\LaboratoryViewModel.cs" />
+    <Compile Include="ViewModel\InventoryViewModel.cs" />
     <Compile Include="View\SeedRecived.xaml.cs">
       <DependentUpon>SeedRecived.xaml</DependentUpon>
     </Compile>

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using PokemonGarden.View.UserControls;
+using PokemonGarden.ViewModel;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -22,70 +24,33 @@ namespace PokemonGarden.View
 	/// </summary>
 	public sealed partial class Inventory : Page
 	{
+		public TopBar TopBar { get; set; }
+		public PokemonDisplay Pokemon1 { get; set; }
+		public PokemonDisplay Pokemon2 { get; set; }
+		public PokemonDisplay Pokemon3 { get; set; }
+		public PokemonDisplay Pokemon4 { get; set; }
+		public PokemonDisplay Pokemon5 { get; set; }
+		public Grid ContainerPokemon1 { get; set; }
+		public Grid ContainerPokemon2 { get; set; }
+		public Grid ContainerPokemon3 { get; set; }
+		public Grid ContainerPokemon4 { get; set; }
+		public Grid ContainerPokemon5 { get; set; }
+
 		public Inventory()
 		{
 			this.InitializeComponent();
-			this.topBar.DisableInventoryButton();
-		}
-
-		private void pokemon_DragLeave(object sender, DragEventArgs e)
-		{
-			e.AcceptedOperation = Windows.ApplicationModel.DataTransfer.DataPackageOperation.None;
-		}
-
-		private void pokemon_DragEnter(object sender, DragEventArgs e)
-		{
-			e.AcceptedOperation = Windows.ApplicationModel.DataTransfer.DataPackageOperation.Move;
-		}
-
-		private void pokemon1_Drop(object sender, DragEventArgs e)
-		{
-			object pokemon;
-			e.Data.Properties.TryGetValue("pokemonSource", out pokemon);
-			if (pokemon != null)
-			{
-				this.pokemon1.DataContext = (Pokemon)pokemon;
-			}
-		}
-
-		private void pokemon2_Drop(object sender, DragEventArgs e)
-		{
-			object pokemon;
-			e.Data.Properties.TryGetValue("pokemonSource", out pokemon);
-			if (pokemon != null)
-			{
-				this.pokemon2.DataContext = (Pokemon)pokemon;
-			}
-		}
-
-		private void pokemon3_Drop(object sender, DragEventArgs e)
-		{
-			object pokemon;
-			e.Data.Properties.TryGetValue("pokemonSource", out pokemon);
-			if (pokemon != null)
-			{
-				this.pokemon3.DataContext = (Pokemon)pokemon;
-			}
-		}
-
-		private void pokemon4_Drop(object sender, DragEventArgs e)
-		{
-			object pokemon;
-			e.Data.Properties.TryGetValue("pokemonSource", out pokemon);
-			if (pokemon != null)
-			{
-				this.pokemon4.DataContext = (Pokemon)pokemon;
-			}
-		}
-
-		private void pokemon5_Drop(object sender, DragEventArgs e)
-		{
-			object pokemon;
-			e.Data.Properties.TryGetValue("pokemonSource", out pokemon);
-			if (pokemon != null)
-			{
-				this.pokemon5.DataContext = (Pokemon)pokemon;
-			}
+			this.TopBar = this.topBar;
+			this.Pokemon1 = this.pokemon1;
+			this.Pokemon2 = this.pokemon2;
+			this.Pokemon3 = this.pokemon3;
+			this.Pokemon4 = this.pokemon4;
+			this.Pokemon5 = this.pokemon5;
+			this.ContainerPokemon1 = this.containerPokemon1;
+			this.ContainerPokemon2 = this.containerPokemon2;
+			this.ContainerPokemon3 = this.containerPokemon3;
+			this.ContainerPokemon4 = this.containerPokemon4;
+			this.ContainerPokemon5 = this.containerPokemon5;
+			new InventoryViewModel(this);
 		}
 	}
 }
