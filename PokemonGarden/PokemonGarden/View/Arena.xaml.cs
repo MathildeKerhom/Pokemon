@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using PokemonGarden.ViewModel;
 
 // Pour plus d'informations sur le modèle d'élément Page vierge, voir la page http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -24,41 +25,25 @@ namespace PokemonGarden.View
 	/// </summary>
 	public sealed partial class Arena : Page
 	{
-		public Arena()
+        public PokemonDisplay PokemonAI { get; set; }
+        public PokemonDisplay PokemonPlayer { get; set; }
+        public PokemonDisplay Pokemon1 { get; set; }
+        public PokemonDisplay Pokemon2 { get; set; }
+        public PokemonDisplay Pokemon3 { get; set; }
+        public PokemonDisplay Pokemon4 { get; set; }
+        public PokemonDisplay Pokemon5 { get; set; }
+
+        public Arena()
 		{
 			this.InitializeComponent();
-			this.pokemonAI.DataContext = new Pokemon(new Uri("ms-appx:///Assets/pika.PNG"), "pika", new List<Types.Element> { Types.Element.Electrique }, "fidel pokemon qui nous suit partout", "Transparent");
-			this.pokemon1.DataContext = new Pokemon(new Uri("ms-appx:///Assets/para.jpg"), "para", new List<Types.Element> { Types.Element.Insecte, Types.Element.Plante }, "pokemon qui ressemble à un crabe");
-		}
-
-		private void pokemon_DragLeave(object sender, DragEventArgs e)
-		{
-			e.AcceptedOperation = Windows.ApplicationModel.DataTransfer.DataPackageOperation.None;
-		}
-
-		private void pokemon_DragEnter(object sender, DragEventArgs e)
-		{
-			e.AcceptedOperation = Windows.ApplicationModel.DataTransfer.DataPackageOperation.Move;
-		}
-
-		private void pokemon_Drop(object sender, DragEventArgs e)
-		{
-			object pokemon;
-			e.DataView.Properties.TryGetValue("pokemonSource", out pokemon);
-			if (pokemon != null)
-			{
-				(pokemon as Pokemon).SetBackgroundToTransparent();
-				this.pokemonPlayer.DataContext = (Pokemon)pokemon;
-			}
-		}
-
-		private void pokemon_DragItemsStarting(object sender, DragStartingEventArgs e)
-		{
-			object item = (sender as PokemonDisplay).DataContext;
-			if (item != null)
-			{
-				e.Data.Properties.Add("pokemonSource", item);
-			}
+            this.PokemonAI = this.pokemonAI;
+            this.PokemonPlayer = this.pokemonPlayer;
+            this.Pokemon1 = this.pokemon1;
+            this.Pokemon2 = this.pokemon2;
+            this.Pokemon3 = this.pokemon3;
+            this.Pokemon4 = this.pokemon4;
+            this.Pokemon5 = this.pokemon5;
+            new ArenaViewModel(this);
 		}
 	}
 }
