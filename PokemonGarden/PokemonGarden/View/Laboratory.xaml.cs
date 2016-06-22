@@ -5,6 +5,8 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using PokemonGarden.Classes;
+using PokemonGarden.View.UserControls;
+using PokemonGarden.ViewModel;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -24,79 +26,31 @@ namespace PokemonGarden.View
 	/// </summary>
 	public sealed partial class Laboratory : Page
 	{
+		public Grid FusionBlockLeft { get; set; }
+		public Grid FusionBlockRight { get; set; }
+		public Grid UpgradeBlockLeft { get; set; }
+		public Grid UpgradeBlockRight { get; set; }
+		public PokemonDisplay UpgradePokemon { get; set; }
+		public SeedDisplay UpgradeSeed { get; set; }
+		public SeedDisplay FusionSeedBlockLeft { get; set; }
+		public SeedDisplay FusionSeedBlockRight { get; set; }
+		public Button FusionBtn { get; set; }
+		public Button UpgradeBtn { get; set; }
+
 		public Laboratory()
 		{
 			this.InitializeComponent();
-		}
-
-		private void seed_DragEnter(object sender, DragEventArgs e)
-		{
-			object seed;
-			e.Data.Properties.TryGetValue("seedSource", out seed);
-			if (seed != null)
-			{
-				e.AcceptedOperation = Windows.ApplicationModel.DataTransfer.DataPackageOperation.Move;
-			}
-		}
-
-		private void seed1_Drop(object sender, DragEventArgs e)
-		{
-			object seed;
-			e.Data.Properties.TryGetValue("seedSource", out seed);
-			if (seed != null)
-			{
-				seed1Fusion.DataContext = (MarketSeed)seed;
-			}
-		}
-
-		private void seed2_Drop(object sender, DragEventArgs e)
-		{
-			object seed;
-			e.Data.Properties.TryGetValue("seedSource", out seed);
-			if (seed != null)
-			{
-				seed2Fusion.DataContext = (MarketSeed)seed;
-			}
-		}
-
-		private void seedFusion_Drop(object sender, DragEventArgs e)
-		{
-			object seed;
-			e.Data.Properties.TryGetValue("seedSource", out seed);
-			if (seed != null)
-			{
-				seedUpgrade.DataContext = (MarketSeed)seed;
-			}
-		}
-
-		private void seed_DragLeave(object sender, DragEventArgs e)
-		{
-			e.AcceptedOperation = Windows.ApplicationModel.DataTransfer.DataPackageOperation.None;
-		}
-
-		private void pokemonFusion_Drop(object sender, DragEventArgs e)
-		{
-			object pokemon;
-			e.Data.Properties.TryGetValue("pokemonSource", out pokemon);
-			if (pokemon != null)
-			{
-				pokemonUpgrade.DataContext = (Pokemon)pokemon;
-			}
-		}
-
-		private void pokemon_DragEnter(object sender, DragEventArgs e)
-		{
-			object pokemon;
-			e.Data.Properties.TryGetValue("pokemonSource", out pokemon);
-			if (pokemon != null)
-			{
-				e.AcceptedOperation = Windows.ApplicationModel.DataTransfer.DataPackageOperation.Move;
-			}
-		}
-
-		private void pokemon_DragLeave(object sender, DragEventArgs e)
-		{
-			e.AcceptedOperation = Windows.ApplicationModel.DataTransfer.DataPackageOperation.None;
+			this.FusionBlockLeft = this.fusionBlockLeft;
+			this.FusionBlockRight = this.fusionBlockRight;
+			this.UpgradeBlockLeft = this.upgradeBlockLeft;
+			this.UpgradeBlockRight = this.upgradeBlockRight;
+			this.UpgradePokemon = this.pokemonUpgrade;
+			this.UpgradeSeed = this.seedUpgrade;
+			this.FusionSeedBlockLeft = this.seedLeftFusion;
+			this.FusionSeedBlockRight = this.seedRightFusion;
+			this.FusionBtn = this.btnFusion;
+			this.UpgradeBtn = this.btnUpgrade;
+			new LaboratoryViewModel(this);
 		}
 	}
 }
