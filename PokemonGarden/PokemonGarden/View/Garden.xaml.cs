@@ -7,6 +7,7 @@ using PokemonGarden.View.UserControls;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
+using PokemonGarden.ViewModel;
 
 // Pour plus d'informations sur le modèle d'élément Page vierge, voir la page http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -17,199 +18,78 @@ namespace PokemonGarden.View
 	/// </summary>
 	public sealed partial class Garden : Page
 	{
-		public Garden()
+        public Grid GridSeed1 { get; set; }
+        public Grid GridSeed2 { get; set; }
+        public Grid GridSeed3 { get; set; }
+        public Grid GridSeed4 { get; set; }
+        public Grid GridSeed5 { get; set; }
+        public Grid GridSeed6 { get; set; }
+        public Grid GridSeed7 { get; set; }
+        public Grid GridSeed8 { get; set; }
+        public Grid GridSeed9 { get; set; }
+
+        public SeedDisplay Seed1 { get; set; }
+        public SeedDisplay Seed2 { get; set; }
+        public SeedDisplay Seed3 { get; set; }
+        public SeedDisplay Seed4 { get; set; }
+        public SeedDisplay Seed5 { get; set; }
+        public SeedDisplay Seed6 { get; set; }
+        public SeedDisplay Seed7 { get; set; }
+        public SeedDisplay Seed8 { get; set; }
+        public SeedDisplay Seed9 { get; set; }
+
+        public Image Image1 { get; set; }
+        public Image Image2 { get; set; }
+        public Image Image3 { get; set; }
+        public Image Image4 { get; set; }
+        public Image Image5 { get; set; }
+        public Image Image6 { get; set; }
+        public Image Image7 { get; set; }
+        public Image Image8 { get; set; }
+        public Image Image9 { get; set; }
+
+        public Grid GridPokemon1 { get; set; }
+        public Grid GridPokemon2 { get; set; }
+
+        public PokemonDisplay Pokemon1 { get; set; }
+        public PokemonDisplay Pokemon2 { get; set; }
+
+        public Garden()
 		{
 			this.InitializeComponent();
-			//this.DataContext = Player.GetPlayer();
-			Player player = Player.GetPlayer();
-			this.seed1.DataContext = player.GetMarketSeedList().FirstOrDefault();
-		}
+            this.GridSeed1 = this.gridSeed1;
+            this.GridSeed2 = this.gridSeed2;
+            this.GridSeed3 = this.gridSeed3;
+            this.GridSeed4 = this.gridSeed4;
+            this.GridSeed5 = this.gridSeed5;
+            this.GridSeed6 = this.gridSeed6;
+            this.GridSeed7 = this.gridSeed7;
+            this.GridSeed8 = this.gridSeed8;
+            this.GridSeed9 = this.gridSeed9;
+            this.Seed1 = this.seed1;
+            this.Seed2 = this.seed2;
+            this.Seed3 = this.seed3;
+            this.Seed4 = this.seed4;
+            this.Seed5 = this.seed5;
+            this.Seed6 = this.seed6;
+            this.Seed7 = this.seed7;
+            this.Seed8 = this.seed8;
+            this.Seed9 = this.seed9;
+            this.Image1 = this.image1;
+            this.Image2 = this.image2;
+            this.Image3 = this.image3;
+            this.Image4 = this.image4;
+            this.Image5 = this.image5;
+            this.Image6 = this.image6;
+            this.Image7 = this.image7;
+            this.Image8 = this.image8;
+            this.Image9 = this.image9;
+            this.GridPokemon1 = this.gridPokemon1;
+            this.GridPokemon2 = this.gridPokemon2;
+            this.Pokemon1 = this.pokemon1;
+            this.Pokemon2 = this.pokemon2;
 
-		private void seed_DragEnter(object sender, DragEventArgs e)
-		{
-			UIElementCollection childs = (sender as Grid).Children;
-			foreach (UIElement child in childs)
-			{
-				if (child.GetType() == typeof(Image))
-				{
-					if ((child as Image).Visibility == Visibility.Visible)
-					{
-						e.AcceptedOperation = Windows.ApplicationModel.DataTransfer.DataPackageOperation.None;
-						return;
-					}
-				}
-			}
-			e.AcceptedOperation = Windows.ApplicationModel.DataTransfer.DataPackageOperation.Move;
-		}
-
-		private void seed_DragLeave(object sender, DragEventArgs e)
-		{
-			e.AcceptedOperation = Windows.ApplicationModel.DataTransfer.DataPackageOperation.None;
-		}
-
-		private void seed1_Drop(object sender, DragEventArgs e)
-		{
-			object seed;
-			e.Data.Properties.TryGetValue("seedSource", out seed);
-			if (seed != null)
-			{
-				seed1.DataContext = (MarketSeed)seed;
-			}
-		}
-
-		private void seed2_Drop(object sender, DragEventArgs e)
-		{
-			object seed;
-			e.Data.Properties.TryGetValue("seedSource", out seed);
-			if (seed != null)
-			{
-				seed2.DataContext = (MarketSeed)seed;
-			}
-		}
-
-		private void seed3_Drop(object sender, DragEventArgs e)
-		{
-			object seed;
-			e.Data.Properties.TryGetValue("seedSource", out seed);
-			if (seed != null)
-			{
-				seed3.DataContext = (MarketSeed)seed;
-			}
-		}
-
-		private void seed4_Drop(object sender, DragEventArgs e)
-		{
-			object seed;
-			e.Data.Properties.TryGetValue("seedSource", out seed);
-			if (seed != null)
-			{
-				seed4.DataContext = (MarketSeed)seed;
-			}
-		}
-
-		private void seed5_Drop(object sender, DragEventArgs e)
-		{
-			object seed;
-			e.Data.Properties.TryGetValue("seedSource", out seed);
-			if (seed != null)
-			{
-				seed5.DataContext = (MarketSeed)seed;
-			}
-		}
-
-		private void seed6_Drop(object sender, DragEventArgs e)
-		{
-			object seed;
-			e.Data.Properties.TryGetValue("seedSource", out seed);
-			if (seed != null)
-			{
-				seed6.DataContext = (MarketSeed)seed;
-			}
-		}
-
-		private void seed7_Drop(object sender, DragEventArgs e)
-		{
-			object seed;
-			e.Data.Properties.TryGetValue("seedSource", out seed);
-			if (seed != null)
-			{
-				seed7.DataContext = (MarketSeed)seed;
-			}
-		}
-
-		private void seed8_Drop(object sender, DragEventArgs e)
-		{
-			object seed;
-			e.Data.Properties.TryGetValue("seedSource", out seed);
-			if (seed != null)
-			{
-				seed8.DataContext = (MarketSeed)seed;
-			}
-		}
-
-		private void seed9_Drop(object sender, DragEventArgs e)
-		{
-			object seed;
-			e.Data.Properties.TryGetValue("seedSource", out seed);
-			if (seed != null)
-			{
-				seed9.DataContext = (MarketSeed)seed;
-			}
-		}
-
-		private void Transph_Tapped(object sender, TappedRoutedEventArgs e)
-		{
-			Pokemon pokemon = null;
-			Image imgSource = e.OriginalSource as Image;
-			Grid parent = imgSource.Parent as Grid;
-			UIElementCollection childs = (parent as Grid).Children;
-			foreach (UIElement child in childs)
-			{
-				if (child.GetType() == typeof(SeedDisplay))
-				{
-					SeedDisplay seedDisplay = child as SeedDisplay;
-					pokemon = GetRandomPokemon(seedDisplay.DataContext as MarketSeed);
-					seedDisplay.DataContext = null;
-				}
-			}
-
-			PokemonRecived pokemonPopup = new PokemonRecived(pokemon);
-			Task<ContentDialogResult> getAsyncShow = pokemonPopup.ShowAsync().AsTask();
-
-			imgSource.Visibility = Visibility.Collapsed;
-			Player player = Player.GetPlayer();
-			player.AddPokemon(pokemon);
-		}
-
-		/// <summary>
-		/// create a random pokemon with seed attributs
-		/// </summary>
-		/// <param name="source">original source</param>
-		/// <returns></returns>
-		private Pokemon GetRandomPokemon(MarketSeed seedSource)
-		{
-			Pokemon pokemon = null;
-
-			if (seedSource != null)
-			{
-				pokemon = new Pokemon(new Uri("ms-appx:///Assets/para.jpg"), "para", seedSource.GetUriTypeList, "pokemon qui ressemble à un crabe");
-			}
-			else
-			{
-				pokemon = new Pokemon(new Uri("ms-appx:///Assets/para.jpg"), "para", new List<Types.Element> { Types.Element.Plante, Types.Element.Poison }, "pokemon qui ressemble à un crabe");
-			}
-
-			return pokemon;
-		}
-
-		private void pokemon_DragLeave(object sender, DragEventArgs e)
-		{
-			e.AcceptedOperation = Windows.ApplicationModel.DataTransfer.DataPackageOperation.None;
-		}
-
-		private void pokemon_DragEnter(object sender, DragEventArgs e)
-		{
-			e.AcceptedOperation = Windows.ApplicationModel.DataTransfer.DataPackageOperation.Move;
-		}
-
-		private void pokemon1_Drop(object sender, DragEventArgs e)
-		{
-			object pokemon;
-			e.Data.Properties.TryGetValue("pokemonSource", out pokemon);
-			if (pokemon != null)
-			{
-				this.pokemon1.DataContext = (Pokemon)pokemon;
-			}
-		}
-
-		private void pokemon2_Drop(object sender, DragEventArgs e)
-		{
-			object pokemon;
-			e.Data.Properties.TryGetValue("pokemonSource", out pokemon);
-			if (pokemon != null)
-			{
-				this.pokemon2.DataContext = (Pokemon)pokemon;
-			}
-		}
+            new GardenViewModel(this);
+        }
 	}
 }

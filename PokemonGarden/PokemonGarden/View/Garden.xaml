@@ -40,41 +40,41 @@
                         <Rectangle Height="1" Grid.Row="3" Grid.ColumnSpan="5" Stroke="Black" StrokeThickness="1"/>
                         <Rectangle Width="1" Grid.Column="1" Grid.RowSpan="5" Stroke="Black" StrokeThickness="1"/>
                         <Rectangle Width="1" Grid.Column="3" Grid.RowSpan="5" Stroke="Black" StrokeThickness="1"/>
-                        <Grid Grid.Column="0" Grid.Row="0" Height="100" Width="170" Margin="10,10,10,10" DragLeave="seed_DragLeave" DragEnter="seed_DragEnter" Drop="seed1_Drop" AllowDrop="True">
+                        <Grid Grid.Column="0" Grid.Row="0" x:Name="gridSeed1" Height="100" Width="170" Margin="10,10,10,10">
                             <UserControls:SeedDisplay x:Name="seed1"/>
-                            <Image Visibility="Collapsed" Source="ms-appx:///Assets/metamorph.jpg" Tapped="Transph_Tapped"/>
+                            <Image x:Name="image1" Visibility="Collapsed" Source="ms-appx:///Assets/metamorph.jpg"/>
                         </Grid>
-                        <Grid Grid.Column="2" Grid.Row="0" Height="100" Width="170" Margin="10,10,10,10" DragLeave="seed_DragLeave" DragEnter="seed_DragEnter" Drop="seed2_Drop" AllowDrop="True">
+                        <Grid Grid.Column="2" Grid.Row="0" x:Name="gridSeed2" Height="100" Width="170" Margin="10,10,10,10">
                             <UserControls:SeedDisplay x:Name="seed2"/>
-                            <Image Visibility="Collapsed" Source="ms-appx:///Assets/metamorph.jpg" Tapped="Transph_Tapped"/>
+                            <Image x:Name="image2" Visibility="Collapsed" Source="ms-appx:///Assets/metamorph.jpg"/>
                         </Grid>
-                        <Grid Grid.Column="4" Grid.Row="0" Height="100" Width="170" Margin="10,10,10,10" DragLeave="seed_DragLeave" DragEnter="seed_DragEnter" Drop="seed3_Drop" AllowDrop="True">
+                        <Grid Grid.Column="4" Grid.Row="0" x:Name="gridSeed3" Height="100" Width="170" Margin="10,10,10,10">
                             <UserControls:SeedDisplay x:Name="seed3"/>
-                            <Image Visibility="Collapsed" Source="ms-appx:///Assets/metamorph.jpg" Tapped="Transph_Tapped"/>
+                            <Image x:Name="image3" Visibility="Collapsed" Source="ms-appx:///Assets/metamorph.jpg"/>
                         </Grid>
-                        <Grid Grid.Column="0" Grid.Row="2" Height="100" Width="170" Margin="10,10,10,10" DragLeave="seed_DragLeave" DragEnter="seed_DragEnter" Drop="seed4_Drop" AllowDrop="True">
+                        <Grid Grid.Column="0" Grid.Row="2" x:Name="gridSeed4" Height="100" Width="170" Margin="10,10,10,10">
                             <UserControls:SeedDisplay x:Name="seed4"/>
-                            <Image Visibility="Collapsed" Source="ms-appx:///Assets/metamorph.jpg" Tapped="Transph_Tapped"/>
+                            <Image x:Name="image4" Visibility="Collapsed" Source="ms-appx:///Assets/metamorph.jpg"/>
                         </Grid>
-                        <Grid Grid.Column="2" Grid.Row="2" Height="100" Width="170" Margin="10,10,10,10" DragLeave="seed_DragLeave" DragEnter="seed_DragEnter" Drop="seed5_Drop" AllowDrop="True">
+                        <Grid Grid.Column="2" Grid.Row="2" x:Name="gridSeed5" Height="100" Width="170" Margin="10,10,10,10">
                             <UserControls:SeedDisplay x:Name="seed5"/>
-                            <Image Visibility="Collapsed" Source="ms-appx:///Assets/metamorph.jpg" Tapped="Transph_Tapped"/>
+                            <Image x:Name="image5" Visibility="Collapsed" Source="ms-appx:///Assets/metamorph.jpg"/>
                         </Grid>
-                        <Grid Grid.Column="4" Grid.Row="2" Height="100" Width="170" Margin="10,10,10,10" DragLeave="seed_DragLeave" DragEnter="seed_DragEnter" Drop="seed6_Drop" AllowDrop="True">
+                        <Grid Grid.Column="4" Grid.Row="2" x:Name="gridSeed6" Height="100" Width="170" Margin="10,10,10,10">
                             <UserControls:SeedDisplay x:Name="seed6"/>
-                            <Image Visibility="Visible" Source="ms-appx:///Assets/metamorph.jpg" Tapped="Transph_Tapped"/>
+                            <Image x:Name="image6" Visibility="Visible" Source="ms-appx:///Assets/metamorph.jpg"/>
                         </Grid>
-                        <Grid Grid.Column="0" Grid.Row="4" Height="100" Width="170" Margin="10,10,10,10" DragLeave="seed_DragLeave" DragEnter="seed_DragEnter" Drop="seed7_Drop" AllowDrop="True">
+                        <Grid Grid.Column="0" Grid.Row="4" x:Name="gridSeed7" Height="100" Width="170" Margin="10,10,10,10">
                             <UserControls:SeedDisplay x:Name="seed7"/>
-                            <Image Visibility="Collapsed" Source="ms-appx:///Assets/metamorph.jpg" Tapped="Transph_Tapped"/>
+                            <Image x:Name="image7" Visibility="Collapsed" Source="ms-appx:///Assets/metamorph.jpg"/>
                         </Grid>
-                        <Grid Grid.Column="2" Grid.Row="4" Height="100" Width="170" Margin="10,10,10,10" DragLeave="seed_DragLeave" DragEnter="seed_DragEnter" Drop="seed8_Drop" AllowDrop="True">
+                        <Grid Grid.Column="2" Grid.Row="4" x:Name="gridSeed8" Height="100" Width="170" Margin="10,10,10,10">
                             <UserControls:SeedDisplay x:Name="seed8"/>
-                            <Image Visibility="Collapsed" Source="ms-appx:///Assets/metamorph.jpg" Tapped="Transph_Tapped"/>
+                            <Image x:Name="image8" Visibility="Collapsed" Source="ms-appx:///Assets/metamorph.jpg"/>
                         </Grid>
-                        <Grid Grid.Column="4" Grid.Row="4" Height="100" Width="170" Margin="10,10,10,10" DragLeave="seed_DragLeave" DragEnter="seed_DragEnter" Drop="seed9_Drop" AllowDrop="True">
+                        <Grid Grid.Column="4" Grid.Row="4" x:Name="gridSeed9" Height="100" Width="170" Margin="10,10,10,10">
                             <UserControls:SeedDisplay x:Name="seed9"/>
-                            <Image Visibility="Collapsed" Source="ms-appx:///Assets/metamorph.jpg" Tapped="Transph_Tapped"/>
+                            <Image x:Name="image9" Visibility="Collapsed" Source="ms-appx:///Assets/metamorph.jpg"/>
                         </Grid>
                     </Grid>
                     <Rectangle Margin="0,5,0,20" Grid.Column="1" Stroke="Black" StrokeThickness="0.5" Width="0.5"/>
@@ -106,13 +106,13 @@
                             <Grid Grid.Row="0" VerticalAlignment="Center">
                                 <Rectangle Stroke="Black" Height="1" StrokeThickness="0.5"/>
                             </Grid>
-                            <Grid Padding="10,0,10,0" Grid.Row="1" DragLeave="pokemon_DragLeave" DragEnter="pokemon_DragEnter" Drop="pokemon1_Drop" AllowDrop="True">
+                            <Grid Padding="10,0,10,0" Grid.Row="1" x:Name="gridPokemon1">
                                 <UserControls:PokemonDisplay x:Name="pokemon1"/>
                             </Grid>
                             <Grid Grid.Row="2" VerticalAlignment="Center">
                                 <Rectangle Stroke="Black" Height="1" StrokeThickness="0.5"/>
                             </Grid>
-                            <Grid Padding="10,0,10,0" Grid.Row="3" DragLeave="pokemon_DragLeave" DragEnter="pokemon_DragEnter" Drop="pokemon2_Drop" AllowDrop="True">
+                            <Grid Padding="10,0,10,0" Grid.Row="3" x:Name="gridPokemon2">
                                 <UserControls:PokemonDisplay x:Name="pokemon2"/>
                             </Grid>
                             <Grid Grid.Row="4" VerticalAlignment="Center">
