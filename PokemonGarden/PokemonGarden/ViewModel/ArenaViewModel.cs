@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Navigation;
 
 namespace PokemonGarden.ViewModel
 {
@@ -48,6 +50,27 @@ namespace PokemonGarden.ViewModel
 
             this.arena.Pokemon5.CanDrag = true;
             this.arena.Pokemon5.DragStarting += pokemon_DragItemsStarting;
+
+            (Window.Current.Content as Frame).Navigating += this.onChangingFrame;
+        }
+
+        private void onChangingFrame(object sender, NavigatingCancelEventArgs e)
+        {
+            this.arena.PokemonPlayer.Drop -= pokemon_Drop;
+            this.arena.PokemonPlayer.DragEnter -= pokemon_DragEnter;
+            this.arena.PokemonPlayer.DragLeave -= pokemon_DragLeave;
+
+            this.arena.Pokemon1.DragStarting -= pokemon_DragItemsStarting;
+
+            this.arena.Pokemon2.DragStarting -= pokemon_DragItemsStarting;
+
+            this.arena.Pokemon3.DragStarting -= pokemon_DragItemsStarting;
+
+            this.arena.Pokemon4.DragStarting -= pokemon_DragItemsStarting;
+
+            this.arena.Pokemon5.DragStarting -= pokemon_DragItemsStarting;
+
+            (Window.Current.Content as Frame).Navigating -= this.onChangingFrame;
         }
 
         private void pokemon_DragLeave(object sender, DragEventArgs e)

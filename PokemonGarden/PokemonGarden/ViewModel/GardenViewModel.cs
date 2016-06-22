@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
+using Windows.UI.Xaml.Navigation;
 
 namespace PokemonGarden.ViewModel
 {
@@ -95,6 +96,67 @@ namespace PokemonGarden.ViewModel
             this.garden.GridPokemon2.DragEnter += pokemon_DragEnter;
             this.garden.GridPokemon2.Drop += pokemon2_Drop;
             this.garden.GridPokemon2.AllowDrop = true;
+
+            (Window.Current.Content as Frame).Navigating += this.onChangingFrame;
+        }
+
+        private void onChangingFrame(object sender, NavigatingCancelEventArgs e)
+        {
+            this.garden.GridSeed1.DragLeave -= seed_DragLeave;
+            this.garden.GridSeed1.DragEnter -= seed_DragEnter;
+            this.garden.GridSeed1.Drop -= seed1_Drop;
+
+            this.garden.GridSeed2.DragLeave -= seed_DragLeave;
+            this.garden.GridSeed2.DragEnter -= seed_DragEnter;
+            this.garden.GridSeed2.Drop -= seed2_Drop;
+
+            this.garden.GridSeed3.DragLeave -= seed_DragLeave;
+            this.garden.GridSeed3.DragEnter -= seed_DragEnter;
+            this.garden.GridSeed3.Drop -= seed3_Drop;
+
+            this.garden.GridSeed4.DragLeave -= seed_DragLeave;
+            this.garden.GridSeed4.DragEnter -= seed_DragEnter;
+            this.garden.GridSeed4.Drop -= seed4_Drop;
+
+            this.garden.GridSeed5.DragLeave -= seed_DragLeave;
+            this.garden.GridSeed5.DragEnter -= seed_DragEnter;
+            this.garden.GridSeed5.Drop -= seed5_Drop;
+
+            this.garden.GridSeed6.DragLeave -= seed_DragLeave;
+            this.garden.GridSeed6.DragEnter -= seed_DragEnter;
+            this.garden.GridSeed6.Drop -= seed6_Drop;
+
+            this.garden.GridSeed7.DragLeave -= seed_DragLeave;
+            this.garden.GridSeed7.DragEnter -= seed_DragEnter;
+            this.garden.GridSeed7.Drop -= seed7_Drop;
+
+            this.garden.GridSeed8.DragLeave -= seed_DragLeave;
+            this.garden.GridSeed8.DragEnter -= seed_DragEnter;
+            this.garden.GridSeed8.Drop -= seed8_Drop;
+
+            this.garden.GridSeed9.DragLeave -= seed_DragLeave;
+            this.garden.GridSeed9.DragEnter -= seed_DragEnter;
+            this.garden.GridSeed9.Drop -= seed9_Drop;
+
+            this.garden.Image1.Tapped -= Transph_Tapped;
+            this.garden.Image2.Tapped -= Transph_Tapped;
+            this.garden.Image3.Tapped -= Transph_Tapped;
+            this.garden.Image4.Tapped -= Transph_Tapped;
+            this.garden.Image5.Tapped -= Transph_Tapped;
+            this.garden.Image6.Tapped -= Transph_Tapped;
+            this.garden.Image7.Tapped -= Transph_Tapped;
+            this.garden.Image8.Tapped -= Transph_Tapped;
+            this.garden.Image9.Tapped -= Transph_Tapped;
+
+            this.garden.GridPokemon1.DragLeave -= pokemon_DragLeave;
+            this.garden.GridPokemon1.DragEnter -= pokemon_DragEnter;
+            this.garden.GridPokemon1.Drop -= pokemon1_Drop;
+
+            this.garden.GridPokemon2.DragLeave -= pokemon_DragLeave;
+            this.garden.GridPokemon2.DragEnter -= pokemon_DragEnter;
+            this.garden.GridPokemon2.Drop -= pokemon2_Drop;
+
+            (Window.Current.Content as Frame).Navigating -= this.onChangingFrame;
         }
 
         private void seed_DragEnter(object sender, DragEventArgs e)
