@@ -2,6 +2,8 @@
 using PokemonGarden.Classes;
 using PokemonGarden.View;
 using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Navigation;
 
 namespace PokemonGarden.ViewModel
 {
@@ -36,6 +38,29 @@ namespace PokemonGarden.ViewModel
 			this.laboratory.UpgradeBlockRight.DragEnter += seed_DragEnter;
 			this.laboratory.UpgradeBlockRight.Drop += seedFusion_Drop;
 			this.laboratory.UpgradeBlockRight.AllowDrop = true;
+
+			(Window.Current.Content as Frame).Navigating += this.onChangingFrame;
+		}
+
+		private void onChangingFrame(object sender, NavigatingCancelEventArgs e)
+		{
+			this.laboratory.FusionBlockLeft.DragLeave -= seed_DragLeave;
+			this.laboratory.FusionBlockLeft.DragEnter -= seed_DragEnter;
+			this.laboratory.FusionBlockLeft.Drop -= seedLeft_Drop;
+
+			this.laboratory.FusionBlockRight.DragLeave -= seed_DragLeave;
+			this.laboratory.FusionBlockRight.DragEnter -= seed_DragEnter;
+			this.laboratory.FusionBlockRight.Drop -= seedRight_Drop;
+
+			this.laboratory.UpgradeBlockLeft.DragLeave -= pokemon_DragLeave;
+			this.laboratory.UpgradeBlockLeft.DragEnter -= pokemon_DragEnter;
+			this.laboratory.UpgradeBlockLeft.Drop -= pokemonFusion_Drop;
+
+			this.laboratory.UpgradeBlockRight.DragLeave -= seed_DragLeave;
+			this.laboratory.UpgradeBlockRight.DragEnter -= seed_DragEnter;
+			this.laboratory.UpgradeBlockRight.Drop -= seedFusion_Drop;
+
+			(Window.Current.Content as Frame).Navigating -= this.onChangingFrame;
 		}
 
 		private void seed_DragEnter(object sender, DragEventArgs e)

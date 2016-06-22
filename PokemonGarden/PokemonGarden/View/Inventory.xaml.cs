@@ -50,6 +50,7 @@ namespace PokemonGarden.View
 			this.ContainerPokemon3 = this.containerPokemon3;
 			this.ContainerPokemon4 = this.containerPokemon4;
 			this.ContainerPokemon5 = this.containerPokemon5;
+			
 			new InventoryViewModel(this);
 		}
 	}

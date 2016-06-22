@@ -1,6 +1,8 @@
 ﻿using System;
 using PokemonGarden.View;
 using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Navigation;
 
 namespace PokemonGarden.ViewModel
 {
@@ -41,6 +43,33 @@ namespace PokemonGarden.ViewModel
 			this.inventory.ContainerPokemon5.DragLeave += pokemon_DragLeave;
 			this.inventory.ContainerPokemon5.Drop += pokemon5_Drop;
 			this.inventory.ContainerPokemon5.AllowDrop = true;
+
+			(Window.Current.Content as Frame).Navigating += this.onChangingFrame;
+		}
+
+		private void onChangingFrame(object sender, NavigatingCancelEventArgs e)
+		{
+			this.inventory.ContainerPokemon1.DragEnter -= pokemon_DragEnter;
+			this.inventory.ContainerPokemon1.DragLeave -= pokemon_DragLeave;
+			this.inventory.ContainerPokemon1.Drop -= pokemon1_Drop;
+
+			this.inventory.ContainerPokemon2.DragEnter -= pokemon_DragEnter;
+			this.inventory.ContainerPokemon2.DragLeave -= pokemon_DragLeave;
+			this.inventory.ContainerPokemon2.Drop -= pokemon2_Drop;
+
+			this.inventory.ContainerPokemon3.DragEnter -= pokemon_DragEnter;
+			this.inventory.ContainerPokemon3.DragLeave -= pokemon_DragLeave;
+			this.inventory.ContainerPokemon3.Drop -= pokemon3_Drop;
+
+			this.inventory.ContainerPokemon4.DragEnter -= pokemon_DragEnter;
+			this.inventory.ContainerPokemon4.DragLeave -= pokemon_DragLeave;
+			this.inventory.ContainerPokemon4.Drop -= pokemon4_Drop;
+
+			this.inventory.ContainerPokemon5.DragEnter -= pokemon_DragEnter;
+			this.inventory.ContainerPokemon5.DragLeave -= pokemon_DragLeave;
+			this.inventory.ContainerPokemon5.Drop -= pokemon5_Drop;
+
+			(Window.Current.Content as Frame).Navigating -= this.onChangingFrame;
 		}
 
 		private void pokemon_DragLeave(object sender, DragEventArgs e)
