@@ -16,6 +16,10 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
 using PokemonGarden.View;
+using Windows.Data.Xml.Dom;
+using Windows.UI.Notifications;
+using System.Diagnostics;
+using Microsoft.Azure.Engagement;
 
 namespace PokemonGarden
 {
@@ -37,6 +41,13 @@ namespace PokemonGarden
 			this.Suspending += OnSuspending;
 		}
 
+		protected override void OnActivated(IActivatedEventArgs e)
+		{
+			InitEngagement(e);
+
+			//... rest of the code
+		}
+
 		/// <summary>
 		/// Invoqué lorsque l'application est lancée normalement par l'utilisateur final.  D'autres points d'entrée
 		/// seront utilisés par exemple au moment du lancement de l'application pour l'ouverture d'un fichier spécifique.
@@ -44,14 +55,14 @@ namespace PokemonGarden
 		/// <param name="e">Détails concernant la requête et le processus de lancement.</param>
 		protected override void OnLaunched(LaunchActivatedEventArgs e)
 		{
+			InitEngagement(e);
 
 #if DEBUG
-			if (System.Diagnostics.Debugger.IsAttached)
+			if (Debugger.IsAttached)
 			{
 				this.DebugSettings.EnableFrameRateCounter = true;
 			}
 #endif
-
 			Frame rootFrame = Window.Current.Content as Frame;
 
 			// Ne répétez pas l'initialisation de l'application lorsque la fenêtre comporte déjà du contenu,
@@ -105,6 +116,14 @@ namespace PokemonGarden
 			var deferral = e.SuspendingOperation.GetDeferral();
 			//TODO: enregistrez l'état de l'application et arrêtez toute activité en arrière-plan
 			deferral.Complete();
+		}
+
+		private void InitEngagement(IActivatedEventArgs e)
+		{
+			EngagementAgent.Instance.Init(e);
+			EngagementReach.Instance.Init(e);
+
+			//... rest of the code
 		}
 	}
 }

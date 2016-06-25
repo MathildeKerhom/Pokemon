@@ -92,6 +92,13 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\EngagementConfiguration.xml" />
+    <Content Include="Resources\html\EngagementAnnouncement.html" />
+    <Content Include="Resources\html\EngagementNotification.html" />
+    <Content Include="Resources\images\EngagementIconClose.png" />
+    <Content Include="Resources\images\EngagementIconNOk.png" />
+    <Content Include="Resources\images\EngagementIconNotification.png" />
+    <Content Include="Resources\images\EngagementIconOk.png" />
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
@@ -106,6 +113,7 @@
     <Compile Include="Classes\Seed.cs" />
     <Compile Include="Classes\TopBarData.cs" />
     <Compile Include="Classes\Types.cs" />
+    <Compile Include="Resources\overlay\EngagementPageOverlay.cs" />
     <Compile Include="ViewModel\ArenaViewModel.cs" />
     <Compile Include="ViewModel\GardenViewModel.cs" />
     <Compile Include="ViewModel\VillageViewModel.cs" />
