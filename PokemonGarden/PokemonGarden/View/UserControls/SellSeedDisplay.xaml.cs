@@ -24,8 +24,8 @@ namespace PokemonGarden.View.UserControls
 		public SellSeedDisplay()
 		{
 			seeds = new List<MarketSeed>();
-			MarketSeed seed = new MarketSeed("testSeed", new List<Types.Element> { Types.Element.Acier, Types.Element.Dragon }, "blabla descritpion", 20);
-			MarketSeed seed2 = new MarketSeed("testSeed2", new List<Types.Element> { Types.Element.Electrique }, "blabla2 descritpion", 12);
+			MarketSeed seed = new MarketSeed("testSeed", new List<ElementType> { ElementType.Acier, ElementType.Dragon }, "blabla descritpion", 20);
+			MarketSeed seed2 = new MarketSeed("testSeed2", new List<ElementType> { ElementType.Electrique }, "blabla2 descritpion", 12);
 			seeds.Add(seed);
 			seeds.Add(seed2);
 			seeds.Add(seed);

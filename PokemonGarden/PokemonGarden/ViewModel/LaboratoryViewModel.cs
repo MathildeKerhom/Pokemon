@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using PokemonGarden.Classes;
 using PokemonGarden.View;
 using Windows.UI.Xaml;
@@ -10,10 +11,12 @@ namespace PokemonGarden.ViewModel
 	public class LaboratoryViewModel
 	{
 		private Laboratory laboratory;
+		private Random random;
 
 		public LaboratoryViewModel(Laboratory laboratory)
 		{
 			this.laboratory = laboratory;
+			this.random = new Random(DateTime.Now.Millisecond);
 			bindEvents();
 		}
 
@@ -28,6 +31,8 @@ namespace PokemonGarden.ViewModel
 			this.laboratory.FusionBlockRight.DragEnter += seed_DragEnter;
 			this.laboratory.FusionBlockRight.Drop += seedRight_Drop;
 			this.laboratory.FusionBlockRight.AllowDrop = true;
+
+			this.laboratory.FusionBtn.Tapped += FusionBtn_Tapped;
 
 			this.laboratory.UpgradeBlockLeft.DragLeave += pokemon_DragLeave;
 			this.laboratory.UpgradeBlockLeft.DragEnter += pokemon_DragEnter;
@@ -52,6 +57,8 @@ namespace PokemonGarden.ViewModel
 			this.laboratory.FusionBlockRight.DragEnter -= seed_DragEnter;
 			this.laboratory.FusionBlockRight.Drop -= seedRight_Drop;
 
+			this.laboratory.FusionBtn.Tapped -= FusionBtn_Tapped;
+
 			this.laboratory.UpgradeBlockLeft.DragLeave -= pokemon_DragLeave;
 			this.laboratory.UpgradeBlockLeft.DragEnter -= pokemon_DragEnter;
 			this.laboratory.UpgradeBlockLeft.Drop -= pokemonFusion_Drop;
@@ -61,6 +68,51 @@ namespace PokemonGarden.ViewModel
 			this.laboratory.UpgradeBlockRight.Drop -= seedFusion_Drop;
 
 			(Window.Current.Content as Frame).Navigating -= this.onChangingFrame;
+		}
+
+		private async void FusionBtn_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
+		{
+			MarketSeed seedLeft = this.laboratory.FusionSeedBlockLeft.DataContext as MarketSeed;
+			MarketSeed seedRight = this.laboratory.FusionSeedBlockRight.DataContext as MarketSeed;
+			if (seedLeft != null && seedRight != null)
+			{
+				List<ElementType> types = new List<ElementType>();
+				types.Add(getOneType(seedRight.GetUriTypeList));
+				types.Add(getOneType(seedLeft.GetUriTypeList));
+				if ((int)types[0] == (int)types[1])
+				{
+					types.RemoveAt(1);
+				}
+				MarketSeed newSeedRecived = new MarketSeed(seedRight.Name + " " + seedLeft.Name, types, "test fusion", (seedLeft.Price + seedRight.Price) / 2);
+				await new SeedRecived(newSeedRecived).ShowAsync();
+				Player.GetPlayer().SeedInventory.Add(newSeedRecived);
+				Player.GetPlayer().SeedInventory.Remove(seedLeft);
+				Player.GetPlayer().SeedInventory.Remove(seedRight);
+			}
+		}
+
+		private ElementType getOneType(List<Types> types)
+		{
+			List<ElementType> typeList = new List<ElementType>();
+
+			foreach (Types type in types)
+			{
+				typeList.Add(type.ElementType);
+			}
+
+			return getOneType(typeList);
+		}
+
+		private ElementType getOneType(List<ElementType> types)
+		{
+			if (types.Count > 0)
+			{
+				return types[this.random.Next(types.Count)];
+			}
+			else
+			{
+				throw new ArgumentException("void list recieved");
+			}
 		}
 
 		private void seed_DragEnter(object sender, DragEventArgs e)

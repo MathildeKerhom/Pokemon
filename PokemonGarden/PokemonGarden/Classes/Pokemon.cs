@@ -21,7 +21,7 @@ namespace PokemonGarden
 
 		private bool isBusy, isDead;
 
-		internal Pokemon(Uri imgPokemon, string name, List<Types.Element> types, string description, string backgroundColor = "LightGray")
+		internal Pokemon(Uri imgPokemon, string name, List<ElementType> types, string description, string backgroundColor = "LightGray")
 		{
 			this.name = name;
 			this.imgPokemon = imgPokemon;
@@ -55,11 +55,11 @@ namespace PokemonGarden
 			level = 1;
 		}
 
-		private void setImgType(List<Types.Element> types)
+		private void setImgType(List<ElementType> types)
 		{
 			imgTypes = new List<Types>();
 
-			foreach (Types.Element item in types)
+			foreach (ElementType item in types)
 			{
 				imgTypes.Add(new Types(item));
 			}

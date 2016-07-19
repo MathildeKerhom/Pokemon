@@ -22,15 +22,15 @@ namespace PokemonGarden.Classes
 			this.topBarData = new TopBarData(this.money, seeds, pokemons, rewards);
 
 			//fictive data :
-			MarketSeed seed = new MarketSeed("testSeed", new List<Types.Element> { Types.Element.Acier, Types.Element.Dragon }, "blabla descritpion", 20);
-			MarketSeed seed2 = new MarketSeed("testSeed2", new List<Types.Element> { Types.Element.Electrique }, "blabla2 descritpion", 12);
+			MarketSeed seed = new MarketSeed("testSeed", new List<ElementType> { ElementType.Acier, ElementType.Dragon }, "blabla descritpion", 20);
+			MarketSeed seed2 = new MarketSeed("testSeed2", new List<ElementType> { ElementType.Electrique }, "blabla2 descritpion", 12);
 			seeds.Add(seed);
 			seeds.Add(seed2);
 			seeds.Add(seed);
 			seeds.Add(seed2);
 
-			Pokemon pokemon = new Pokemon(new Uri("ms-appx:///Assets/para.jpg"), "para", new List<Types.Element> { Types.Element.Acier, Types.Element.Dragon }, "pokemon qui ressemble à un crabe");
-			Pokemon pokemon2 = new Pokemon(new Uri("ms-appx:///Assets/pika.PNG"), "pika", new List<Types.Element> { Types.Element.Electrique }, "fidel pokemon qui nous suit partout");
+			Pokemon pokemon = new Pokemon(new Uri("ms-appx:///Assets/para.jpg"), "para", new List<ElementType> { ElementType.Acier, ElementType.Dragon }, "pokemon qui ressemble à un crabe");
+			Pokemon pokemon2 = new Pokemon(new Uri("ms-appx:///Assets/pika.PNG"), "pika", new List<ElementType> { ElementType.Electrique }, "fidel pokemon qui nous suit partout");
 			pokemons.Add(pokemon);
 			pokemons.Add(pokemon2);
 			pokemons.Add(pokemon);
@@ -111,6 +111,14 @@ namespace PokemonGarden.Classes
 				this.money = value;
 				topBarData.OnMoneyChanged(value, "GoldActual");
 				//actualizeGold();
+			}
+		}
+
+		public List<MarketSeed> SeedInventory
+		{
+			get
+			{
+				return this.seeds;
 			}
 		}
 

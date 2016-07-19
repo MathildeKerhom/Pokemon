@@ -6,7 +6,7 @@ namespace PokemonGarden.Classes
 	{
 		private int price;
 
-		public MarketSeed(string name, List<Types.Element> types, string description, int price) : base(name, types, description)
+		public MarketSeed(string name, List<ElementType> types, string description, int price) : base(name, types, description)
 		{
 			this.price = price;
 		}

@@ -12,18 +12,18 @@ namespace PokemonGarden
 		private Uri seedImg = new Uri("ms-appx:///Assets/Graine_DM.png");
 		private string backgroundColor = "LightGray";
 
-		public Seed(string name, List<Types.Element> types, string description)
+		public Seed(string name, List<ElementType> types, string description)
 		{
 			this.name = name;
 			setImgType(types);
 			this.description = description;
 		}
 
-		private void setImgType(List<Types.Element> types)
+		private void setImgType(List<ElementType> types)
 		{
 			imgTypes = new List<Types>();
 
-			foreach (Types.Element item in types)
+			foreach (ElementType item in types)
 			{
 				imgTypes.Add(new Types(item));
 			}

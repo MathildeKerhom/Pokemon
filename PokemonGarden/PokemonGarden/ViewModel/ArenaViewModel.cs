@@ -25,8 +25,8 @@ namespace PokemonGarden.ViewModel
 
         private void init()
         {
-            this.arena.PokemonAI.DataContext = new Pokemon(new Uri("ms-appx:///Assets/pika.PNG"), "pika", new List<Types.Element> { Types.Element.Electrique }, "fidel pokemon qui nous suit partout", "Transparent");
-            this.arena.Pokemon1.DataContext = new Pokemon(new Uri("ms-appx:///Assets/para.jpg"), "para", new List<Types.Element> { Types.Element.Insecte, Types.Element.Plante }, "pokemon qui ressemble à un crabe");
+            this.arena.PokemonAI.DataContext = new Pokemon(new Uri("ms-appx:///Assets/pika.PNG"), "pika", new List<ElementType> { ElementType.Electrique }, "fidel pokemon qui nous suit partout", "Transparent");
+            this.arena.Pokemon1.DataContext = new Pokemon(new Uri("ms-appx:///Assets/para.jpg"), "para", new List<ElementType> { ElementType.Insecte, ElementType.Plante }, "pokemon qui ressemble à un crabe");
         }
 
         private void bind()
