@@ -105,12 +105,15 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Classes\EntityBase.cs" />
     <Compile Include="Classes\GardenSeed.cs" />
+    <Compile Include="Classes\ILockable.cs" />
     <Compile Include="Classes\MarketSeed.cs" />
     <Compile Include="Classes\Player.cs" />
     <Compile Include="Classes\Pokemon.cs" />
     <Compile Include="Classes\Rewards.cs" />
     <Compile Include="Classes\Seed.cs" />
+    <Compile Include="Classes\SqliteManager.cs" />
     <Compile Include="Classes\TopBarData.cs" />
     <Compile Include="Classes\Types.cs" />
     <Compile Include="Resources\overlay\EngagementPageOverlay.cs" />
@@ -281,7 +284,11 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <SDKReference Include="SQLite.UWP.2015, Version=3.13.0">
+      <Name>SQLite for Universal Windows Platform</Name>
+    </SDKReference>
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

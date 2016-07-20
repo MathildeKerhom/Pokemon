@@ -1,16 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using PokemonGarden.Classes;
+using SQLite.Net.Attributes;
 using Windows.UI.Xaml.Controls;
 
 namespace PokemonGarden
 {
-	public abstract class Seed
+	public abstract class Seed: EntityBase
 	{
 		private List<Types> imgTypes;
 		private string name, description;
 		private Uri seedImg = new Uri("ms-appx:///Assets/Graine_DM.png");
 		private string backgroundColor = "LightGray";
+
+		public Seed()
+		{
+
+		}
 
 		public Seed(string name, List<ElementType> types, string description)
 		{
@@ -29,6 +35,7 @@ namespace PokemonGarden
 			}
 		}
 
+		[Ignore]
 		public List<Types> GetUriTypeList
 		{
 			get
@@ -37,6 +44,7 @@ namespace PokemonGarden
 			}
 		}
 
+		[Ignore]
 		public Uri GetSeedImg
 		{
 			get
@@ -45,6 +53,7 @@ namespace PokemonGarden
 			}
 		}
 
+		[Ignore]
 		public string GetBackgroundColor
 		{
 			get
@@ -59,6 +68,10 @@ namespace PokemonGarden
 			{
 				return this.name;
 			}
+			set
+			{
+				this.name = value;
+			}
 		}
 
 		public string Description
@@ -66,6 +79,10 @@ namespace PokemonGarden
 			get
 			{
 				return this.description;
+			}
+			set
+			{
+				this.description = value;
 			}
 		}
 

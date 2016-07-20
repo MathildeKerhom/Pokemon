@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -11,25 +12,32 @@ namespace PokemonGarden.Classes
 	public class TopBarData : INotifyPropertyChanged
 	{
 		public event PropertyChangedEventHandler PropertyChanged = delegate { };
-
-		private int money;
-		private List<MarketSeed> seeds;
-		private List<Pokemon> pokemons;
-		private Rewards rewards;
-
-		public TopBarData(int money, List<MarketSeed> seeds, List<Pokemon> pokemons, Rewards rewards)
-		{
-			this.money = money;
-			this.seeds = seeds;
-			this.pokemons = pokemons;
-			this.rewards = rewards;
-		}
 		
+		//private Rewards rewards;
+		private Player player;
+
+		public TopBarData(Player player)
+		{
+			this.player = player;
+			this.player.SeedInventory.CollectionChanged += Seeds_CollectionChanged;
+			this.player.PokemonInventory.CollectionChanged += Pokemons_CollectionChanged;
+		}
+
+		private void Pokemons_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+		{
+			OnPropertyChanged("PokemonTotal");
+		}
+
+		private void Seeds_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+		{
+			OnPropertyChanged("SeedActual");
+		}
+
 		public int PokemonTotal
 		{
 			get
 			{
-				return this.pokemons.Count;
+				return this.player.PokemonInventory.Count;
 			}
 		}
 
@@ -37,7 +45,7 @@ namespace PokemonGarden.Classes
 		{
 			get
 			{
-				return this.seeds.Count;
+				return this.player.SeedInventory.Count;
 			}
 		}
 
@@ -45,7 +53,7 @@ namespace PokemonGarden.Classes
 		{
 			get
 			{
-				return this.money;
+				return this.player.Money;
 			}
 		}
 
@@ -57,17 +65,16 @@ namespace PokemonGarden.Classes
 			}
 		}
 
-		public void OnPropertyChanged([CallerMemberName] string propertyName = null)
+		private void OnPropertyChanged([CallerMemberName] string propertyName = null)
 		{
 			// Raise the PropertyChanged event, passing the name of the property whose value has changed.
 			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 		}
 
-		public void OnMoneyChanged(int value, [CallerMemberName] string propertyName = null)
+		public void OnMoneyChanged()
 		{
-			this.money = value;
 			// Raise the PropertyChanged event, passing the name of the property whose value has changed.
-			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			OnPropertyChanged("GoldActual");
 		}
 	}
 }

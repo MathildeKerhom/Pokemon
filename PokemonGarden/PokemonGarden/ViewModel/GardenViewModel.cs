@@ -27,7 +27,7 @@ namespace PokemonGarden.ViewModel
 		private void init()
 		{
 			Player player = Player.GetPlayer();
-			this.garden.Seed1.DataContext = player.GetMarketSeedList().FirstOrDefault();
+			this.garden.Seed1.DataContext = player.SeedInventory.FirstOrDefault();
 		}
 
 		private void bind()

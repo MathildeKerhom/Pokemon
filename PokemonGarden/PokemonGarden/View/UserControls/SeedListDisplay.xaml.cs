@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -18,18 +19,18 @@ using Windows.UI.Xaml.Navigation;
 
 namespace PokemonGarden.View.UserControls
 {
-	public sealed partial class SeedListDisplay:UserControl
+	public sealed partial class SeedListDisplay : UserControl
 	{
 		public SeedListDisplay()
 		{
 			this.InitializeComponent();
-			this.seedListView.ItemsSource = Player.GetPlayer().GetMarketSeedList();
+			this.seedListView.ItemsSource = Player.GetPlayer().SeedInventory;
 		}
 
 		private void seed_DragStarting(object sender, DragItemsStartingEventArgs e)
 		{
-			object item = e.Items.FirstOrDefault();
-			if (item != null)
+			MarketSeed item = e.Items.FirstOrDefault() as MarketSeed;
+			if (item != null && item.IsEnable)
 			{
 				e.Data.Properties.Add("seedSource", item);
 			}

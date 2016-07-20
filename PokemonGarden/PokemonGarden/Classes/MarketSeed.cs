@@ -1,19 +1,34 @@
 ﻿using System.Collections.Generic;
+using SQLite.Net.Attributes;
+using SQLiteNetExtensions.Attributes;
 
 namespace PokemonGarden.Classes
 {
-	public class MarketSeed:Seed
+	public class MarketSeed:Seed, ILockable
 	{
 		private int price;
+
+		public MarketSeed()
+		{
+
+		}
 
 		public MarketSeed(string name, List<ElementType> types, string description, int price) : base(name, types, description)
 		{
 			this.price = price;
+			this.IsEnable = true;
+		}
+
+		[ForeignKey(typeof(Player))]
+		public int PlayerId
+		{
+			get; set;
 		}
 
 		/// <summary>
 		/// return "{TotalPrice} Pc"
 		/// </summary>
+		[Ignore]
 		public string PriceQuantity
 		{
 			get
@@ -43,6 +58,13 @@ namespace PokemonGarden.Classes
 			{
 				this.price = value;
 			}
+		}
+
+		[Ignore]
+		public bool IsEnable
+		{
+			get;
+			set;
 		}
 	}
 }

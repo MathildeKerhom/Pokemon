@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PokemonGarden.Classes;
 using PokemonGarden.View;
 using Windows.Data.Xml.Dom;
 using Windows.UI.Notifications;
@@ -21,10 +22,22 @@ namespace PokemonGarden.ViewModel
 
 		public VillageViewModel(Village village)
 		{
+			SQLiteTest();
+
 			this.village = village;
 			this.init();
 			// set keyDown event to currentWindow
 			Window.Current.Content.KeyDown += Content_KeyDown;
+		}
+
+		private void SQLiteTest()
+		{
+			SqliteManager<Player> managerPlayerBySQLite = new SqliteManager<Player>();
+			new SqliteManager<MarketSeed>();
+			Player.GetPlayer().Id = 1;
+			//managerPlayerBySQLite.Insert(Player.GetPlayer());
+			managerPlayerBySQLite.InsertAllWithChildren(Player.GetPlayer());
+			Player recupPlayer = managerPlayerBySQLite.GetWithChildren(Player.GetPlayer().Id);
 		}
 
 		/// <summary>

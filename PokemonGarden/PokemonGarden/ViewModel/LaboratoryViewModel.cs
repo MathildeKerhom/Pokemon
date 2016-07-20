@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using PokemonGarden.Classes;
 using PokemonGarden.View;
+using PokemonGarden.View.UserControls;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
@@ -86,6 +87,8 @@ namespace PokemonGarden.ViewModel
 				MarketSeed newSeedRecived = new MarketSeed(seedRight.Name + " " + seedLeft.Name, types, "test fusion", (seedLeft.Price + seedRight.Price) / 2);
 				await new SeedRecived(newSeedRecived).ShowAsync();
 				Player.GetPlayer().SeedInventory.Add(newSeedRecived);
+				this.laboratory.FusionSeedBlockLeft.DataContext = null;
+				this.laboratory.FusionSeedBlockRight.DataContext = null;
 				Player.GetPlayer().SeedInventory.Remove(seedLeft);
 				Player.GetPlayer().SeedInventory.Remove(seedRight);
 			}
@@ -149,20 +152,14 @@ namespace PokemonGarden.ViewModel
 		{
 			object seed;
 			e.Data.Properties.TryGetValue("seedSource", out seed);
-			if (seed != null)
-			{
-				this.laboratory.FusionSeedBlockLeft.DataContext = seed as MarketSeed;
-			}
+			updateItemContent(seed as MarketSeed, this.laboratory.FusionSeedBlockLeft);
 		}
 
 		private void seedRight_Drop(object sender, DragEventArgs e)
 		{
 			object seed;
 			e.Data.Properties.TryGetValue("seedSource", out seed);
-			if (seed != null)
-			{
-				this.laboratory.FusionSeedBlockRight.DataContext = seed as MarketSeed;
-			}
+			updateItemContent(seed as MarketSeed, this.laboratory.FusionSeedBlockRight);
 		}
 
 		private void seedFusion_Drop(object sender, DragEventArgs e)
@@ -182,6 +179,51 @@ namespace PokemonGarden.ViewModel
 			if (pokemon != null)
 			{
 				this.laboratory.UpgradePokemon.DataContext = pokemon as Pokemon;
+			}
+		}
+
+		/// <summary>
+		/// update content, lock current item and unlock last
+		/// </summary>
+		/// <param name="item">new item to update</param>
+		/// <param name="userControlToUpdate">dataContext target to update</param>
+		/// <returns>dataContext updated and not null</returns>
+		private void updateItemContent<T>(T item, UserControl userControlToUpdate) where T : class, ILockable
+		{
+			if (item != null)
+			{
+				unlockItemIfExist(userControlToUpdate.DataContext as T); // unlock last seed
+
+				userControlToUpdate.DataContext = item; // replace last seed on dataContext
+
+				if (userControlToUpdate.DataContext != null)
+				{
+					lockItemIfExist(item as T);
+				}
+			}
+		}
+
+		/// <summary>
+		/// unlock item
+		/// </summary>
+		/// <param name="item">item to unlock</param>
+		private void unlockItemIfExist<T>(T item) where T : ILockable
+		{
+			if (item != null)
+			{
+				item.IsEnable = true;
+			}
+		}
+
+		/// <summary>
+		/// lock item (used to prevent twice using of it)
+		/// </summary>
+		/// <param name="item">item to lock</param>
+		private void lockItemIfExist<T>(T item) where T : ILockable
+		{
+			if (item != null)
+			{
+				item.IsEnable = false;
 			}
 		}
 	}

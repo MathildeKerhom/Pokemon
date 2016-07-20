@@ -39,6 +39,12 @@ namespace PokemonGarden
 				Microsoft.ApplicationInsights.WindowsCollectors.Session);
 			this.InitializeComponent();
 			this.Suspending += OnSuspending;
+			this.UnhandledException += App_UnhandledException;
+		}
+
+		private void App_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+		{
+			Debug.WriteLine(e.Exception + "\n" + e.Message);
 		}
 
 		protected override void OnActivated(IActivatedEventArgs e)
@@ -120,6 +126,7 @@ namespace PokemonGarden
 
 		private void InitEngagement(IActivatedEventArgs e)
 		{
+			EngagementAgent.Instance.TestLogLevel = EngagementTestLogLevel.Verbose;
 			EngagementAgent.Instance.Init(e);
 			EngagementReach.Instance.Init(e);
 
