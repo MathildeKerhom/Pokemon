@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Diagnostics;
 using PokemonGarden.Classes;
 using PokemonGarden.View;
 using PokemonGarden.View.UserControls;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Navigation;
 
 namespace PokemonGarden.ViewModel
@@ -23,55 +26,68 @@ namespace PokemonGarden.ViewModel
 
 		private void bindEvents()
 		{
-			this.laboratory.FusionBlockLeft.DragLeave += seed_DragLeave;
-			this.laboratory.FusionBlockLeft.DragEnter += seed_DragEnter;
-			this.laboratory.FusionBlockLeft.Drop += seedLeft_Drop;
+			this.laboratory.FusionBlockLeft.DragLeave += dragLeaveDisplayAllowInfo;
+			this.laboratory.FusionBlockLeft.DragEnter += seed_DragEnterDisplayInfo;
+			this.laboratory.FusionBlockLeft.Drop += fusionSeedLeftCell_Drop;
 			this.laboratory.FusionBlockLeft.AllowDrop = true;
 
-			this.laboratory.FusionBlockRight.DragLeave += seed_DragLeave;
-			this.laboratory.FusionBlockRight.DragEnter += seed_DragEnter;
-			this.laboratory.FusionBlockRight.Drop += seedRight_Drop;
+			this.laboratory.FusionBlockRight.DragLeave += dragLeaveDisplayAllowInfo;
+			this.laboratory.FusionBlockRight.DragEnter += seed_DragEnterDisplayInfo;
+			this.laboratory.FusionBlockRight.Drop += fusionSeedRightCell_Drop;
 			this.laboratory.FusionBlockRight.AllowDrop = true;
 
 			this.laboratory.FusionBtn.Tapped += FusionBtn_Tapped;
 
-			this.laboratory.UpgradeBlockLeft.DragLeave += pokemon_DragLeave;
-			this.laboratory.UpgradeBlockLeft.DragEnter += pokemon_DragEnter;
-			this.laboratory.UpgradeBlockLeft.Drop += pokemonFusion_Drop;
-			this.laboratory.UpgradeBlockLeft.AllowDrop = true;
+			this.laboratory.UpgradeGridBlockLeft.DragLeave += dragLeaveDisplayAllowInfo;
+			this.laboratory.UpgradeGridBlockLeft.DragEnter += pokemon_DragEnterDisplayInfo;
+			this.laboratory.UpgradeGridBlockLeft.Drop += upgradePokemonCell_Drop;
+			this.laboratory.UpgradeGridBlockLeft.AllowDrop = true;
 
-			this.laboratory.UpgradeBlockRight.DragLeave += seed_DragLeave;
-			this.laboratory.UpgradeBlockRight.DragEnter += seed_DragEnter;
-			this.laboratory.UpgradeBlockRight.Drop += seedFusion_Drop;
-			this.laboratory.UpgradeBlockRight.AllowDrop = true;
+			this.laboratory.UpgradeGridBlockRight.DragLeave += dragLeaveDisplayAllowInfo;
+			this.laboratory.UpgradeGridBlockRight.DragEnter += seed_DragEnterDisplayInfo;
+			this.laboratory.UpgradeGridBlockRight.Drop += upgradeSeedCell_Drop;
+			this.laboratory.UpgradeGridBlockRight.AllowDrop = true;
+
+			this.laboratory.UpgradeBtn.Tapped += UpgradeBtn_Tapped;
+
+			this.laboratory.Pivot.SelectionChanged += Pivot_SelectionChanged;
 
 			(Window.Current.Content as Frame).Navigating += this.onChangingFrame;
 		}
 
 		private void onChangingFrame(object sender, NavigatingCancelEventArgs e)
 		{
-			this.laboratory.FusionBlockLeft.DragLeave -= seed_DragLeave;
-			this.laboratory.FusionBlockLeft.DragEnter -= seed_DragEnter;
-			this.laboratory.FusionBlockLeft.Drop -= seedLeft_Drop;
+			this.laboratory.FusionBlockLeft.DragLeave -= dragLeaveDisplayAllowInfo;
+			this.laboratory.FusionBlockLeft.DragEnter -= seed_DragEnterDisplayInfo;
+			this.laboratory.FusionBlockLeft.Drop -= fusionSeedLeftCell_Drop;
 
-			this.laboratory.FusionBlockRight.DragLeave -= seed_DragLeave;
-			this.laboratory.FusionBlockRight.DragEnter -= seed_DragEnter;
-			this.laboratory.FusionBlockRight.Drop -= seedRight_Drop;
+			this.laboratory.FusionBlockRight.DragLeave -= dragLeaveDisplayAllowInfo;
+			this.laboratory.FusionBlockRight.DragEnter -= seed_DragEnterDisplayInfo;
+			this.laboratory.FusionBlockRight.Drop -= fusionSeedRightCell_Drop;
 
 			this.laboratory.FusionBtn.Tapped -= FusionBtn_Tapped;
 
-			this.laboratory.UpgradeBlockLeft.DragLeave -= pokemon_DragLeave;
-			this.laboratory.UpgradeBlockLeft.DragEnter -= pokemon_DragEnter;
-			this.laboratory.UpgradeBlockLeft.Drop -= pokemonFusion_Drop;
+			this.laboratory.UpgradeGridBlockLeft.DragLeave -= dragLeaveDisplayAllowInfo;
+			this.laboratory.UpgradeGridBlockLeft.DragEnter -= pokemon_DragEnterDisplayInfo;
+			this.laboratory.UpgradeGridBlockLeft.Drop -= upgradePokemonCell_Drop;
 
-			this.laboratory.UpgradeBlockRight.DragLeave -= seed_DragLeave;
-			this.laboratory.UpgradeBlockRight.DragEnter -= seed_DragEnter;
-			this.laboratory.UpgradeBlockRight.Drop -= seedFusion_Drop;
+			this.laboratory.UpgradeGridBlockRight.DragLeave -= dragLeaveDisplayAllowInfo;
+			this.laboratory.UpgradeGridBlockRight.DragEnter -= seed_DragEnterDisplayInfo;
+			this.laboratory.UpgradeGridBlockRight.Drop -= upgradeSeedCell_Drop;
+
+			this.laboratory.UpgradeBtn.Tapped -= UpgradeBtn_Tapped;
+
+			this.laboratory.Pivot.SelectionChanged -= Pivot_SelectionChanged;
 
 			(Window.Current.Content as Frame).Navigating -= this.onChangingFrame;
 		}
 
-		private async void FusionBtn_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
+		/// <summary>
+		/// do the fusion
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private async void FusionBtn_Tapped(object sender, TappedRoutedEventArgs e)
 		{
 			MarketSeed seedLeft = this.laboratory.FusionSeedBlockLeft.DataContext as MarketSeed;
 			MarketSeed seedRight = this.laboratory.FusionSeedBlockRight.DataContext as MarketSeed;
@@ -94,6 +110,21 @@ namespace PokemonGarden.ViewModel
 			}
 		}
 
+		/// <summary>
+		/// do the upgrade
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private async void UpgradeBtn_Tapped(object sender, TappedRoutedEventArgs e)
+		{
+			throw new NotImplementedException();
+		}
+
+		/// <summary>
+		/// chose a random element into list of types (parent of ElementType)
+		/// </summary>
+		/// <param name="types"></param>
+		/// <returns></returns>
 		private ElementType getOneType(List<Types> types)
 		{
 			List<ElementType> typeList = new List<ElementType>();
@@ -106,6 +137,11 @@ namespace PokemonGarden.ViewModel
 			return getOneType(typeList);
 		}
 
+		/// <summary>
+		/// chose a random element into list of ElementType
+		/// </summary>
+		/// <param name="types"></param>
+		/// <returns></returns>
 		private ElementType getOneType(List<ElementType> types)
 		{
 			if (types.Count > 0)
@@ -118,7 +154,12 @@ namespace PokemonGarden.ViewModel
 			}
 		}
 
-		private void seed_DragEnter(object sender, DragEventArgs e)
+		/// <summary>
+		/// signal to the user, can drop seed here
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void seed_DragEnterDisplayInfo(object sender, DragEventArgs e)
 		{
 			object seed;
 			e.Data.Properties.TryGetValue("seedSource", out seed);
@@ -128,7 +169,12 @@ namespace PokemonGarden.ViewModel
 			}
 		}
 
-		private void pokemon_DragEnter(object sender, DragEventArgs e)
+		/// <summary>
+		/// signal to the user, can drop pokemon here
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void pokemon_DragEnterDisplayInfo(object sender, DragEventArgs e)
 		{
 			object pokemon;
 			e.Data.Properties.TryGetValue("pokemonSource", out pokemon);
@@ -138,47 +184,112 @@ namespace PokemonGarden.ViewModel
 			}
 		}
 
-		private void pokemon_DragLeave(object sender, DragEventArgs e)
+		/// <summary>
+		/// signal to the user, can't move element here
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void dragLeaveDisplayAllowInfo(object sender, DragEventArgs e)
 		{
 			e.AcceptedOperation = Windows.ApplicationModel.DataTransfer.DataPackageOperation.None;
 		}
 
-		private void seed_DragLeave(object sender, DragEventArgs e)
-		{
-			e.AcceptedOperation = Windows.ApplicationModel.DataTransfer.DataPackageOperation.None;
-		}
-
-		private void seedLeft_Drop(object sender, DragEventArgs e)
+		/// <summary>
+		/// event on left seed cell droping (fusion tab)
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void fusionSeedLeftCell_Drop(object sender, DragEventArgs e)
 		{
 			object seed;
 			e.Data.Properties.TryGetValue("seedSource", out seed);
 			updateItemContent(seed as MarketSeed, this.laboratory.FusionSeedBlockLeft);
 		}
 
-		private void seedRight_Drop(object sender, DragEventArgs e)
+		/// <summary>
+		/// event on right seed cell droping (fusion tab)
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void fusionSeedRightCell_Drop(object sender, DragEventArgs e)
 		{
 			object seed;
 			e.Data.Properties.TryGetValue("seedSource", out seed);
 			updateItemContent(seed as MarketSeed, this.laboratory.FusionSeedBlockRight);
 		}
 
-		private void seedFusion_Drop(object sender, DragEventArgs e)
+		/// <summary>
+		/// event on seed cell droping (upgrade tab)
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void upgradeSeedCell_Drop(object sender, DragEventArgs e)
 		{
 			object seed;
 			e.Data.Properties.TryGetValue("seedSource", out seed);
-			if (seed != null)
-			{
-				this.laboratory.UpgradeSeed.DataContext = seed as MarketSeed;
-			}
+			updateItemContent(seed as MarketSeed, this.laboratory.UpgradeSeed);
 		}
 
-		private void pokemonFusion_Drop(object sender, DragEventArgs e)
+		/// <summary>
+		/// event on pokemon cell droping (upgrade tab)
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void upgradePokemonCell_Drop(object sender, DragEventArgs e)
 		{
 			object pokemon;
 			e.Data.Properties.TryGetValue("pokemonSource", out pokemon);
 			if (pokemon != null)
 			{
 				this.laboratory.UpgradePokemon.DataContext = pokemon as Pokemon;
+			}
+		}
+
+		/// <summary>
+		/// when pivot tab change
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void Pivot_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+			Player player = Player.GetPlayer();
+			if (this.laboratory.Pivot.SelectedIndex == 0) // create tab
+			{
+				unlockItemIfExist(this.laboratory.UpgradeSeed.DataContext as MarketSeed);
+				CheckAndLockItemIfExist(this.laboratory.FusionSeedBlockLeft, player.SeedInventory);
+				CheckAndLockItemIfExist(this.laboratory.FusionSeedBlockRight, player.SeedInventory);
+			}
+			else // upgrade tab
+			{
+				unlockItemIfExist(this.laboratory.FusionSeedBlockLeft.DataContext as MarketSeed);
+				unlockItemIfExist(this.laboratory.FusionSeedBlockRight.DataContext as MarketSeed);
+				CheckAndLockItemIfExist(this.laboratory.UpgradeSeed, player.SeedInventory);
+			}
+		}
+
+		/// <summary>
+		/// if userControl datacontext object is contained on list, this object'll be lock
+		/// </summary>
+		/// <typeparam name="T"></typeparam>
+		/// <param name="ItemToCheck"></param>
+		/// <param name="compareItemToList"></param>
+		/// <param name="userControlToCheck"></param>
+		private void CheckAndLockItemIfExist<T>(UserControl userControlToCheck, ObservableCollection<T> compareItemToList) where T : class, ILockable
+		{
+			if (compareItemToList != null && userControlToCheck != null)
+			{
+				T itemToCheck = userControlToCheck.DataContext as T;
+				if (itemToCheck != null)
+				{
+					if (compareItemToList.Contains(itemToCheck))
+					{
+						lockItemIfExist(itemToCheck);
+					}
+					else
+					{
+						userControlToCheck.DataContext = null;
+					}
+				} 
 			}
 		}
 

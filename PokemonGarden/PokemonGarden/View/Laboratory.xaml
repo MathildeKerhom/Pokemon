@@ -13,7 +13,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <UserControls:TopBar Grid.Row="0"/>
-        <Pivot Margin="10,10,10,10" Padding="20,0,20,0" Grid.Row="1">
+        <Pivot x:Name="pivot" Margin="10,10,10,10" Padding="20,0,20,0" Grid.Row="1">
             <PivotItem Header="Créer">
                 <Grid>
                     <Grid.RowDefinitions>

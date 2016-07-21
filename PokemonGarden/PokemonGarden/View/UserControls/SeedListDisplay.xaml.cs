@@ -27,12 +27,16 @@ namespace PokemonGarden.View.UserControls
 			this.seedListView.ItemsSource = Player.GetPlayer().SeedInventory;
 		}
 
-		private void seed_DragStarting(object sender, DragItemsStartingEventArgs e)
+		private void seed_DragStarting(object sender, DragItemsStartingEventArgs args)
 		{
-			MarketSeed item = e.Items.FirstOrDefault() as MarketSeed;
+			MarketSeed item = args.Items.FirstOrDefault() as MarketSeed;
 			if (item != null && item.IsEnable)
 			{
-				e.Data.Properties.Add("seedSource", item);
+				args.Data.Properties.Add("seedSource", item);
+			}
+			else
+			{
+				args.Cancel = true;
 			}
 		}
 	}

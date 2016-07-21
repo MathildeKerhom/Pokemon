@@ -9,7 +9,7 @@
     d:DesignHeight="300"
     d:DesignWidth="400">
 
-    <GridView x:Name="seedListView" Margin="10,10,10,10" Padding="10,10,10,10"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" IsDoubleTapEnabled="False" SelectionMode="None" IsItemClickEnabled="False" IsHoldingEnabled="False" CanDragItems="True" DragItemsStarting="seed_DragStarting">
+    <GridView x:Name="seedListView" Margin="10,10,10,10" Padding="10,10,10,10"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" IsDoubleTapEnabled="False" SelectionMode="None" IsItemClickEnabled="False" IsHoldingEnabled="False" CanDragItems="true" DragItemsStarting="seed_DragStarting">
         <GridView.ItemTemplate>
             <DataTemplate>
                 <UserControls:SeedWithCountDisplay/>

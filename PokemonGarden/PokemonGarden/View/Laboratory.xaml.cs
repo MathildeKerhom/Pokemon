@@ -28,28 +28,34 @@ namespace PokemonGarden.View
 	{
 		public Grid FusionBlockLeft { get; set; }
 		public Grid FusionBlockRight { get; set; }
-		public Grid UpgradeBlockLeft { get; set; }
-		public Grid UpgradeBlockRight { get; set; }
+		public Grid UpgradeGridBlockLeft { get; set; }
+		public Grid UpgradeGridBlockRight { get; set; }
 		public PokemonDisplay UpgradePokemon { get; set; }
 		public SeedDisplay UpgradeSeed { get; set; }
 		public SeedDisplay FusionSeedBlockLeft { get; set; }
 		public SeedDisplay FusionSeedBlockRight { get; set; }
 		public Button FusionBtn { get; set; }
 		public Button UpgradeBtn { get; set; }
+		public Pivot Pivot { get; set; }
 
 		public Laboratory()
 		{
 			this.InitializeComponent();
+
 			this.FusionBlockLeft = this.fusionBlockLeft;
 			this.FusionBlockRight = this.fusionBlockRight;
-			this.UpgradeBlockLeft = this.upgradeBlockLeft;
-			this.UpgradeBlockRight = this.upgradeBlockRight;
-			this.UpgradePokemon = this.pokemonUpgrade;
-			this.UpgradeSeed = this.seedUpgrade;
 			this.FusionSeedBlockLeft = this.seedLeftFusion;
 			this.FusionSeedBlockRight = this.seedRightFusion;
 			this.FusionBtn = this.btnFusion;
+
+			this.UpgradeGridBlockLeft = this.upgradeBlockLeft;
+			this.UpgradeGridBlockRight = this.upgradeBlockRight;
+			this.UpgradePokemon = this.pokemonUpgrade;
+			this.UpgradeSeed = this.seedUpgrade;
 			this.UpgradeBtn = this.btnUpgrade;
+
+			this.Pivot = this.pivot;
+
 			new LaboratoryViewModel(this);
 		}
 	}
