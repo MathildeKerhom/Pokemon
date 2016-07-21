@@ -15,12 +15,10 @@ namespace PokemonGarden.ViewModel
 	public class LaboratoryViewModel
 	{
 		private Laboratory laboratory;
-		private Random random;
 
 		public LaboratoryViewModel(Laboratory laboratory)
 		{
 			this.laboratory = laboratory;
-			this.random = new Random(DateTime.Now.Millisecond);
 			bindEvents();
 		}
 
@@ -79,11 +77,16 @@ namespace PokemonGarden.ViewModel
 
 			this.laboratory.Pivot.SelectionChanged -= Pivot_SelectionChanged;
 
+			this.unlockItemIfExist(this.laboratory.UpgradeSeed.DataContext as MarketSeed);
+			this.unlockItemIfExist(this.laboratory.UpgradePokemon.DataContext as Pokemon);
+			this.unlockItemIfExist(this.laboratory.FusionSeedBlockLeft.DataContext as MarketSeed);
+			this.unlockItemIfExist(this.laboratory.FusionSeedBlockRight.DataContext as MarketSeed);
+
 			(Window.Current.Content as Frame).Navigating -= this.onChangingFrame;
 		}
 
 		/// <summary>
-		/// do the fusion
+		/// do the fusion on button clic
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
@@ -94,8 +97,8 @@ namespace PokemonGarden.ViewModel
 			if (seedLeft != null && seedRight != null)
 			{
 				List<ElementType> types = new List<ElementType>();
-				types.Add(getOneType(seedRight.GetUriTypeList));
-				types.Add(getOneType(seedLeft.GetUriTypeList));
+				types.Add(Types.GetOneType(seedRight.GetUriTypeList));
+				types.Add(Types.GetOneType(seedLeft.GetUriTypeList));
 				if ((int)types[0] == (int)types[1])
 				{
 					types.RemoveAt(1);
@@ -111,46 +114,20 @@ namespace PokemonGarden.ViewModel
 		}
 
 		/// <summary>
-		/// do the upgrade
+		/// do the upgrade on button clic
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
 		private async void UpgradeBtn_Tapped(object sender, TappedRoutedEventArgs e)
 		{
-			throw new NotImplementedException();
-		}
-
-		/// <summary>
-		/// chose a random element into list of types (parent of ElementType)
-		/// </summary>
-		/// <param name="types"></param>
-		/// <returns></returns>
-		private ElementType getOneType(List<Types> types)
-		{
-			List<ElementType> typeList = new List<ElementType>();
-
-			foreach (Types type in types)
+			Pokemon pokemon = this.laboratory.UpgradePokemon.DataContext as Pokemon;
+			MarketSeed seed = this.laboratory.UpgradeSeed.DataContext as MarketSeed;
+			if (pokemon != null && seed != null)
 			{
-				typeList.Add(type.ElementType);
-			}
-
-			return getOneType(typeList);
-		}
-
-		/// <summary>
-		/// chose a random element into list of ElementType
-		/// </summary>
-		/// <param name="types"></param>
-		/// <returns></returns>
-		private ElementType getOneType(List<ElementType> types)
-		{
-			if (types.Count > 0)
-			{
-				return types[this.random.Next(types.Count)];
-			}
-			else
-			{
-				throw new ArgumentException("void list recieved");
+				pokemon.Upgrade(seed);
+				await new PokemonRecived(pokemon).ShowAsync();
+				this.laboratory.UpgradeSeed.DataContext = null;
+				Player.GetPlayer().SeedInventory.Remove(seed);
 			}
 		}
 
@@ -239,10 +216,7 @@ namespace PokemonGarden.ViewModel
 		{
 			object pokemon;
 			e.Data.Properties.TryGetValue("pokemonSource", out pokemon);
-			if (pokemon != null)
-			{
-				this.laboratory.UpgradePokemon.DataContext = pokemon as Pokemon;
-			}
+			updateItemContent(pokemon as Pokemon, this.laboratory.UpgradePokemon);
 		}
 
 		/// <summary>
@@ -253,17 +227,19 @@ namespace PokemonGarden.ViewModel
 		private void Pivot_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
 			Player player = Player.GetPlayer();
-			if (this.laboratory.Pivot.SelectedIndex == 0) // create tab
+			if (this.laboratory.Pivot.SelectedIndex == 0) // tab create
 			{
-				unlockItemIfExist(this.laboratory.UpgradeSeed.DataContext as MarketSeed);
-				CheckAndLockItemIfExist(this.laboratory.FusionSeedBlockLeft, player.SeedInventory);
-				CheckAndLockItemIfExist(this.laboratory.FusionSeedBlockRight, player.SeedInventory);
+				this.unlockItemIfExist(this.laboratory.UpgradeSeed.DataContext as MarketSeed);
+				this.unlockItemIfExist(this.laboratory.UpgradePokemon.DataContext as Pokemon);
+				this.CheckAndLockItemIfExist(this.laboratory.FusionSeedBlockLeft, player.SeedInventory);
+				this.CheckAndLockItemIfExist(this.laboratory.FusionSeedBlockRight, player.SeedInventory);
 			}
-			else // upgrade tab
+			else // tab upgrade
 			{
-				unlockItemIfExist(this.laboratory.FusionSeedBlockLeft.DataContext as MarketSeed);
-				unlockItemIfExist(this.laboratory.FusionSeedBlockRight.DataContext as MarketSeed);
-				CheckAndLockItemIfExist(this.laboratory.UpgradeSeed, player.SeedInventory);
+				this.unlockItemIfExist(this.laboratory.FusionSeedBlockLeft.DataContext as MarketSeed);
+				this.unlockItemIfExist(this.laboratory.FusionSeedBlockRight.DataContext as MarketSeed);
+				this.CheckAndLockItemIfExist(this.laboratory.UpgradeSeed, player.SeedInventory);
+				this.CheckAndLockItemIfExist(this.laboratory.UpgradePokemon, player.PokemonInventory);
 			}
 		}
 

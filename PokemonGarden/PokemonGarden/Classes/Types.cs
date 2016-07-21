@@ -35,6 +35,9 @@ namespace PokemonGarden.Classes
 		//ie: normal.weak would have fighting
 		private static readonly ElementType[][] weak, strong, noEffect; //TODO fill noEffect
 
+		// to chose a random type
+		private static Random random = new Random(DateTime.Now.Millisecond);
+
 		static Types()
 		{
 			weak = new ElementType[Enum.GetValues(typeof(ElementType)).Length][];
@@ -131,6 +134,40 @@ namespace PokemonGarden.Classes
 		public static ElementType[] GetNoEffect(ElementType type)
 		{
 			return noEffect[(int)type];
+		}
+
+		/// <summary>
+		/// chose a random element into list of types (parent of ElementType)
+		/// </summary>
+		/// <param name="types"></param>
+		/// <returns></returns>
+		public static ElementType GetOneType(List<Types> types)
+		{
+			List<ElementType> typeList = new List<ElementType>();
+
+			foreach (Types type in types)
+			{
+				typeList.Add(type.ElementType);
+			}
+
+			return GetOneType(typeList);
+		}
+
+		/// <summary>
+		/// chose a random element into list of ElementType
+		/// </summary>
+		/// <param name="types"></param>
+		/// <returns></returns>
+		public static ElementType GetOneType(List<ElementType> types)
+		{
+			if (types.Count > 0)
+			{
+				return types[random.Next(types.Count)];
+			}
+			else
+			{
+				throw new ArgumentException("void list recieved");
+			}
 		}
 
 		private Uri uriType;

@@ -10,7 +10,7 @@ namespace PokemonGarden.Classes
 
 		public MarketSeed()
 		{
-
+			this.IsEnable = true;
 		}
 
 		public MarketSeed(string name, List<ElementType> types, string description, int price) : base(name, types, description)
