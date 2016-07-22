@@ -4,6 +4,8 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using PokemonGarden.Classes;
+using PokemonGarden.Classes.AutoGenerator;
+using PokemonGarden.Classes.AutoGenerator.Attributs;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
@@ -23,6 +25,11 @@ namespace PokemonGarden
 		private int pv, att, def, attSpe, defSpe, speed, spe, level;
 
 		private bool isBusy, isDead;
+
+		public Pokemon()
+		{
+
+		}
 
 		internal Pokemon(Uri imgPokemon, string name, List<ElementType> types, string description, string backgroundColor = "LightGray")
 		{
@@ -70,6 +77,7 @@ namespace PokemonGarden
 			}
 		}
 
+		[FakerTyper(SpecificFakerType.IGNORE)]
 		public ObservableCollection<Types> GetUriTypeList
 		{
 			get
@@ -99,6 +107,10 @@ namespace PokemonGarden
 			get
 			{
 				return this.name;
+			}
+			set
+			{
+				this.name = value;
 			}
 		}
 

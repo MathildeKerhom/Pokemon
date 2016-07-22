@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Runtime.CompilerServices;
+using PokemonGarden.Classes.AutoGenerator;
 using SQLite.Net.Attributes;
 using SQLiteNetExtensions.Attributes;
 
@@ -15,6 +17,7 @@ namespace PokemonGarden.Classes
 		private ObservableCollection<MarketSeed> seeds;
 		private ObservableCollection<Pokemon> pokemons;
 		private ObservableCollection<Reward> rewards;
+
 
 		public event PropertyChangedEventHandler PropertyChanged;
 
@@ -36,7 +39,8 @@ namespace PokemonGarden.Classes
 			this.money = money;
 
 			//fictive data :
-			MarketSeed seed = new MarketSeed("testSeed", new List<ElementType> { ElementType.Acier, ElementType.Dragon }, "blabla descritpion 1", 20);
+			//MarketSeed seed = new MarketSeed("testSeed", new List<ElementType> { ElementType.Acier, ElementType.Dragon }, "blabla descritpion 1", 20);
+			MarketSeed seed = ClassGenerator<MarketSeed>.GenerateItem();
 			MarketSeed seed2 = new MarketSeed("testSeed2", new List<ElementType> { ElementType.Electrique }, "blabla2 descritpion 2", 12);
 			MarketSeed seed3 = new MarketSeed("testSeed3", new List<ElementType> { ElementType.Acier, ElementType.Dragon }, "blabla descritpion 3", 20);
 			MarketSeed seed4 = new MarketSeed("testSeed4", new List<ElementType> { ElementType.Electrique }, "blabla2 descritpion 4", 12);
@@ -54,6 +58,9 @@ namespace PokemonGarden.Classes
 			this.pokemons.Add(pokemon3);
 			this.pokemons.Add(pokemon4);
 
+
+			Reward testAutoGenn = ClassGenerator<Reward>.GenerateItem();
+			Debugger.Break();
 			//end fictive data
 		}
 

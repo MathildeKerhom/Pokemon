@@ -105,6 +105,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Classes\AutoGenerator\Attributs\FakerTyper.cs" />
+    <Compile Include="Classes\AutoGenerator\ClassGenerator.cs" />
+    <Compile Include="Classes\AutoGenerator\Reflectionner.cs" />
     <Compile Include="Classes\EntityBase.cs" />
     <Compile Include="Classes\GardenSeed.cs" />
     <Compile Include="Classes\ILockable.cs" />
