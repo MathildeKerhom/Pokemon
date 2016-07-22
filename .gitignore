@@ -139,6 +139,7 @@ publish/
 #*.pubxml
 
 *.publishproj
+*.StoreAssociation.xml
 
 # NuGet Packages
 *.nupkg
