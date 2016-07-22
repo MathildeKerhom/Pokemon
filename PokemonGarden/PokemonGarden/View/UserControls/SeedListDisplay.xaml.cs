@@ -24,7 +24,7 @@ namespace PokemonGarden.View.UserControls
 		public SeedListDisplay()
 		{
 			this.InitializeComponent();
-			this.seedListView.ItemsSource = Player.GetPlayer().SeedInventory;
+			this.seedListView.ItemsSource = Player.GetPlayer.SeedInventory;
 		}
 
 		private void seed_DragStarting(object sender, DragItemsStartingEventArgs args)

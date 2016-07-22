@@ -34,10 +34,10 @@ namespace PokemonGarden.ViewModel
 		{
 			SqliteManager<Player> managerPlayerBySQLite = new SqliteManager<Player>();
 			new SqliteManager<MarketSeed>();
-			Player.GetPlayer().Id = 1;
+			Player.GetPlayer.Id = 1;
 			//managerPlayerBySQLite.Insert(Player.GetPlayer());
-			managerPlayerBySQLite.InsertAllWithChildren(Player.GetPlayer());
-			Player recupPlayer = managerPlayerBySQLite.GetWithChildren(Player.GetPlayer().Id);
+			managerPlayerBySQLite.InsertAllWithChildren(Player.GetPlayer);
+			Player recupPlayer = managerPlayerBySQLite.GetWithChildren(Player.GetPlayer.Id);
 		}
 
 		/// <summary>

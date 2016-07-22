@@ -23,7 +23,7 @@ namespace PokemonGarden.View.UserControls
 		public PokemonListDisplay()
 		{
 			this.InitializeComponent();
-			this.pokemonListView.ItemsSource = Player.GetPlayer().PokemonInventory;
+			this.pokemonListView.ItemsSource = Player.GetPlayer.PokemonInventory;
 		}
 
 		private void pokemon_DragItemsStarting(object sender, DragItemsStartingEventArgs args)

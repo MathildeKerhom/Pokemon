@@ -6,7 +6,7 @@ using Windows.UI.Xaml.Controls;
 
 namespace PokemonGarden
 {
-	public abstract class Seed: EntityBase
+	public abstract class Seed: EntityBase, ILockable
 	{
 		private List<Types> imgTypes;
 		private string name, description;
@@ -15,7 +15,7 @@ namespace PokemonGarden
 
 		public Seed()
 		{
-
+			this.IsEnable = true;
 		}
 
 		public Seed(string name, List<ElementType> types, string description)
@@ -23,6 +23,7 @@ namespace PokemonGarden
 			this.name = name;
 			setImgType(types);
 			this.description = description;
+			this.IsEnable = true;
 		}
 
 		private void setImgType(List<ElementType> types)
@@ -87,6 +88,13 @@ namespace PokemonGarden
 		}
 
 		public int Quantity
+		{
+			get;
+			set;
+		}
+
+		[Ignore]
+		public bool IsEnable
 		{
 			get;
 			set;

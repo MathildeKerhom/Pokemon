@@ -43,25 +43,25 @@
             <StackPanel x:Name="sp1" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="0" Padding="10,10,10,10">
                 <Image Source="ms-appx:///Assets/pokeball.jpg" HorizontalAlignment="Center" Height="50" VerticalAlignment="Center" Width="50"/>
                 <StackPanel VerticalAlignment="Center" Padding="10,0,0,0">
-                    <TextBlock x:Name="pokemonInventoryCounterText" TextWrapping="Wrap" Text="{Binding PokemonTotal}" TextAlignment="Center" TextLineBounds="Full" MaxWidth="80"/>
+                    <TextBlock x:Name="pokemonInventoryCounterText" TextWrapping="Wrap" Text="{Binding PokemonCount}" TextAlignment="Center" TextLineBounds="Full" MaxWidth="80"/>
                 </StackPanel>
             </StackPanel>
             <StackPanel x:Name="sp2" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1" Padding="10,10,10,10">
                 <Image Source="ms-appx:///Assets/seeds.PNG" HorizontalAlignment="Center" Height="50" VerticalAlignment="Center" Width="50"/>
                 <StackPanel VerticalAlignment="Center" Padding="10,0,0,0">
-                    <TextBlock x:Name="seedsCounterText" TextWrapping="Wrap" Text="{Binding SeedActual}" TextAlignment="Center" TextLineBounds="Full" MaxWidth="80"/>
+                    <TextBlock x:Name="seedsCounterText" TextWrapping="Wrap" Text="{Binding SeedCount}" TextAlignment="Center" TextLineBounds="Full" MaxWidth="80"/>
                 </StackPanel>
             </StackPanel>
             <StackPanel x:Name="sp3" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="2" Padding="10,10,10,10">
                 <Image Source="ms-appx:///Assets/usagoldcoins.jpg" HorizontalAlignment="Center" Height="50" VerticalAlignment="Center" Width="50"/>
                 <StackPanel VerticalAlignment="Center" Padding="10,0,0,0">
-                    <TextBlock x:Name="coinsCounterText" RelativePanel.RightOf="coinsCounterImg" TextWrapping="Wrap" Text="{Binding GoldActual}" TextAlignment="Center" TextLineBounds="Full" MaxWidth="80"/>
+                    <TextBlock x:Name="coinsCounterText" RelativePanel.RightOf="coinsCounterImg" TextWrapping="Wrap" Text="{Binding Money}" TextAlignment="Center" TextLineBounds="Full" MaxWidth="80"/>
                 </StackPanel>
             </StackPanel>
             <StackPanel x:Name="sp4" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="3" Padding="10,10,10,10">
                 <Image Source="ms-appx:///Assets/rewards.jpg" HorizontalAlignment="Center" Height="50" VerticalAlignment="Center" Width="50"/>
                 <StackPanel VerticalAlignment="Center" Padding="10,0,0,0">
-                    <TextBlock x:Name="rewardsCounterText" RelativePanel.RightOf="rewardsCounterImg" TextWrapping="Wrap" Text="{Binding actualizeRewardCounter}" TextAlignment="Center" TextLineBounds="Full" MaxWidth="80"/>
+                    <TextBlock x:Name="rewardsCounterText" RelativePanel.RightOf="rewardsCounterImg" TextWrapping="Wrap" Text="{Binding RewardCount}" TextAlignment="Center" TextLineBounds="Full" MaxWidth="80"/>
                 </StackPanel>
             </StackPanel>
         </Grid>

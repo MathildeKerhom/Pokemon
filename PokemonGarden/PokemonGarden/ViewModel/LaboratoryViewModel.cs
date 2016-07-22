@@ -105,11 +105,11 @@ namespace PokemonGarden.ViewModel
 				}
 				MarketSeed newSeedRecived = new MarketSeed(seedRight.Name + " " + seedLeft.Name, types, "test fusion", (seedLeft.Price + seedRight.Price) / 2);
 				await new SeedRecived(newSeedRecived).ShowAsync();
-				Player.GetPlayer().SeedInventory.Add(newSeedRecived);
+				Player.GetPlayer.SeedInventory.Add(newSeedRecived);
 				this.laboratory.FusionSeedBlockLeft.DataContext = null;
 				this.laboratory.FusionSeedBlockRight.DataContext = null;
-				Player.GetPlayer().SeedInventory.Remove(seedLeft);
-				Player.GetPlayer().SeedInventory.Remove(seedRight);
+				Player.GetPlayer.SeedInventory.Remove(seedLeft);
+				Player.GetPlayer.SeedInventory.Remove(seedRight);
 			}
 		}
 
@@ -127,7 +127,7 @@ namespace PokemonGarden.ViewModel
 				pokemon.Upgrade(seed);
 				await new PokemonRecived(pokemon).ShowAsync();
 				this.laboratory.UpgradeSeed.DataContext = null;
-				Player.GetPlayer().SeedInventory.Remove(seed);
+				Player.GetPlayer.SeedInventory.Remove(seed);
 			}
 		}
 
@@ -226,7 +226,7 @@ namespace PokemonGarden.ViewModel
 		/// <param name="e"></param>
 		private void Pivot_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
-			Player player = Player.GetPlayer();
+			Player player = Player.GetPlayer;
 			if (this.laboratory.Pivot.SelectedIndex == 0) // tab create
 			{
 				this.unlockItemIfExist(this.laboratory.UpgradeSeed.DataContext as MarketSeed);

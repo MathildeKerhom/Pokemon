@@ -111,10 +111,9 @@
     <Compile Include="Classes\MarketSeed.cs" />
     <Compile Include="Classes\Player.cs" />
     <Compile Include="Classes\Pokemon.cs" />
-    <Compile Include="Classes\Rewards.cs" />
+    <Compile Include="Classes\Reward.cs" />
     <Compile Include="Classes\Seed.cs" />
     <Compile Include="Classes\SqliteManager.cs" />
-    <Compile Include="Classes\TopBarData.cs" />
     <Compile Include="Classes\Types.cs" />
     <Compile Include="Resources\overlay\EngagementPageOverlay.cs" />
     <Compile Include="ViewModel\ArenaViewModel.cs" />

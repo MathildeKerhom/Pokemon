@@ -1,34 +1,37 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using SQLite.Net.Attributes;
 using SQLiteNetExtensions.Attributes;
 
 namespace PokemonGarden.Classes
 {
-	public class Player : EntityBase
+	public class Player : EntityBase, INotifyPropertyChanged
 	{
 		private string name;
 		private int money;
 		private ObservableCollection<MarketSeed> seeds;
 		private ObservableCollection<Pokemon> pokemons;
-		private Rewards rewards;
-		private TopBarData topBarData;
+		private ObservableCollection<Reward> rewards;
+
+		public event PropertyChangedEventHandler PropertyChanged;
 
 		public Player()
 		{
 			this.seeds = new ObservableCollection<MarketSeed>();
 			this.pokemons = new ObservableCollection<Pokemon>();
-			this.rewards = new Rewards();
-			this.topBarData = new TopBarData(this);
+			this.rewards = new ObservableCollection<Reward>();
+			bindObservableForINotify();
 		}
 
 		public Player(string name, int money)
 		{
 			this.seeds = new ObservableCollection<MarketSeed>();
 			this.pokemons = new ObservableCollection<Pokemon>();
-			this.rewards = new Rewards();
-			this.topBarData = new TopBarData(this);
+			this.rewards = new ObservableCollection<Reward>();
+			bindObservableForINotify();
 			this.name = name;
 			this.money = money;
 
@@ -37,17 +40,19 @@ namespace PokemonGarden.Classes
 			MarketSeed seed2 = new MarketSeed("testSeed2", new List<ElementType> { ElementType.Electrique }, "blabla2 descritpion 2", 12);
 			MarketSeed seed3 = new MarketSeed("testSeed3", new List<ElementType> { ElementType.Acier, ElementType.Dragon }, "blabla descritpion 3", 20);
 			MarketSeed seed4 = new MarketSeed("testSeed4", new List<ElementType> { ElementType.Electrique }, "blabla2 descritpion 4", 12);
-			seeds.Add(seed);
-			seeds.Add(seed2);
-			seeds.Add(seed3);
-			seeds.Add(seed4);
+			this.seeds.Add(seed);
+			this.seeds.Add(seed2);
+			this.seeds.Add(seed3);
+			this.seeds.Add(seed4);
 
 			Pokemon pokemon = new Pokemon(new Uri("ms-appx:///Assets/para.jpg"), "para", new List<ElementType> { ElementType.Acier, ElementType.Dragon }, "pokemon qui ressemble à un crabe");
 			Pokemon pokemon2 = new Pokemon(new Uri("ms-appx:///Assets/pika.PNG"), "pika", new List<ElementType> { ElementType.Electrique }, "fidel pokemon qui nous suit partout");
-			pokemons.Add(pokemon);
-			pokemons.Add(pokemon2);
-			pokemons.Add(pokemon);
-			pokemons.Add(pokemon2);
+			Pokemon pokemon3 = new Pokemon(new Uri("ms-appx:///Assets/para.jpg"), "para", new List<ElementType> { ElementType.Acier, ElementType.Dragon }, "pokemon qui ressemble à un crabe");
+			Pokemon pokemon4 = new Pokemon(new Uri("ms-appx:///Assets/pika.PNG"), "pika", new List<ElementType> { ElementType.Electrique }, "fidel pokemon qui nous suit partout");
+			this.pokemons.Add(pokemon);
+			this.pokemons.Add(pokemon2);
+			this.pokemons.Add(pokemon3);
+			this.pokemons.Add(pokemon4);
 
 			//end fictive data
 		}
@@ -79,15 +84,6 @@ namespace PokemonGarden.Classes
 
 		}
 
-		/// <summary>
-		/// data values objet of topBar
-		/// </summary>
-		/// <returns></returns>
-		public TopBarData GetTopBarData()
-		{
-			return this.topBarData;
-		}
-
 		public void AddPokemon(Pokemon pokemon)
 		{
 			pokemons.Add(pokemon);
@@ -99,11 +95,10 @@ namespace PokemonGarden.Classes
 			{
 				return this.money;
 			}
-
 			set
 			{
 				this.money = value;
-				topBarData.OnMoneyChanged();
+				this.OnPropertyChanged();
 			}
 		}
 
@@ -113,10 +108,34 @@ namespace PokemonGarden.Classes
 			{
 				return name;
 			}
-
 			set
 			{
 				this.name = value;
+				this.OnPropertyChanged();
+			}
+		}
+
+		public int PokemonCount
+		{
+			get
+			{
+				return this.pokemons.Count;
+			}
+		}
+
+		public int SeedCount
+		{
+			get
+			{
+				return this.seeds.Count;
+			}
+		}
+
+		public string RewardCount
+		{
+			get
+			{
+				return $"{ this.rewards.Count } / { Reward.Max }";
 			}
 		}
 
@@ -130,10 +149,6 @@ namespace PokemonGarden.Classes
 			get
 			{
 				return this.seeds;
-			}
-			set
-			{
-				this.seeds = value;
 			}
 		}
 
@@ -150,58 +165,65 @@ namespace PokemonGarden.Classes
 			}
 		}
 
-		//public int RewardTotal
-		//{
-		//	get
-		//	{
-		//		return player.rewardTotal;
-		//	}
+		private void bindObservableForINotify()
+		{
+			this.seeds.CollectionChanged += Seeds_CollectionChanged;
+			this.pokemons.CollectionChanged += Pokemons_CollectionChanged;
+			this.rewards.CollectionChanged += Rewards_CollectionChanged;
+		}
 
-		//	set
-		//	{
-		//		player.rewardTotal = value;
-		//		topBarData.OnPropertyChanged("actualizeRewardCounter");
-		//	}
-		//}
+		private void Rewards_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+		{
+			OnPropertyChanged(nameof(this.RewardCount));
+		}
 
-		//public int RewardActual
-		//{
-		//	get
-		//	{
-		//		return player.rewardActual;
-		//	}
+		private void Pokemons_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+		{
+			OnPropertyChanged(nameof(this.PokemonCount));
+		}
 
-		//	set
-		//	{
-		//		player.rewardActual = value;
-		//		topBarData.OnPropertyChanged("actualizeRewardCounter");
-		//	}
-		//}
+		private void Seeds_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+		{
+			OnPropertyChanged(nameof(this.SeedCount));
+		}
+
+		private void OnPropertyChanged([CallerMemberName] string propertyName = null)
+		{
+			PropertyChangedEventHandler handle = PropertyChanged;
+			if (handle != null)
+			{
+				// Raise the PropertyChanged event, passing the name of the property whose value has changed.
+				handle(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
 
 		/// <summary>
 		/// singleton of player
 		/// </summary>
-		private static Player player;
+		private static volatile Player player;
 		private static object locked = new object();
 
 		/// <summary>
 		/// get player instance
 		/// </summary>
 		/// <returns></returns>
-		public static Player GetPlayer()
+		public static Player GetPlayer
 		{
-			if (player == null)
+			get
 			{
-				lock (locked)
+				if (player == null)
 				{
-					if (player == null)
+					lock (locked)
 					{
-						player = new Player("localPlayer", 1000);
+						if (player == null)
+						{
+							player = new Player("localPlayer", 1000);
+						}
 					}
 				}
-			}
 
-			return player;
+				return player;
+			}
 		}
 	}
 }

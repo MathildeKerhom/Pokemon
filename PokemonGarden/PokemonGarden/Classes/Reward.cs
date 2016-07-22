@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace PokemonGarden.Classes
 {
-	public class Rewards
+	public class Reward
 	{
-		public Rewards()
+		public const int Max = 150;
+
+		public Reward()
 		{
 		}
 	}

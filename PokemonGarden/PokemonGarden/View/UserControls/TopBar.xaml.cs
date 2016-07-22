@@ -24,12 +24,7 @@ namespace PokemonGarden.View.UserControls
 		public TopBar()
 		{
 			this.InitializeComponent();
-			//Player.GetPlayer().AddPokemon(new Pokemon(null, "pika", new List<Types.Element> { Types.Element.Acier }, "blabla"));
-			Player player = Player.GetPlayer();
-			this.DataContext = player.GetTopBarData();
-			//player.Money += 50;
-			//player.AddPokemon(new Pokemon(null, "truc", new List<Types.Element> { Types.Element.Acier }, "blabla"));
-
+			this.DataContext = Player.GetPlayer;
 		}
 
 		private void OnClicGoToMap_Tapped(object sender, TappedRoutedEventArgs e)

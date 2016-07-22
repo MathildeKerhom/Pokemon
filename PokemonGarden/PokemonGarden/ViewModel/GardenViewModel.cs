@@ -26,7 +26,7 @@ namespace PokemonGarden.ViewModel
 
 		private void init()
 		{
-			Player player = Player.GetPlayer();
+			Player player = Player.GetPlayer;
 			this.garden.Seed1.DataContext = player.SeedInventory.FirstOrDefault();
 		}
 
@@ -291,7 +291,7 @@ namespace PokemonGarden.ViewModel
 			Task<ContentDialogResult> getAsyncShow = pokemonPopup.ShowAsync().AsTask();
 
 			imgSource.Visibility = Visibility.Collapsed;
-			Player player = Player.GetPlayer();
+			Player player = Player.GetPlayer;
 			player.AddPokemon(pokemon);
 		}
 

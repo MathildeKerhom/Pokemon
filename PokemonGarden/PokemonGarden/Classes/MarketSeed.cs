@@ -4,19 +4,18 @@ using SQLiteNetExtensions.Attributes;
 
 namespace PokemonGarden.Classes
 {
-	public class MarketSeed:Seed, ILockable
+	public class MarketSeed:Seed
 	{
 		private int price;
 
 		public MarketSeed()
 		{
-			this.IsEnable = true;
+
 		}
 
 		public MarketSeed(string name, List<ElementType> types, string description, int price) : base(name, types, description)
 		{
 			this.price = price;
-			this.IsEnable = true;
 		}
 
 		[ForeignKey(typeof(Player))]
@@ -58,13 +57,6 @@ namespace PokemonGarden.Classes
 			{
 				this.price = value;
 			}
-		}
-
-		[Ignore]
-		public bool IsEnable
-		{
-			get;
-			set;
 		}
 	}
 }
