@@ -9,14 +9,29 @@ namespace PokemonGarden.Classes.AutoGenerator
 {
 	static class Reflectionner
 	{
+		public static List<String> ReadClassProperties<T>()
+		{
+			List<String> result = new List<String>();
+			PropertyInfo[] props = typeof(T).GetProperties();
+			foreach (var prop in props)
+			{
+				result.Add(prop.Name);
+			}
+
+			return result;
+		}
+
 		public static Dictionary<String, Object> ReadClass<T>()
 		{
-			Dictionary<String, Object> result = new Dictionary<string, object>();
+			Dictionary<String, object> result = new Dictionary<string, Object>();
 			PropertyInfo[] props = typeof(T).GetProperties();
 			T item = (T)Activator.CreateInstance(typeof(T));
 			foreach (var prop in props)
 			{
-				result.Add(prop.Name, prop.GetValue(item, null));
+				if (prop.CanRead)
+				{
+					result.Add(prop.Name, prop.GetValue(item, null));
+				}
 			}
 
 			return result;

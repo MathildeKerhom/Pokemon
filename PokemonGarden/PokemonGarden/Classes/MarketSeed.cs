@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using PokemonGarden.Classes.AutoGenerator;
+using PokemonGarden.Classes.AutoGenerator.Attributs;
 using SQLite.Net.Attributes;
 using SQLiteNetExtensions.Attributes;
 
@@ -28,6 +30,7 @@ namespace PokemonGarden.Classes
 		/// return "{TotalPrice} Pc"
 		/// </summary>
 		[Ignore]
+		[FakerTyper(SpecificFakerType.IGNORE)]
 		public string PriceQuantity
 		{
 			get

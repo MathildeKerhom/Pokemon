@@ -40,27 +40,36 @@ namespace PokemonGarden.Classes
 
 			//fictive data :
 			//MarketSeed seed = new MarketSeed("testSeed", new List<ElementType> { ElementType.Acier, ElementType.Dragon }, "blabla descritpion 1", 20);
-			MarketSeed seed = ClassGenerator<MarketSeed>.GenerateItem();
-			MarketSeed seed2 = new MarketSeed("testSeed2", new List<ElementType> { ElementType.Electrique }, "blabla2 descritpion 2", 12);
-			MarketSeed seed3 = new MarketSeed("testSeed3", new List<ElementType> { ElementType.Acier, ElementType.Dragon }, "blabla descritpion 3", 20);
-			MarketSeed seed4 = new MarketSeed("testSeed4", new List<ElementType> { ElementType.Electrique }, "blabla2 descritpion 4", 12);
-			this.seeds.Add(seed);
-			this.seeds.Add(seed2);
-			this.seeds.Add(seed3);
-			this.seeds.Add(seed4);
+			//MarketSeed seed = ClassGenerator<MarketSeed>.GenerateItem();
+			//MarketSeed seed2 = new MarketSeed("testSeed2", new List<ElementType> { ElementType.Electrique }, "blabla2 descritpion 2", 12);
+			//MarketSeed seed3 = new MarketSeed("testSeed3", new List<ElementType> { ElementType.Acier, ElementType.Dragon }, "blabla descritpion 3", 20);
+			//MarketSeed seed4 = new MarketSeed("testSeed4", new List<ElementType> { ElementType.Electrique }, "blabla2 descritpion 4", 12);
+			//this.seeds.Add(seed);
+			//this.seeds.Add(seed2);
+			//this.seeds.Add(seed3);
+			//this.seeds.Add(seed4);
 
-			Pokemon pokemon = new Pokemon(new Uri("ms-appx:///Assets/para.jpg"), "para", new List<ElementType> { ElementType.Acier, ElementType.Dragon }, "pokemon qui ressemble à un crabe");
-			Pokemon pokemon2 = new Pokemon(new Uri("ms-appx:///Assets/pika.PNG"), "pika", new List<ElementType> { ElementType.Electrique }, "fidel pokemon qui nous suit partout");
-			Pokemon pokemon3 = new Pokemon(new Uri("ms-appx:///Assets/para.jpg"), "para", new List<ElementType> { ElementType.Acier, ElementType.Dragon }, "pokemon qui ressemble à un crabe");
-			Pokemon pokemon4 = new Pokemon(new Uri("ms-appx:///Assets/pika.PNG"), "pika", new List<ElementType> { ElementType.Electrique }, "fidel pokemon qui nous suit partout");
-			this.pokemons.Add(pokemon);
-			this.pokemons.Add(pokemon2);
-			this.pokemons.Add(pokemon3);
-			this.pokemons.Add(pokemon4);
+			//Pokemon pokemon = new Pokemon(new Uri("ms-appx:///Assets/para.jpg"), "para", new List<ElementType> { ElementType.Acier, ElementType.Dragon }, "pokemon qui ressemble à un crabe");
+			//Pokemon pokemon2 = new Pokemon(new Uri("ms-appx:///Assets/pika.PNG"), "pika", new List<ElementType> { ElementType.Electrique }, "fidel pokemon qui nous suit partout");
+			//Pokemon pokemon3 = new Pokemon(new Uri("ms-appx:///Assets/para.jpg"), "para", new List<ElementType> { ElementType.Acier, ElementType.Dragon }, "pokemon qui ressemble à un crabe");
+			//Pokemon pokemon4 = new Pokemon(new Uri("ms-appx:///Assets/pika.PNG"), "pika", new List<ElementType> { ElementType.Electrique }, "fidel pokemon qui nous suit partout");
+			//this.pokemons.Add(pokemon);
+			//this.pokemons.Add(pokemon2);
+			//this.pokemons.Add(pokemon3);
+			//this.pokemons.Add(pokemon4);
 
+			for (int i = 0; i < new Random(DateTime.Now.Millisecond).Next(1, 21); i++)
+			{
+				this.seeds.Add(ClassGenerator<MarketSeed>.GenerateItem());
+			}
 
-			Reward testAutoGenn = ClassGenerator<Reward>.GenerateItem();
-			Debugger.Break();
+			for (int i = 0; i < new Random(DateTime.Now.Millisecond).Next(1, 6); i++)
+			{
+				this.pokemons.Add(ClassGenerator<Pokemon>.GenerateItem());
+			}
+
+			//Reward testAutoGenn = ClassGenerator<Reward>.GenerateItem();
+			//Debugger.Break();
 			//end fictive data
 		}
 

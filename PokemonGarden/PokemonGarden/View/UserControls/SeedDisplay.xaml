@@ -19,7 +19,7 @@
                 <Image Source="{Binding GetSeedImg}" Height="40"/>
             </Grid>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1">
-                <GridView ItemsSource="{Binding GetUriTypeList}" IsHitTestVisible="False">
+                <GridView ItemsSource="{Binding UriTypeList}" IsHitTestVisible="False">
                     <GridView.ItemTemplate>
                         <DataTemplate>
                             <Image Source="{Binding GetUri}" Width="40"/>

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PokemonGarden.Classes.AutoGenerator;
+using PokemonGarden.Classes.AutoGenerator.Attributs;
 
 namespace PokemonGarden.Classes
 {
@@ -121,16 +123,31 @@ namespace PokemonGarden.Classes
 			noEffect[(int)ElementType.None] = new ElementType[] { };
 		}
 
+		/// <summary>
+		/// obtain weak of element
+		/// </summary>
+		/// <param name="type">type to obtain weak</param>
+		/// <returns></returns>
 		public static ElementType[] GetWeak(ElementType type)
 		{
 			return weak[(int)type];
 		}
 
+		/// <summary>
+		/// obtain strong of element
+		/// </summary>
+		/// <param name="type">type to obtain strong</param>
+		/// <returns></returns>
 		public static ElementType[] GetStrong(ElementType type)
 		{
 			return strong[(int)type];
 		}
 
+		/// <summary>
+		/// obtain no effects of element
+		/// </summary>
+		/// <param name="type">type to obtain no effect</param>
+		/// <returns></returns>
 		public static ElementType[] GetNoEffect(ElementType type)
 		{
 			return noEffect[(int)type];
@@ -169,10 +186,10 @@ namespace PokemonGarden.Classes
 				throw new ArgumentException("void list recieved");
 			}
 		}
-
-		private Uri uriType;
+		
 		private ElementType elementType;
 
+		[FakerTyper(SpecificFakerType.ElementType)]
 		public ElementType ElementType
 		{
 			get
@@ -182,16 +199,42 @@ namespace PokemonGarden.Classes
 			set
 			{
 				elementType = value;
-				uriType = getUri(this.elementType);
 			}
 		}
 
+		/// <summary>
+		/// generate random element
+		/// </summary>
+		public Types()
+		{
+			//this.ElementType = (ElementType)Faker.RandomNumber.Next(0, Enum.GetValues(typeof(ElementType)).Length - 1);
+		}
 
+		/// <summary>
+		/// generate with specified element
+		/// </summary>
+		/// <param name="element"></param>
 		public Types(ElementType element)
 		{
 			this.ElementType = element;
 		}
 
+		/// <summary>
+		/// return image of element
+		/// </summary>
+		public Uri GetUri
+		{
+			get
+			{
+				return getUri(this.elementType);
+			}
+		}
+
+		/// <summary>
+		/// match enum with image
+		/// </summary>
+		/// <param name="nameType"></param>
+		/// <returns></returns>
 		private Uri getUri(ElementType nameType)
 		{
 			switch (nameType)
@@ -232,16 +275,8 @@ namespace PokemonGarden.Classes
 					return new Uri("ms-appx:///Assets/Type_miniat_tenebres.png");
 				case ElementType.Vol:
 					return new Uri("ms-appx:///Assets/Type_miniat_vol.png");
-				default:
+				default: // unknown
 					return new Uri("ms-appx:///Assets/pokeball.jpg");
-			}
-		}
-
-		public Uri GetUri
-		{
-			get
-			{
-				return uriType;
 			}
 		}
 	}

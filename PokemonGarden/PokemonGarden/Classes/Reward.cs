@@ -12,10 +12,9 @@ namespace PokemonGarden.Classes
 	{
 		public const int Max = 150;
 
-		private List<MarketSeed> testAutoGen;
+		private List<Pokemon> testAutoGen;
 
-		[FakerTyper(SpecificFakerType.IGNORE)]
-		public List<MarketSeed> TestAutoGen
+		public List<Pokemon> TestAutoGen
 		{
 			get
 			{

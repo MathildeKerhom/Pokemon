@@ -24,7 +24,7 @@ namespace PokemonGarden.Classes
 			{
 				this.manager.CreateTable<T>();
 			}
-			catch (Exception)
+			catch (Exception e)
 			{
 				this.manager.MigrateTable<T>();
 			}

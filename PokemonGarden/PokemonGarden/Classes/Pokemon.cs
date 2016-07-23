@@ -12,7 +12,7 @@ using Windows.UI.Xaml.Media.Imaging;
 
 namespace PokemonGarden
 {
-	public class Pokemon:ILockable
+	public class Pokemon : ILockable
 	{
 		private Uri imgPokemon;
 		private ObservableCollection<Types> imgTypes;
@@ -28,7 +28,8 @@ namespace PokemonGarden
 
 		public Pokemon()
 		{
-
+			level = 1;
+			this.IsEnable = true;
 		}
 
 		internal Pokemon(Uri imgPokemon, string name, List<ElementType> types, string description, string backgroundColor = "LightGray")
@@ -67,18 +68,34 @@ namespace PokemonGarden
 			this.IsEnable = true;
 		}
 
-		private void setImgType(List<ElementType> types)
+		/// <summary>
+		/// used to auto generate element type by class generator
+		/// </summary>
+		/// <param name="types"></param>
+		[FakerTyper(SpecificFakerType.ListItemMin1Max2)]
+		public List<Types> ImgType
 		{
-			imgTypes = new ObservableCollection<Types>();
-
-			foreach (ElementType item in types)
+			set
 			{
-				imgTypes.Add(new Types(item));
+				if (value != null)
+				{
+					this.imgTypes = new ObservableCollection<Types>();
+					foreach (Types item in value)
+					{
+						if (!this.imgTypes.Contains(item))
+						{
+							this.imgTypes.Add(item);
+						}
+					}
+				}
+				else
+				{
+					this.imgTypes = null;
+				}
 			}
 		}
-
-		[FakerTyper(SpecificFakerType.IGNORE)]
-		public ObservableCollection<Types> GetUriTypeList
+		
+		public ObservableCollection<Types> UriTypeList
 		{
 			get
 			{
@@ -86,11 +103,16 @@ namespace PokemonGarden
 			}
 		}
 
+		[FakerTyper(SpecificFakerType.PokemonImg)]
 		public Uri Img
 		{
 			get
 			{
 				return this.imgPokemon;
+			}
+			set
+			{
+				this.imgPokemon = value;
 			}
 		}
 
@@ -102,6 +124,7 @@ namespace PokemonGarden
 			}
 		}
 
+		[FakerTyper(SpecificFakerType.FirstName)]
 		public string Name
 		{
 			get
@@ -122,38 +145,52 @@ namespace PokemonGarden
 			}
 		}
 
-		public bool IsEnable { get; set; }
+		[FakerTyper(SpecificFakerType.IGNORE)]
+		public bool IsEnable
+		{
+			get; set;
+		}
 
 		public void SetBackgroundToTransparent()
 		{
 			this.backgroundColor = "Transparent";
 		}
 
+		private void setImgType(List<ElementType> types)
+		{
+			imgTypes = new ObservableCollection<Types>();
+
+			foreach (ElementType item in types)
+			{
+				imgTypes.Add(new Types(item));
+			}
+		}
+
 		public void Upgrade(Seed seed)
 		{
-			Types typesToAdd = new Types(Types.GetOneType(seed.GetUriTypeList));
+			Types typesToAdd = new Types(Types.GetOneType(seed.UriTypeList));
 			if (this.imgTypes.Count < 2)
 			{
-				foreach (Types types in this.GetUriTypeList)
+				foreach (Types types in this.UriTypeList)
 				{
 					if (types.ElementType == typesToAdd.ElementType)
 					{
 						return; // do nothing if element was already inside
 					}
 				}
-				this.GetUriTypeList.Add(typesToAdd);
+				this.UriTypeList.Add(typesToAdd);
 			}
 			else
 			{
-				this.GetUriTypeList.RemoveAt(new Random(DateTime.Now.Millisecond).Next(1));
-				foreach (Types types in this.GetUriTypeList)
+				this.UriTypeList.RemoveAt(new Random(DateTime.Now.Millisecond).Next(1));
+				foreach (Types types in this.UriTypeList)
 				{
 					if (types.ElementType == typesToAdd.ElementType)
 					{
 						return; // do nothing if element was already inside
 					}
 				}
-				this.GetUriTypeList.Add(typesToAdd);
+				this.UriTypeList.Add(typesToAdd);
 			}
 		}
 	}

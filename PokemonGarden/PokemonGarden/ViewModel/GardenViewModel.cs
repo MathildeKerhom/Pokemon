@@ -306,7 +306,7 @@ namespace PokemonGarden.ViewModel
 
 			if (seedSource != null)
 			{
-				pokemon = new Pokemon(new Uri("ms-appx:///Assets/para.jpg"), "para", seedSource.GetUriTypeList, "pokemon qui ressemble à un crabe");
+				pokemon = new Pokemon(new Uri("ms-appx:///Assets/para.jpg"), "para", seedSource.UriTypeList, "pokemon qui ressemble à un crabe");
 			}
 			else
 			{

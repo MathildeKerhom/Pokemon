@@ -97,8 +97,8 @@ namespace PokemonGarden.ViewModel
 			if (seedLeft != null && seedRight != null)
 			{
 				List<ElementType> types = new List<ElementType>();
-				types.Add(Types.GetOneType(seedRight.GetUriTypeList));
-				types.Add(Types.GetOneType(seedLeft.GetUriTypeList));
+				types.Add(Types.GetOneType(seedRight.UriTypeList));
+				types.Add(Types.GetOneType(seedLeft.UriTypeList));
 				if ((int)types[0] == (int)types[1])
 				{
 					types.RemoveAt(1);
