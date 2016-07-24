@@ -10,7 +10,7 @@
     d:DesignWidth="400">
 
     <Grid Background="Transparent">
-        <Grid Background="{Binding GetBackgroundColor}">
+        <Grid Background="{Binding BackgroundColor}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="70" />
                 <RowDefinition Height="40" />
@@ -40,7 +40,7 @@
                 <GridView ItemsSource="{Binding UriTypeList}" IsHitTestVisible="False">
                     <GridView.ItemTemplate>
                         <DataTemplate>
-                            <Image Source="{Binding GetUri}" Width="40"/>
+                            <Image Source="{Binding ElementTypeUri}" Width="40"/>
                         </DataTemplate>
                     </GridView.ItemTemplate>
                 </GridView>

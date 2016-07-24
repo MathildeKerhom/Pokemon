@@ -80,11 +80,13 @@ namespace PokemonGarden
 				if (value != null)
 				{
 					this.imgTypes = new ObservableCollection<Types>();
+					List<Types> checkList = new List<Types>();
 					foreach (Types item in value)
 					{
-						if (!this.imgTypes.Contains(item))
+						if (!checkList.Exists(x => x.ElementType == item.ElementType))
 						{
 							this.imgTypes.Add(item);
+							checkList.Add(item);
 						}
 					}
 				}
@@ -137,7 +139,7 @@ namespace PokemonGarden
 			}
 		}
 
-		public string GetBackgroundColor
+		public string BackgroundColor
 		{
 			get
 			{

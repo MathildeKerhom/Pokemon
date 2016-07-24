@@ -222,7 +222,7 @@ namespace PokemonGarden.Classes
 		/// <summary>
 		/// return image of element
 		/// </summary>
-		public Uri GetUri
+		public Uri ElementTypeUri
 		{
 			get
 			{

@@ -29,23 +29,6 @@ namespace PokemonGarden
 		}
 
 		/// <summary>
-		/// update types
-		/// </summary>
-		public void RemplaceElementType(List<ElementType> types)
-		{
-			imgTypes = new List<Types>();
-
-			foreach (ElementType item in types)
-			{
-				Types tmpTypes = new Types(item);
-				if (!imgTypes.Contains(tmpTypes))
-				{
-					imgTypes.Add(tmpTypes);
-				}
-			}
-		}
-
-		/// <summary>
 		/// element type of seed (can't to be have same element)
 		/// </summary>
 		[Ignore]
@@ -77,8 +60,7 @@ namespace PokemonGarden
 		}
 
 		[Ignore]
-		[FakerTyper(SpecificFakerType.IGNORE)]
-		public Uri GetSeedImg
+		public Uri SeedUri
 		{
 			get
 			{
@@ -87,8 +69,7 @@ namespace PokemonGarden
 		}
 
 		[Ignore]
-		[FakerTyper(SpecificFakerType.IGNORE)]
-		public string GetBackgroundColor
+		public string BackgroundColor
 		{
 			get
 			{
@@ -135,6 +116,23 @@ namespace PokemonGarden
 		{
 			get;
 			set;
+		}
+
+		/// <summary>
+		/// update types
+		/// </summary>
+		public void RemplaceElementType(List<ElementType> types)
+		{
+			imgTypes = new List<Types>();
+
+			foreach (ElementType item in types)
+			{
+				Types tmpTypes = new Types(item);
+				if (!imgTypes.Contains(tmpTypes))
+				{
+					imgTypes.Add(tmpTypes);
+				}
+			}
 		}
 	}
 }
