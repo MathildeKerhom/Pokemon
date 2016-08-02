@@ -48,7 +48,7 @@ namespace PokemonGarden.Classes.AutoGenerator
 							case (int)SpecificFakerType.IGNORE:
 								break;
 							case (int)SpecificFakerType.ElementType:
-								property.SetValue(result, (ElementType)Faker.RandomNumber.Next(Enum.GetValues(typeof(ElementType)).Length));
+								property.SetValue(result, (ElementType)Faker.RandomNumber.Next(Enum.GetValues(typeof(ElementType)).Length - 1));
 								break;
 							case (int)SpecificFakerType.PokemonImg:
 								property.SetValue(result, new Uri(Faker.RoboHash.Image()));
