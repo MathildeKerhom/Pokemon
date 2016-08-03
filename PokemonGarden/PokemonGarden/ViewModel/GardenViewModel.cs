@@ -35,7 +35,7 @@ namespace PokemonGarden.ViewModel
 			}
 			for (int i = 0; i < this.player.StoredGarden.Length; i++)
 			{
-				seedDropInto(i, this.player.StoredGarden[i] as MarketSeed);
+				seedDropInto(i + 1, this.player.StoredGarden[i] as MarketSeed);
 			}
 		}
 
@@ -166,6 +166,11 @@ namespace PokemonGarden.ViewModel
 			this.garden.GridPokemon2.Drop -= pokemon2_Drop;
 
 			(Window.Current.Content as Frame).Navigating -= this.onChangingFrame;
+
+			for (int i = 0; i < this.player.StoredGarden.Length; i++)
+			{
+				this.player.StoredGarden[i] = getDroppedSeed(i + 1);
+			}
 		}
 
 		/// <summary>
@@ -249,6 +254,38 @@ namespace PokemonGarden.ViewModel
 						break;
 				}
 				this.player.SeedInventory.Remove(seedToDrop);
+			}
+		}
+
+		/// <summary>
+		/// reverse of seedDropInto methode
+		/// </summary>
+		/// <param name="blockId">block id to drop seed</param>
+		/// <returns></returns>
+		private MarketSeed getDroppedSeed(int blockId)
+		{
+			switch (blockId)
+			{
+				case 1:
+					return this.garden.Seed1.DataContext as MarketSeed;
+				case 2:
+					return this.garden.Seed2.DataContext as MarketSeed;
+				case 3:
+					return this.garden.Seed3.DataContext as MarketSeed;
+				case 4:
+					return this.garden.Seed4.DataContext as MarketSeed;
+				case 5:
+					return this.garden.Seed5.DataContext as MarketSeed;
+				case 6:
+					return this.garden.Seed6.DataContext as MarketSeed;
+				case 7:
+					return this.garden.Seed7.DataContext as MarketSeed;
+				case 8:
+					return this.garden.Seed8.DataContext as MarketSeed;
+				case 9:
+					return this.garden.Seed9.DataContext as MarketSeed;
+				default:
+					return null;
 			}
 		}
 
@@ -381,7 +418,14 @@ namespace PokemonGarden.ViewModel
 			e.Data.Properties.TryGetValue("pokemonSource", out pokemon);
 			if (pokemon != null)
 			{
-				this.garden.Pokemon1.DataContext = (Pokemon)pokemon;
+				//this.garden.Pokemon1.DataContext = (Pokemon)pokemon;
+
+				MarketSeed seed = ClassGenerator<MarketSeed>.GenerateItem();
+				seed.UriTypeList = ((Pokemon)pokemon).UriTypeList.ToList();
+				SeedRecived seedPopup = new SeedRecived(seed);
+				Task<ContentDialogResult> getAsyncShow = seedPopup.ShowAsync().AsTask();
+
+				this.player.SeedInventory.Add(seed);
 			}
 		}
 
@@ -391,7 +435,14 @@ namespace PokemonGarden.ViewModel
 			e.Data.Properties.TryGetValue("pokemonSource", out pokemon);
 			if (pokemon != null)
 			{
-				this.garden.Pokemon2.DataContext = (Pokemon)pokemon;
+				//this.garden.Pokemon2.DataContext = (Pokemon)pokemon;
+
+				MarketSeed seed = ClassGenerator<MarketSeed>.GenerateItem();
+				seed.UriTypeList = ((Pokemon)pokemon).UriTypeList.ToList();
+				SeedRecived seedPopup = new SeedRecived(seed);
+				Task<ContentDialogResult> getAsyncShow = seedPopup.ShowAsync().AsTask();
+
+				this.player.SeedInventory.Add(seed);
 			}
 		}
 	}
