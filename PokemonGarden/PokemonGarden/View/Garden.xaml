@@ -40,40 +40,40 @@
                         <Rectangle Height="1" Grid.Row="3" Grid.ColumnSpan="5" Stroke="Black" StrokeThickness="1"/>
                         <Rectangle Width="1" Grid.Column="1" Grid.RowSpan="5" Stroke="Black" StrokeThickness="1"/>
                         <Rectangle Width="1" Grid.Column="3" Grid.RowSpan="5" Stroke="Black" StrokeThickness="1"/>
-                        <Grid Grid.Column="0" Grid.Row="0" x:Name="gridSeed1" Height="100" Width="170" Margin="10,10,10,10">
-                            <UserControls:SeedDisplay x:Name="seed1"/>
+                        <Grid Grid.Column="0" Grid.Row="0" x:Name="gridSeed1" Margin="10,10,10,10">
+                            <UserControls:SeedDisplay x:Name="seed1" Margin="20,10" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                             <Image x:Name="image1" Visibility="Collapsed" Source="ms-appx:///Assets/metamorph.jpg"/>
                         </Grid>
-                        <Grid Grid.Column="2" Grid.Row="0" x:Name="gridSeed2" Height="100" Width="170" Margin="10,10,10,10">
-                            <UserControls:SeedDisplay x:Name="seed2"/>
+                        <Grid Grid.Column="2" Grid.Row="0" x:Name="gridSeed2" Margin="10,10,10,10">
+                            <UserControls:SeedDisplay x:Name="seed2" Margin="20,10" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                             <Image x:Name="image2" Visibility="Collapsed" Source="ms-appx:///Assets/metamorph.jpg"/>
                         </Grid>
-                        <Grid Grid.Column="4" Grid.Row="0" x:Name="gridSeed3" Height="100" Width="170" Margin="10,10,10,10">
-                            <UserControls:SeedDisplay x:Name="seed3"/>
+                        <Grid Grid.Column="4" Grid.Row="0" x:Name="gridSeed3" Margin="10,10,10,10">
+                            <UserControls:SeedDisplay x:Name="seed3" Margin="20,10" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                             <Image x:Name="image3" Visibility="Collapsed" Source="ms-appx:///Assets/metamorph.jpg"/>
                         </Grid>
-                        <Grid Grid.Column="0" Grid.Row="2" x:Name="gridSeed4" Height="100" Width="170" Margin="10,10,10,10">
-                            <UserControls:SeedDisplay x:Name="seed4"/>
+                        <Grid Grid.Column="0" Grid.Row="2" x:Name="gridSeed4" Margin="10,10,10,10">
+                            <UserControls:SeedDisplay x:Name="seed4" Margin="20,10" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                             <Image x:Name="image4" Visibility="Collapsed" Source="ms-appx:///Assets/metamorph.jpg"/>
                         </Grid>
-                        <Grid Grid.Column="2" Grid.Row="2" x:Name="gridSeed5" Height="100" Width="170" Margin="10,10,10,10">
-                            <UserControls:SeedDisplay x:Name="seed5"/>
+                        <Grid Grid.Column="2" Grid.Row="2" x:Name="gridSeed5" Margin="10,10,10,10">
+                            <UserControls:SeedDisplay x:Name="seed5" Margin="20,10" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                             <Image x:Name="image5" Visibility="Collapsed" Source="ms-appx:///Assets/metamorph.jpg"/>
                         </Grid>
-                        <Grid Grid.Column="4" Grid.Row="2" x:Name="gridSeed6" Height="100" Width="170" Margin="10,10,10,10">
-                            <UserControls:SeedDisplay x:Name="seed6"/>
-                            <Image x:Name="image6" Visibility="Visible" Source="ms-appx:///Assets/metamorph.jpg"/>
+                        <Grid Grid.Column="4" Grid.Row="2" x:Name="gridSeed6" Margin="10,10,10,10">
+                            <UserControls:SeedDisplay x:Name="seed6" Margin="20,10" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            <Image x:Name="image6" Visibility="Collapsed" Source="ms-appx:///Assets/metamorph.jpg"/>
                         </Grid>
-                        <Grid Grid.Column="0" Grid.Row="4" x:Name="gridSeed7" Height="100" Width="170" Margin="10,10,10,10">
-                            <UserControls:SeedDisplay x:Name="seed7"/>
+                        <Grid Grid.Column="0" Grid.Row="4" x:Name="gridSeed7" Margin="10,10,10,10">
+                            <UserControls:SeedDisplay x:Name="seed7" Margin="20,10" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                             <Image x:Name="image7" Visibility="Collapsed" Source="ms-appx:///Assets/metamorph.jpg"/>
                         </Grid>
-                        <Grid Grid.Column="2" Grid.Row="4" x:Name="gridSeed8" Height="100" Width="170" Margin="10,10,10,10">
-                            <UserControls:SeedDisplay x:Name="seed8"/>
+                        <Grid Grid.Column="2" Grid.Row="4" x:Name="gridSeed8" Margin="10,10,10,10">
+                            <UserControls:SeedDisplay x:Name="seed8" Margin="20,10" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                             <Image x:Name="image8" Visibility="Collapsed" Source="ms-appx:///Assets/metamorph.jpg"/>
                         </Grid>
-                        <Grid Grid.Column="4" Grid.Row="4" x:Name="gridSeed9" Height="100" Width="170" Margin="10,10,10,10">
-                            <UserControls:SeedDisplay x:Name="seed9"/>
+                        <Grid Grid.Column="4" Grid.Row="4" x:Name="gridSeed9" Margin="10,10,10,10">
+                            <UserControls:SeedDisplay x:Name="seed9" Margin="20,10" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                             <Image x:Name="image9" Visibility="Collapsed" Source="ms-appx:///Assets/metamorph.jpg"/>
                         </Grid>
                     </Grid>

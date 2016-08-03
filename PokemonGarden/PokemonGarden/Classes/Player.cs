@@ -27,6 +27,11 @@ namespace PokemonGarden.Classes
 			this.pokemons = new ObservableCollection<Pokemon>();
 			this.rewards = new ObservableCollection<Reward>();
 			bindObservableForINotify();
+			this.StoredGarden = new MarketSeed[9];
+			this.FightingList = new Pokemon[5];
+
+
+			this.StoredGarden[2] = ClassGenerator<MarketSeed>.GenerateItem();
 		}
 
 		public Player(string name, int money)
@@ -37,6 +42,9 @@ namespace PokemonGarden.Classes
 			bindObservableForINotify();
 			this.name = name;
 			this.money = money;
+			this.StoredGarden = new MarketSeed[9];
+
+			this.StoredGarden[2] = ClassGenerator<MarketSeed>.GenerateItem();
 
 			//fictive data :
 			//MarketSeed seed = new MarketSeed("testSeed", new List<ElementType> { ElementType.Acier, ElementType.Dragon }, "blabla descritpion 1", 20);
@@ -240,6 +248,16 @@ namespace PokemonGarden.Classes
 
 				return player;
 			}
+		}
+
+		public MarketSeed[] StoredGarden
+		{
+			get;
+		}
+
+		public Pokemon[] FightingList
+		{
+			get;
 		}
 	}
 }

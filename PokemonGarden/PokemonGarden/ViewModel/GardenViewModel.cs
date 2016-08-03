@@ -10,15 +10,18 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Navigation;
+using PokemonGarden.Classes.AutoGenerator;
 
 namespace PokemonGarden.ViewModel
 {
 	class GardenViewModel
 	{
 		private Garden garden;
+		private Player player;
 
 		public GardenViewModel(Garden garden)
 		{
+			this.player = Player.GetPlayer;
 			this.garden = garden;
 			this.init();
 			this.bind();
@@ -26,8 +29,14 @@ namespace PokemonGarden.ViewModel
 
 		private void init()
 		{
-			Player player = Player.GetPlayer;
-			this.garden.Seed1.DataContext = player.SeedInventory.FirstOrDefault();
+			if (this.player.StoredGarden.Length != 9)
+			{
+				throw new InvalidOperationException("Pokemon garden haven't 9 element inner tab");
+			}
+			for (int i = 0; i < this.player.StoredGarden.Length; i++)
+			{
+				seedDropInto(i, this.player.StoredGarden[i] as MarketSeed);
+			}
 		}
 
 		private void bind()
@@ -159,6 +168,11 @@ namespace PokemonGarden.ViewModel
 			(Window.Current.Content as Frame).Navigating -= this.onChangingFrame;
 		}
 
+		/// <summary>
+		/// user can drop only is block is free
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void seed_DragEnter(object sender, DragEventArgs e)
 		{
 			UIElementCollection childs = (sender as Grid).Children;
@@ -176,101 +190,136 @@ namespace PokemonGarden.ViewModel
 			e.AcceptedOperation = Windows.ApplicationModel.DataTransfer.DataPackageOperation.Move;
 		}
 
+		/// <summary>
+		/// user can't drop element outer of block
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void seed_DragLeave(object sender, DragEventArgs e)
 		{
 			e.AcceptedOperation = Windows.ApplicationModel.DataTransfer.DataPackageOperation.None;
+		}
+
+		/// <summary>
+		/// drop a marketseed inside garden block and remove the seed in user list
+		/// </summary>
+		/// <param name="dropId">block id to drop seed</param>
+		/// <param name="seedToDrop">seed to drop</param>
+		private void seedDropInto(int dropId, MarketSeed seedToDrop)
+		{
+			if (seedToDrop != null)
+			{
+				switch (dropId)
+				{
+					case 1:
+						this.garden.Image1.Visibility = Visibility.Visible;
+						this.garden.Seed1.DataContext = seedToDrop;
+						break;
+					case 2:
+						this.garden.Image2.Visibility = Visibility.Visible;
+						this.garden.Seed2.DataContext = seedToDrop;
+						break;
+					case 3:
+						this.garden.Image3.Visibility = Visibility.Visible;
+						this.garden.Seed3.DataContext = seedToDrop;
+						break;
+					case 4:
+						this.garden.Image4.Visibility = Visibility.Visible;
+						this.garden.Seed4.DataContext = seedToDrop;
+						break;
+					case 5:
+						this.garden.Image5.Visibility = Visibility.Visible;
+						this.garden.Seed5.DataContext = seedToDrop;
+						break;
+					case 6:
+						this.garden.Image6.Visibility = Visibility.Visible;
+						this.garden.Seed6.DataContext = seedToDrop;
+						break;
+					case 7:
+						this.garden.Image7.Visibility = Visibility.Visible;
+						this.garden.Seed7.DataContext = seedToDrop;
+						break;
+					case 8:
+						this.garden.Image8.Visibility = Visibility.Visible;
+						this.garden.Seed8.DataContext = seedToDrop;
+						break;
+					case 9:
+						this.garden.Image9.Visibility = Visibility.Visible;
+						this.garden.Seed9.DataContext = seedToDrop;
+						break;
+				}
+				this.player.SeedInventory.Remove(seedToDrop);
+			}
 		}
 
 		private void seed1_Drop(object sender, DragEventArgs e)
 		{
 			object seed;
 			e.Data.Properties.TryGetValue("seedSource", out seed);
-			if (seed != null)
-			{
-				this.garden.Seed1.DataContext = (MarketSeed)seed;
-			}
+			seedDropInto(1, seed as MarketSeed);
 		}
 
 		private void seed2_Drop(object sender, DragEventArgs e)
 		{
 			object seed;
 			e.Data.Properties.TryGetValue("seedSource", out seed);
-			if (seed != null)
-			{
-				this.garden.Seed2.DataContext = (MarketSeed)seed;
-			}
+			seedDropInto(2, seed as MarketSeed);
 		}
 
 		private void seed3_Drop(object sender, DragEventArgs e)
 		{
 			object seed;
 			e.Data.Properties.TryGetValue("seedSource", out seed);
-			if (seed != null)
-			{
-				this.garden.Seed3.DataContext = (MarketSeed)seed;
-			}
+			seedDropInto(3, seed as MarketSeed);
 		}
 
 		private void seed4_Drop(object sender, DragEventArgs e)
 		{
 			object seed;
 			e.Data.Properties.TryGetValue("seedSource", out seed);
-			if (seed != null)
-			{
-				this.garden.Seed4.DataContext = (MarketSeed)seed;
-			}
+			seedDropInto(4, seed as MarketSeed);
 		}
 
 		private void seed5_Drop(object sender, DragEventArgs e)
 		{
 			object seed;
 			e.Data.Properties.TryGetValue("seedSource", out seed);
-			if (seed != null)
-			{
-				this.garden.Seed5.DataContext = (MarketSeed)seed;
-			}
+			seedDropInto(5, seed as MarketSeed);
 		}
 
 		private void seed6_Drop(object sender, DragEventArgs e)
 		{
 			object seed;
 			e.Data.Properties.TryGetValue("seedSource", out seed);
-			if (seed != null)
-			{
-				this.garden.Seed6.DataContext = (MarketSeed)seed;
-			}
+			seedDropInto(6, seed as MarketSeed);
 		}
 
 		private void seed7_Drop(object sender, DragEventArgs e)
 		{
 			object seed;
 			e.Data.Properties.TryGetValue("seedSource", out seed);
-			if (seed != null)
-			{
-				this.garden.Seed7.DataContext = (MarketSeed)seed;
-			}
+			seedDropInto(7, seed as MarketSeed);
 		}
 
 		private void seed8_Drop(object sender, DragEventArgs e)
 		{
 			object seed;
 			e.Data.Properties.TryGetValue("seedSource", out seed);
-			if (seed != null)
-			{
-				this.garden.Seed8.DataContext = (MarketSeed)seed;
-			}
+			seedDropInto(8, seed as MarketSeed);
 		}
 
 		private void seed9_Drop(object sender, DragEventArgs e)
 		{
 			object seed;
 			e.Data.Properties.TryGetValue("seedSource", out seed);
-			if (seed != null)
-			{
-				this.garden.Seed9.DataContext = (MarketSeed)seed;
-			}
+			seedDropInto(9, seed as MarketSeed);
 		}
 
+		/// <summary>
+		/// On metamorph tapped, generate a new pokemon with seed abilities
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void Transph_Tapped(object sender, TappedRoutedEventArgs e)
 		{
 			Pokemon pokemon = null;
@@ -282,17 +331,20 @@ namespace PokemonGarden.ViewModel
 				if (child.GetType() == typeof(SeedDisplay))
 				{
 					SeedDisplay seedDisplay = child as SeedDisplay;
-					pokemon = GetRandomPokemon(seedDisplay.DataContext as MarketSeed);
-					seedDisplay.DataContext = null;
+					MarketSeed seed = seedDisplay?.DataContext as MarketSeed;
+					if (seed != null)
+					{
+						pokemon = GetRandomPokemon(seed);
+						seedDisplay.DataContext = null;
+						PokemonRecived pokemonPopup = new PokemonRecived(pokemon);
+						Task<ContentDialogResult> getAsyncShow = pokemonPopup.ShowAsync().AsTask();
+
+						Player player = Player.GetPlayer;
+						player.AddPokemon(pokemon);
+					}
+					imgSource.Visibility = Visibility.Collapsed;
 				}
 			}
-
-			PokemonRecived pokemonPopup = new PokemonRecived(pokemon);
-			Task<ContentDialogResult> getAsyncShow = pokemonPopup.ShowAsync().AsTask();
-
-			imgSource.Visibility = Visibility.Collapsed;
-			Player player = Player.GetPlayer;
-			player.AddPokemon(pokemon);
 		}
 
 		/// <summary>
@@ -306,11 +358,8 @@ namespace PokemonGarden.ViewModel
 
 			if (seedSource != null)
 			{
-				pokemon = new Pokemon(new Uri("ms-appx:///Assets/para.jpg"), "para", seedSource.UriTypeList, "pokemon qui ressemble à un crabe");
-			}
-			else
-			{
-				pokemon = new Pokemon(new Uri("ms-appx:///Assets/para.jpg"), "para", new List<ElementType> { ElementType.Plante, ElementType.Poison }, "pokemon qui ressemble à un crabe");
+				pokemon = ClassGenerator<Pokemon>.GenerateItem();
+				pokemon.ImgType = seedSource.UriTypeList;
 			}
 
 			return pokemon;
