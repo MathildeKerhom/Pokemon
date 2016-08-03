@@ -43,6 +43,7 @@ namespace PokemonGarden.Classes
 			this.name = name;
 			this.money = money;
 			this.StoredGarden = new MarketSeed[9];
+			this.FightingList = new Pokemon[5];
 
 			this.StoredGarden[2] = ClassGenerator<MarketSeed>.GenerateItem();
 
